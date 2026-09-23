@@ -209,3 +209,43 @@ ol.miss span{color:var(--ink-2)}
 .card .subjects .icon svg{width:18px;height:18px}
 .card .subjects .ss{--sc:var(--ss);--sc-soft:var(--ss-soft)} .card .subjects .math{--sc:var(--math);--sc-soft:var(--math-soft)}
 .card .subjects .ela{--sc:var(--ela);--sc-soft:var(--ela-soft)} .card .subjects .sci{--sc:var(--sci);--sc-soft:var(--sci-soft)}
+
+/* kid mode (practice engine) */
+.kid{font-size:19px}
+.kid .eq{font-size:clamp(34px,7vw,52px)}
+.kid .eq.wide{font-size:clamp(20px,4vw,26px);font-weight:600;text-align:left;line-height:1.5}
+.kid .eq svg{max-width:100%;height:auto}
+.kid .ans{font-size:32px;width:200px;padding:10px 14px;border-radius:16px}
+.kid .btn{border-radius:16px;padding:12px 22px;font-size:18px}
+.kid .btn.small{padding:8px 16px;font-size:16px}
+.kid .lab{font-family:var(--display);font-weight:700;font-size:26px;color:var(--ink)}
+.kid .fb{font-size:19px;position:relative;overflow:hidden}
+.kid .fb b{font-size:22px}
+.kid .sol li{font-size:18px}
+.kid .step .mark{font-size:18px}
+.kid .stars{font-size:44px;letter-spacing:6px;line-height:1;color:var(--line)}
+.kid .stars .on{color:#F5A524}
+.kid .results h1{font-size:40px}
+.stickers{display:flex;gap:10px;flex-wrap:wrap}
+.sticker{font-size:36px;width:60px;height:60px;display:grid;place-items:center;background:var(--surface-2);border-radius:16px}
+.sticker.locked{filter:grayscale(1);opacity:.35}
+.sticker.big{font-size:56px;width:90px;height:90px;background:var(--gold-soft)}
+.award{display:flex;align-items:center;gap:16px;background:var(--surface-2);border-radius:16px;padding:12px 16px}
+.spark{position:absolute;bottom:0;width:10px;height:10px;border-radius:50%;background:#F5A524;animation:spark .7s ease-out forwards;pointer-events:none}
+@keyframes spark{from{transform:translateY(0) scale(1);opacity:1}to{transform:translateY(-70px) scale(0);opacity:0}}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+.coins{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.coins svg{width:64px;height:64px}
+.coins svg.q{width:72px;height:72px}.coins svg.d{width:52px;height:52px}.coins svg.n{width:62px;height:62px}.coins svg.p{width:56px;height:56px}
+.coins .plus{font-size:28px;color:var(--ink-2)}
+.clock{width:min(240px,70vw);height:auto;display:block;margin:0 auto}
+.minibars{display:flex;gap:18px;align-items:flex-end;justify-content:center;height:150px;padding-top:24px}
+.minibars div{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:15px;color:var(--ink-2);height:100%;justify-content:flex-end}
+.minibars i{display:block;width:56px;border-radius:8px 8px 0 0;background:var(--accent)}
+.minibars b{font-family:var(--display);color:var(--ink);font-size:18px}
+.story{font-size:20px;line-height:1.5;text-align:left;max-width:30em;margin:0 auto}
+.kid .rule{font-size:18px}
+.cointable{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;text-align:center}
+.cointable div{background:var(--surface-2);border-radius:14px;padding:10px}
+.cointable svg{width:56px;height:56px}
+.cointable b{display:block;font-family:var(--display);font-size:20px}

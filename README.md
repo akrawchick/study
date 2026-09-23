@@ -14,6 +14,7 @@ noah/<subject>/<slug>/index.html   one guide page (tiny: loads content + an engi
 noah/<subject>/<slug>/content.js   that guide's content
 engine/trainer.js                  test-prep engine: schedule, flashcards, quizzes (window.GUIDE)
 engine/practice.js                 skill-practice engine: generated problems, typed answers, levels (window.PRACTICE)
+engine/draw.js                     SVG helpers for kids' content: DRAW.coins, DRAW.clock, DRAW.bars
 engine/trainer.css                 shared styles for everything
 .claude/skills/study-guide/        the /study-guide skill for making a new guide
 ```
@@ -92,6 +93,8 @@ window.PRACTICE = {
 ```
 
 Levels unlock in order (pass the previous one). Progress, streaks and mistake tallies are per device.
+
+Kid mode (`kid: true`, used for Julien): bigger text and buttons, cheers instead of "Correct.", star ratings, confetti on a passed level, and an emoji `sticker` per level collected on a sticker shelf. Answer types: `type: "money"` (`a` in cents; `unit: "cents"` expects 56, `unit: "dollars"` expects 0.56, no unit accepts either) and `type: "time"` (`a` as "h:mm"). A problem can set `prompt`, `label`, `suffix`, `placeholder`, `wide` (long story text) and `review` (plain-text version for the results list when `q` is a drawing). Load `engine/draw.js` before the content file to draw coins, clocks and mini bar charts.
 
 ## Schedule rules of thumb (test prep)
 
