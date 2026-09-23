@@ -173,3 +173,39 @@ ol.miss span{color:var(--ink-2)}
 .pill.past{background:var(--surface-2);color:var(--ink-2)}
 .pill.soon{background:var(--gold-soft);color:var(--gold)}
 @media (prefers-reduced-motion:no-preference){.opt,.btn,.card{transition:border-color .12s,background-color .12s}}
+
+/* subjects: each has a color and an icon. Classes: ss (Social Studies), math, ela, sci (Science) */
+:root{
+  --ss:#94600F; --ss-soft:#FBF0D9;
+  --math:#2742B8; --math-soft:#E1E7FB;
+  --ela:#B8452A; --ela-soft:#FBE6DF;
+  --sci:#0F7A63; --sci-soft:#DCF3EC;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ss:#E5B657; --ss-soft:#3A3120;
+    --math:#93A8FF; --math-soft:#26336E;
+    --ela:#FFA48A; --ela-soft:#47281F;
+    --sci:#5FD3A6; --sci-soft:#15392F;
+  }
+}
+.subject{border-top:4px solid var(--sc);}
+.subject.ss{--sc:var(--ss);--sc-soft:var(--ss-soft)}
+.subject.math{--sc:var(--math);--sc-soft:var(--math-soft)}
+.subject.ela{--sc:var(--ela);--sc-soft:var(--ela-soft)}
+.subject.sci{--sc:var(--sci);--sc-soft:var(--sci-soft)}
+.subject h2{color:var(--sc);display:flex;align-items:center;gap:10px}
+.subject .pill{background:var(--sc-soft);color:var(--sc)}
+.icon{width:40px;height:40px;border-radius:12px;background:var(--sc-soft);color:var(--sc);display:inline-grid;place-items:center;flex:none}
+.icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.brand .icon{width:30px;height:30px;border-radius:9px;vertical-align:middle;margin-right:8px}
+.brand .icon svg{width:18px;height:18px}
+.brand.ss{--sc:var(--ss);--sc-soft:var(--ss-soft)} .brand.math{--sc:var(--math);--sc-soft:var(--math-soft)}
+.brand.ela{--sc:var(--ela);--sc-soft:var(--ela-soft)} .brand.sci{--sc:var(--sci);--sc-soft:var(--sci-soft)}
+.brand.ss span,.brand.math span,.brand.ela span,.brand.sci span{color:var(--sc)}
+.brand{display:inline-flex;align-items:center;gap:.3em}
+.card .subjects{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.card .subjects .icon{width:30px;height:30px;border-radius:9px}
+.card .subjects .icon svg{width:18px;height:18px}
+.card .subjects .ss{--sc:var(--ss);--sc-soft:var(--ss-soft)} .card .subjects .math{--sc:var(--math);--sc-soft:var(--math-soft)}
+.card .subjects .ela{--sc:var(--ela);--sc-soft:var(--ela-soft)} .card .subjects .sci{--sc:var(--sci);--sc-soft:var(--sci-soft)}
