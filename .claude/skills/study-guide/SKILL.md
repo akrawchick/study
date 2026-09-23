@@ -5,7 +5,13 @@ description: Build a new study guide for Noah or Julien from photos of their wor
 
 # Build a study guide
 
-You are adding a guide to the family study site (see README.md for the content format and layout). The result is a folder like `noah/unit3/` containing `index.html` and `content.js`, plus links from the student's page and the site home. Publishing is a git push to `main`.
+You are adding a guide to the family study site (see README.md for the content formats and layout). The result is a folder like `noah/<subject>/<slug>/` containing `index.html` and `content.js`, plus a row in the right subject section of the student's page. Publishing is a git push to `main`.
+
+Subjects are folders under the student: `social-studies`, `math`, `ela`, `science`. Add a new subject section to the student's `index.html` if needed.
+
+**Pick the engine first.**
+- Vocabulary, people, events, facts for an upcoming test → **test prep** (`engine/trainer.js`, `window.GUIDE`). Follow steps 1–5 below.
+- A skill practiced by doing problems (solving equations, fractions, grammar fixes, unit conversions) → **skill practice** (`engine/practice.js`, `window.PRACTICE`). Copy `noah/math/two-step-equations/` as the model: write problem generators that return integer or simple answers with worked steps, a `hints` list of recognizable wrong answers with a one-line explanation each, 5–6 levels from foundation to mixed challenge, and a short Learn page (rules, the recipe, worked examples, common traps). Fuzz every generator in node for a few thousand problems: answers must match the steps, and no hint value may equal the right answer. Then skip to step 4.
 
 ## 1. Gather
 

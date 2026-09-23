@@ -7,17 +7,24 @@ Each guide is a small app: a day-by-day mission from today until the test, flash
 ## Layout
 
 ```
-index.html              site home: pick a student
-noah/index.html         Noah's list of guides
-julien/index.html       Julien's list of guides
-noah/unit2/index.html   one guide page (tiny: loads content + engine)
-noah/unit2/content.js   that guide's content: schedule, terms, questions
-engine/trainer.js       shared app logic, used by every guide
-engine/trainer.css      shared styles
-.claude/skills/study-guide/   the /study-guide skill for making a new guide
+index.html                         site home: pick a student
+noah/index.html                    Noah's page, one section per subject
+julien/index.html                  Julien's page
+noah/<subject>/<slug>/index.html   one guide page (tiny: loads content + an engine)
+noah/<subject>/<slug>/content.js   that guide's content
+engine/trainer.js                  test-prep engine: schedule, flashcards, quizzes (window.GUIDE)
+engine/practice.js                 skill-practice engine: generated problems, typed answers, levels (window.PRACTICE)
+engine/trainer.css                 shared styles for everything
+.claude/skills/study-guide/        the /study-guide skill for making a new guide
 ```
 
-To add a guide: copy `noah/unit2/` to a new folder, rewrite `content.js`, update the title and brand in `index.html`, add a row to the student's `index.html` and update the count on the site home. Or run `/study-guide` in Claude Code, which does all of that.
+Subjects are folders: `social-studies`, `math`, `ela`, `science`. Add more as needed. (`noah/unit2/` is a redirect to `noah/social-studies/unit2/`, kept so the first bookmark still works.)
+
+Two kinds of guide:
+- **Test prep** (`trainer.js`): vocabulary and facts, with a day-by-day schedule ending on the test date. Example: `noah/social-studies/unit2/`.
+- **Skill practice** (`practice.js`): a skill like solving equations, practiced through generated problems in levels. No test date. Example: `noah/math/two-step-equations/`.
+
+To add a guide: copy the closest existing one to a new folder, rewrite `content.js`, update the title and brand in `index.html`, add a row in the right subject section of the student's `index.html`. Or run `/study-guide` in Claude Code, which does all of that.
 
 Publishing is `git push` to `main`. GitHub Pages rebuilds in about a minute.
 
@@ -63,7 +70,30 @@ window.GUIDE = {
 
 The engine also auto-generates two question styles per term (definition → term, term → definition) and matching questions, so 30 terms plus ~40 hand-written questions gives plenty of variety.
 
-## Schedule rules of thumb
+## Content format for skill practice (`content.js` with `practice.js`)
+
+```js
+window.PRACTICE = {
+  id: "noah-math-two-step", student: "Noah",
+  title: "Two-step equations", intro: "one sentence",
+  prompt: "Solve for x.", label: "x =", placeholder: "−4",   // defaults for the answer box; a problem can override
+  setSize: 10, passAt: 8,                                    // problems per set, correct answers needed to pass a level
+  mistakeNames: {sign: "Sign slips", ...},                   // labels for the hint keys, shown on Progress
+  levels: [{ name, desc, gen }],                             // gen() returns one problem, see below
+  lesson: [{ h: "heading", body: "<p>html</p>" }]            // the Learn page
+};
+// gen() returns:
+{ q: "3x + 5 = −7",            // HTML for the problem (use the .frac span for fractions)
+  a: -4,                       // numeric answer; the student may type -4, −4, x=-4, or 3/2
+  steps: ["...", "..."],       // worked solution, one HTML string per step
+  check: "Check: ...",         // optional
+  hints: [{ v: 4, key: "sign", short: "sign slip", msg: "..." }]  // wrong answers we can recognize and explain
+}
+```
+
+Levels unlock in order (pass the previous one). Progress, streaks and mistake tallies are per device.
+
+## Schedule rules of thumb (test prep)
 
 - Roughly one week of `learn` days, 4–6 new terms each, then a `connect` day, then two review days (`review`, `final`), then `test`.
 - Fewer days to the test? Drop the connect day first, then merge learn days. Keep at least one review day.
