@@ -48,6 +48,7 @@ function I(){ return Math.min(N-1, Math.max(0, rawIdx())); }
 function dateOf(j){ const d = new Date(START); d.setDate(d.getDate()+j); return d; }
 function fmt(d,opts){ return d.toLocaleDateString("en-US",opts); }
 const TEST_LABEL = fmt(TEST,{weekday:"long",month:"short",day:"numeric"});
+const TBD = !!G.tbd;                        // test date not announced yet: the plan ends in a checkpoint, not a test
 
 /* ---------- helpers ---------- */
 function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
@@ -264,13 +265,15 @@ const $app = document.getElementById("app");
 function viewHome(){
   const raw = rawIdx(), i = I(), over = raw>N-1, kind = kindOf(i);
   const st = streak(), left = N-1-i;
-  let h = '<section class="panel"><div class="row"><div><h1>'+(over?G.subject+" is in the books":kind==="test"?"Test day, "+esc(G.student):"Hey "+esc(G.student)+", day "+(i+1)+" of "+(N-1))+'</h1><p class="sub">'+
-    (over?"The test was "+TEST_LABEL+". Practice is still open if you want it.":kind==="test"?"You've put in the work. One quick warm-up and you're ready.":"Test is "+TEST_LABEL+" · "+left+" day"+(left===1?"":"s")+" to go")+'</p></div>'+
+  const title = over ? (TBD?"You finished the "+G.subject+" plan":G.subject+" is in the books") : kind==="test" ? (TBD?"Checkpoint day, ":"Test day, ")+esc(G.student) : "Hey "+esc(G.student)+", day "+(i+1)+" of "+(N-1);
+  const sub = TBD ? (over?"No test date yet. Keep your cards fresh with a practice round now and then.":kind==="test"?"No test date yet. One quick warm-up to see what stuck.":"No test date yet · checkpoint "+TEST_LABEL+" · "+left+" day"+(left===1?"":"s")+" to go")
+    : (over?"The test was "+TEST_LABEL+". Practice is still open if you want it.":kind==="test"?"You've put in the work. One quick warm-up and you're ready.":"Test is "+TEST_LABEL+" · "+left+" day"+(left===1?"":"s")+" to go");
+  let h = '<section class="panel"><div class="row"><div><h1>'+title+'</h1><p class="sub">'+sub+'</p></div>'+
     (st>0?'<span class="badge">'+st+'-day streak</span>':"")+'</div>';
   h += '<div class="cal" style="--cols:'+Math.min(10,N)+'" aria-label="Study calendar">';
   for(let j=0;j<N;j++){
     const d = dateOf(j), k = DAYS[j].kind; let c = k==="test"?"test":(k==="review"||k==="final")?"rev":"";
-    let label = k==="test"?"Test":(k==="review"||k==="final")?"Review":fmt(d,{weekday:"short"});
+    let label = k==="test"?(TBD?"Check":"Test"):(k==="review"||k==="final")?"Review":fmt(d,{weekday:"short"});
     if(j<i || (j===i && S.days[j] && S.days[j].complete)){ if(S.days[j] && S.days[j].complete){ c = "done"; label = "Done"; } else if(j<i){ c += " missed"; label = "Missed"; } }
     if(j===i && !over){ c += " today"; if(label!=="Done") label = "Today"; }
     h += '<div class="'+c+'"><b>'+d.getDate()+'</b>'+label+'</div>';
@@ -294,7 +297,7 @@ function viewHome(){
         (cls==="locked"?'<span class="sub">Finish step '+n+' first</span>':'<button class="btn small '+(cls==="next"?"primary":"")+'" data-act="step" data-id="'+s.id+'">'+(done?"Redo":"Start")+'</button>')+'</li>';
     });
     h += '</ol>';
-    if(rec.complete) h += '<p><strong>Mission complete.</strong> <span class="sub">'+(kind==="test"?"Good luck today. You know this.":"Come back tomorrow for "+esc(DAY_TITLES[i+1])+".")+'</span></p>';
+    if(rec.complete) h += '<p><strong>Mission complete.</strong> <span class="sub">'+(kind==="test"?(TBD?"Nice work. Use Extra practice to keep it fresh until the test.":"Good luck today. You know this."):"Come back tomorrow for "+esc(DAY_TITLES[i+1])+".")+'</span></p>';
     h += '</section>';
   }
   h += '<section class="panel"><h3>Extra practice</h3><p class="sub">Optional. Short rounds that focus on the terms you miss most.</p><div class="btns"><button class="btn" data-act="practice" data-mode="weak">Practice weak spots</button><button class="btn" data-act="practice" data-mode="mixed">Mixed 10 questions</button><button class="btn" data-act="go" data-to="cards">Browse cards</button></div></section>';
