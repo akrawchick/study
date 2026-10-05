@@ -37,6 +37,7 @@ window.GUIDE = {
   student: "Noah",
   subject: "Unit 2",         // short, shown in headlines ("Unit 2 is in the books")
   start: "2026-09-21",       // day 1 (YYYY-MM-DD). The last entry in `days` is the test date.
+  schedule: 2,              // optional; bump when you rebuild the days of a guide already in use (clears old day ticks, keeps term progress)
   days: [                    // one entry per calendar day, first day to test day
     {title:"...", kind:"learn"},    // new flashcards + quiz
     {title:"...", kind:"connect"},  // no new terms: big-picture read + connections quiz

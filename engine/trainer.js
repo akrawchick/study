@@ -35,6 +35,9 @@ function load(){
   return blank();
 }
 let S = load();
+/* Day records are stored by position in the schedule. When a guide's schedule is rebuilt, its content bumps
+   `schedule` and the old day ticks are dropped so they don't land on the wrong days. Term progress is kept. */
+if((S.schedule||1)!==(G.schedule||1)){ S.days = {}; S.schedule = G.schedule||1; save(); }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){ storageOK = false; } }
 function ts(id){ if(!S.terms[id]) S.terms[id] = {box:0,seen:false,right:0,wrong:0}; return S.terms[id]; }
 function dayRec(i){ if(!S.days[i]) S.days[i] = {done:{},scores:{}}; return S.days[i]; }
@@ -468,7 +471,7 @@ const ACT = {
   ordcheck(){ const q = sess.qs[sess.i]; answered(q, q.state.picked.join("|")===q.items.join("|")); render(); },
   next(){ sess.i++; if(sess.i>=sess.qs.length) finishQuiz(); else render(true); },
   retry(){ startQuiz(sess.missed.map(resetQ),"Second try",null); },
-  reset(){ if(view.confirmReset){ S = blank(); save(); view = {name:"home"}; render(true); } else { view.confirmReset = true; render(); } }
+  reset(){ if(view.confirmReset){ S = blank(); S.schedule = G.schedule||1; save(); view = {name:"home"}; render(true); } else { view.confirmReset = true; render(); } }
 };
 document.addEventListener("click",e=>{
   const el = e.target.closest("[data-act]"); if(!el) return;
