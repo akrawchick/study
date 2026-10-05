@@ -48,7 +48,7 @@ const START = parseDate(G.start);
 const TEST = dateOf(N-1);
 function rawIdx(){ const n = new Date(); n.setHours(0,0,0,0); return Math.round((n-START)/864e5); }
 function todayIdx(){ return Math.min(N-1, Math.max(0, rawIdx())); }
-let pastDay = null;                         // a past day the student tapped on the calendar to do now
+let pastDay = null;                         // another day (past or upcoming) the student tapped on the calendar to do now
 function I(){ return pastDay!==null ? pastDay : todayIdx(); }
 function dateOf(j){ const d = new Date(START); d.setDate(d.getDate()+j); return d; }
 function fmt(d,opts){ return d.toLocaleDateString("en-US",opts); }
@@ -60,7 +60,11 @@ function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",
 function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function uniq(a){ return Array.from(new Set(a)); }
 function unlocked(i){ const n = learnNo(i); return TERMS.filter(t=>t.day<=n); }
-function unseen(i){ return unlocked(i).filter(t=>!ts(t.id).seen); }
+function unseen(i){
+  /* Working ahead on an upcoming learn day shows just that day's cards; otherwise anything unlocked and unseen is folded in. */
+  const pool = i>todayIdx() && DAYS[i].kind==="learn" ? TERMS.filter(t=>t.day===learnNo(i)) : unlocked(i);
+  return pool.filter(t=>!ts(t.id).seen);
+}
 function seenTerms(){ return TERMS.filter(t=>ts(t.id).seen); }
 function weight(id){ const s = ts(id); return (4-s.box) + Math.min(3,s.wrong); }
 function weightedOrder(ids){
@@ -291,7 +295,7 @@ function viewHome(){
   const raw = rawIdx(), now = todayIdx(), i = I(), over = raw>N-1 && pastDay===null, kind = kindOf(i);
   const st = streak(), left = N-1-now;
   if(pastDay!==null){
-    let h = '<section class="panel"><div class="row"><div><h1>Day '+(i+1)+': '+esc(DAY_TITLES[i])+'</h1><p class="sub">'+fmt(dateOf(i),{weekday:"long",month:"short",day:"numeric"})+' · catching up on a past day</p></div>'+
+    let h = '<section class="panel"><div class="row"><div><h1>Day '+(i+1)+': '+esc(DAY_TITLES[i])+'</h1><p class="sub">'+fmt(dateOf(i),{weekday:"long",month:"short",day:"numeric"})+' · '+(i<now?"catching up on a past day":"working ahead")+'</p></div>'+
       '<button class="btn small" data-act="today">Back to today</button></div></section>';
     return h + missionPanel(i, kind) + '<p class="btns"><button class="btn primary" data-act="today">Back to today</button></p>';
   }
@@ -301,7 +305,7 @@ function viewHome(){
   let h = '<section class="panel"><div class="row"><div><h1>'+title+'</h1><p class="sub">'+sub+'</p></div>'+
     (st>0?'<span class="badge">'+st+'-day streak</span>':"")+'</div>';
   h += '<div class="cal" style="--cols:'+Math.min(10,N)+'" aria-label="Study calendar">';
-  const canOpen = j => over ? true : j<now;
+  const canOpen = j => over ? true : j!==now;
   for(let j=0;j<N;j++){
     const d = dateOf(j), k = DAYS[j].kind; let c = k==="test"?"test":(k==="review"||k==="final")?"rev":"";
     let label = k==="test"?(TBD?"Check":"Test"):(k==="review"||k==="final")?"Review":fmt(d,{weekday:"short"});
@@ -309,7 +313,7 @@ function viewHome(){
     if(j===i && !over){ c += " today"; if(label!=="Done") label = "Today"; }
     h += canOpen(j) ? '<button type="button" class="'+c+'" data-act="day" data-day="'+j+'" aria-label="Open day '+(j+1)+': '+esc(DAY_TITLES[j])+'"><b>'+d.getDate()+'</b>'+label+'</button>' : '<div class="'+c+'"><b>'+d.getDate()+'</b>'+label+'</div>';
   }
-  h += '</div>'+(over||now>0?'<p class="sub caltip">Tap a past day to do it now.</p>':'')+'</section>';
+  h += '</div>'+(N>1?'<p class="sub caltip">Tap any day to do it now, or to work ahead.</p>':'')+'</section>';
 
   if(!storageOK) h += '<p class="warn">This browser is blocking saved data, so progress won\'t be remembered after you close the tab. Turning off private browsing usually fixes it.</p>';
 
@@ -391,13 +395,13 @@ function viewResults(){
 
 function viewCards(){
   const i = I(), openTo = learnNo(i);
-  let h = '<section class="panel"><h1>All cards</h1><p class="sub">Tap a term to see its meaning and memory hook. New cards open each day.</p></section>';
+  let h = '<section class="panel"><h1>All cards</h1><p class="sub">Tap a term to see its meaning and memory hook. Every day\'s cards are here, including the ones coming up.</p></section>';
   let dayIdx = 0;
   for(let d=1;d<=N_LEARN;d++){
     while(dayIdx<N && DAYS[dayIdx].kind!=="learn") dayIdx++;
-    const list = TERMS.filter(t=>t.day===d), open = d<=openTo, title = DAYS[dayIdx] ? DAYS[dayIdx].title : "Day "+d, when = dateOf(dayIdx);
+    const list = TERMS.filter(t=>t.day===d), open = true, ahead = d>openTo, title = DAYS[dayIdx] ? DAYS[dayIdx].title : "Day "+d, when = dateOf(dayIdx);
     dayIdx++;
-    h += '<section class="panel'+(open?"":" lockedgrp")+'"><div class="row"><h3>'+esc(title)+'</h3><span class="sub">'+(open?list.length+" cards":"Opens "+fmt(when,{weekday:"short",month:"short",day:"numeric"}))+'</span></div>';
+    h += '<section class="panel'+(open?"":" lockedgrp")+'"><div class="row"><h3>'+esc(title)+'</h3><span class="sub">'+list.length+" cards"+(ahead?" · coming up "+fmt(when,{weekday:"short",month:"short",day:"numeric"}):"")+'</span></div>';
     if(open) h += '<div>'+list.map(t=>'<details><summary><span>'+esc(t.term)+' <span class="era '+GIDX[t.group]+'">'+esc(GROUPS[t.group]||"")+'</span></span>'+pips(t.id)+'</summary><p>'+esc(t.def)+'</p><p class="hook">'+esc(t.hook)+'</p>'+(t.ask?'<p class="hook"><strong>You asked:</strong> '+esc(t.ask)+'</p>':"")+'</details>').join("")+'</div>';
     h += '</section>';
   }
