@@ -51,7 +51,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .btns{display:flex;gap:10px;flex-wrap:wrap}
 
 .cal{display:grid;grid-template-columns:repeat(var(--cols,10),minmax(0,1fr));gap:6px}
-.cal div{border:1px solid var(--line);border-radius:10px;text-align:center;padding:7px 0 6px;font-size:12px;color:var(--ink-2);background:var(--surface-2);line-height:1.25}
+.cal>*{font:inherit;width:100%;margin:0;border:1px solid var(--line);border-radius:10px;text-align:center;padding:7px 0 6px;font-size:12px;color:var(--ink-2);background:var(--surface-2);line-height:1.25}
 .cal b{display:block;font-family:var(--display);font-size:17px;color:var(--ink)}
 .cal .done{background:var(--good-soft);border-color:transparent;color:var(--good)}
 .cal .done b{color:var(--good)}
@@ -61,6 +61,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 .cal .test{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
 .cal .test b{color:var(--accent)}
 .cal .today{outline:2.5px solid var(--accent);outline-offset:1px}
+.cal button{cursor:pointer}
+.cal button:hover{border-color:var(--accent)}
+.cal button:focus-visible{outline:2.5px solid var(--accent);outline-offset:1px}
+.caltip{margin:8px 0 0;font-size:13px}
 @media (max-width:520px){.cal{grid-template-columns:repeat(5,minmax(0,1fr))}}
 
 .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}

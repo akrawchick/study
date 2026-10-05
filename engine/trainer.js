@@ -44,7 +44,9 @@ function parseDate(s){ const p = s.split("-").map(Number); return new Date(p[0],
 const START = parseDate(G.start);
 const TEST = dateOf(N-1);
 function rawIdx(){ const n = new Date(); n.setHours(0,0,0,0); return Math.round((n-START)/864e5); }
-function I(){ return Math.min(N-1, Math.max(0, rawIdx())); }
+function todayIdx(){ return Math.min(N-1, Math.max(0, rawIdx())); }
+let pastDay = null;                         // a past day the student tapped on the calendar to do now
+function I(){ return pastDay!==null ? pastDay : todayIdx(); }
 function dateOf(j){ const d = new Date(START); d.setDate(d.getDate()+j); return d; }
 function fmt(d,opts){ return d.toLocaleDateString("en-US",opts); }
 const TEST_LABEL = fmt(TEST,{weekday:"long",month:"short",day:"numeric"});
@@ -176,7 +178,7 @@ function checkComplete(i){
   save();
 }
 function streak(){
-  const i = I(); let j = dayRec(i).complete ? i : i-1, n = 0;
+  const i = todayIdx(); let j = dayRec(i).complete ? i : i-1, n = 0;
   while(j>=0 && S.days[j] && S.days[j].complete){ n++; j--; }
   return n;
 }
@@ -262,44 +264,53 @@ function answered(q,ok,perTerm){
 /* ---------- views ---------- */
 const $app = document.getElementById("app");
 
+function missionPanel(i, kind){
+  let h = '';
+  const rec = dayRec(i), steps = stepsFor(i);
+  const extra = kind==="learn" ? unseen(i).filter(t=>t.day<learnNo(i)).length : 0;
+  let nextFound = false;
+  h += '<section class="panel"><div><p class="sub">'+(pastDay!==null?"Mission":"Today\'s mission")+' · about '+minutesFor(i)+' minutes</p><h2>'+esc(DAY_TITLES[i])+'</h2></div>';
+  if(extra) h += '<p class="sub">Includes '+extra+' card'+(extra===1?"":"s")+' from a day you missed, so you stay on track.</p>';
+  h += '<ol class="steps">';
+  steps.forEach((s,n)=>{
+    const done = !!rec.done[s.id]; let cls = done?"done":(!nextFound?"next":"locked");
+    if(!done && !nextFound) nextFound = true;
+    const sc = rec.scores[s.id];
+    h += '<li class="step '+cls+'"><span class="mark">'+(done?"✓":(n+1))+'</span><div><strong>'+esc(s.name)+'</strong><span class="d">'+(done&&sc?"Score: "+sc[0]+" of "+sc[1]:esc(s.d))+'</span></div>'+
+      (cls==="locked"?'<span class="sub">Finish step '+n+' first</span>':'<button class="btn small '+(cls==="next"?"primary":"")+'" data-act="step" data-id="'+s.id+'">'+(done?"Redo":"Start")+'</button>')+'</li>';
+  });
+  h += '</ol>';
+  if(rec.complete) h += '<p><strong>Mission complete.</strong> <span class="sub">'+(kind==="test"?(TBD?"Nice work. Use Extra practice to keep it fresh until the test.":"Good luck today. You know this."):pastDay!==null?"This day is done.":"Come back tomorrow for "+esc(DAY_TITLES[i+1])+".")+'</span></p>';
+  h += '</section>';
+  return h;
+}
 function viewHome(){
-  const raw = rawIdx(), i = I(), over = raw>N-1, kind = kindOf(i);
-  const st = streak(), left = N-1-i;
+  const raw = rawIdx(), now = todayIdx(), i = I(), over = raw>N-1 && pastDay===null, kind = kindOf(i);
+  const st = streak(), left = N-1-now;
+  if(pastDay!==null){
+    let h = '<section class="panel"><div class="row"><div><h1>Day '+(i+1)+': '+esc(DAY_TITLES[i])+'</h1><p class="sub">'+fmt(dateOf(i),{weekday:"long",month:"short",day:"numeric"})+' · catching up on a past day</p></div>'+
+      '<button class="btn small" data-act="today">Back to today</button></div></section>';
+    return h + missionPanel(i, kind) + '<p class="btns"><button class="btn primary" data-act="today">Back to today</button></p>';
+  }
   const title = over ? (TBD?"You finished the "+G.subject+" plan":G.subject+" is in the books") : kind==="test" ? (TBD?"Checkpoint day, ":"Test day, ")+esc(G.student) : "Hey "+esc(G.student)+", day "+(i+1)+" of "+(N-1);
   const sub = TBD ? (over?"No test date yet. Keep your cards fresh with a practice round now and then.":kind==="test"?"No test date yet. One quick warm-up to see what stuck.":"No test date yet · checkpoint "+TEST_LABEL+" · "+left+" day"+(left===1?"":"s")+" to go")
     : (over?"The test was "+TEST_LABEL+". Practice is still open if you want it.":kind==="test"?"You've put in the work. One quick warm-up and you're ready.":"Test is "+TEST_LABEL+" · "+left+" day"+(left===1?"":"s")+" to go");
   let h = '<section class="panel"><div class="row"><div><h1>'+title+'</h1><p class="sub">'+sub+'</p></div>'+
     (st>0?'<span class="badge">'+st+'-day streak</span>':"")+'</div>';
   h += '<div class="cal" style="--cols:'+Math.min(10,N)+'" aria-label="Study calendar">';
+  const canOpen = j => over ? true : j<now;
   for(let j=0;j<N;j++){
     const d = dateOf(j), k = DAYS[j].kind; let c = k==="test"?"test":(k==="review"||k==="final")?"rev":"";
     let label = k==="test"?(TBD?"Check":"Test"):(k==="review"||k==="final")?"Review":fmt(d,{weekday:"short"});
     if(j<i || (j===i && S.days[j] && S.days[j].complete)){ if(S.days[j] && S.days[j].complete){ c = "done"; label = "Done"; } else if(j<i){ c += " missed"; label = "Missed"; } }
     if(j===i && !over){ c += " today"; if(label!=="Done") label = "Today"; }
-    h += '<div class="'+c+'"><b>'+d.getDate()+'</b>'+label+'</div>';
+    h += canOpen(j) ? '<button type="button" class="'+c+'" data-act="day" data-day="'+j+'" aria-label="Open day '+(j+1)+': '+esc(DAY_TITLES[j])+'"><b>'+d.getDate()+'</b>'+label+'</button>' : '<div class="'+c+'"><b>'+d.getDate()+'</b>'+label+'</div>';
   }
-  h += '</div></section>';
+  h += '</div>'+(over||now>0?'<p class="sub caltip">Tap a past day to do it now.</p>':'')+'</section>';
 
   if(!storageOK) h += '<p class="warn">This browser is blocking saved data, so progress won\'t be remembered after you close the tab. Turning off private browsing usually fixes it.</p>';
 
-  if(!over){
-    const rec = dayRec(i), steps = stepsFor(i);
-    const extra = kind==="learn" ? unseen(i).filter(t=>t.day<learnNo(i)).length : 0;
-    let nextFound = false;
-    h += '<section class="panel"><div><p class="sub">Today\'s mission · about '+minutesFor(i)+' minutes</p><h2>'+esc(DAY_TITLES[i])+'</h2></div>';
-    if(extra) h += '<p class="sub">Includes '+extra+' card'+(extra===1?"":"s")+' from a day you missed, so you stay on track.</p>';
-    h += '<ol class="steps">';
-    steps.forEach((s,n)=>{
-      const done = !!rec.done[s.id]; let cls = done?"done":(!nextFound?"next":"locked");
-      if(!done && !nextFound) nextFound = true;
-      const sc = rec.scores[s.id];
-      h += '<li class="step '+cls+'"><span class="mark">'+(done?"✓":(n+1))+'</span><div><strong>'+esc(s.name)+'</strong><span class="d">'+(done&&sc?"Score: "+sc[0]+" of "+sc[1]:esc(s.d))+'</span></div>'+
-        (cls==="locked"?'<span class="sub">Finish step '+n+' first</span>':'<button class="btn small '+(cls==="next"?"primary":"")+'" data-act="step" data-id="'+s.id+'">'+(done?"Redo":"Start")+'</button>')+'</li>';
-    });
-    h += '</ol>';
-    if(rec.complete) h += '<p><strong>Mission complete.</strong> <span class="sub">'+(kind==="test"?(TBD?"Nice work. Use Extra practice to keep it fresh until the test.":"Good luck today. You know this."):"Come back tomorrow for "+esc(DAY_TITLES[i+1])+".")+'</span></p>';
-    h += '</section>';
-  }
+  if(!over) h += missionPanel(i, kind);
   h += '<section class="panel"><h3>Extra practice</h3><p class="sub">Optional. Short rounds that focus on the terms you miss most.</p><div class="btns"><button class="btn" data-act="practice" data-mode="weak">Practice weak spots</button><button class="btn" data-act="practice" data-mode="mixed">Mixed 10 questions</button><button class="btn" data-act="go" data-to="cards">Browse cards</button></div></section>';
   return h;
 }
@@ -419,6 +430,8 @@ function render(top){
 /* ---------- actions ---------- */
 const ACT = {
   go(el){ sess = null; view = {name:el.dataset.to}; render(true); },
+  day(el){ const j = +el.dataset.day; pastDay = j===todayIdx() && rawIdx()<=N-1 ? null : j; sess = null; view = {name:"home"}; render(true); },
+  today(){ pastDay = null; sess = null; view = {name:"home"}; render(true); },
   quit(){ sess = null; view = {name:"home"}; render(true); },
   step(el){ startStep(el.dataset.id); },
   practice(el){
