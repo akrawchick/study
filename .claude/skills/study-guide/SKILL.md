@@ -5,7 +5,7 @@ description: Build a new study guide for Noah or Julien from photos of their wor
 
 # Build a study guide
 
-You are adding a guide to the family study site (see README.md for the content formats and layout). The result is a folder like `noah/<subject>/<slug>/` containing `index.html` and `content.js`, plus a row in the right subject section of the student's page. Publishing is a git push to `main`.
+You are adding a guide to the family study site (see README.md for the content formats and layout). The result is a folder like `noah/<subject>/<slug>/` containing `index.html` and `content.js`, plus a row in the right subject section of the student's page. Publishing is a git push to `main`, then confirming that GitHub Pages actually deployed it (step 6).
 
 Subjects are folders under the student: `social-studies`, `math`, `ela`, `science`. Add a new subject section to the student's `index.html` if needed.
 
@@ -62,6 +62,24 @@ Then commit and push to `main`:
 ```
 git add -A && git commit -m "Add <Student> <unit> guide" && git push
 ```
+
+## 6. Confirm it's live before saying so
+
+A push is not a publish. GitHub Pages runs a "pages build and deployment" job after each push to `main`; it normally takes under a minute but can sit queued for many minutes when GitHub is slow (it did on Oct 5, 2026). Never tell the user a change is live until GitHub reports that job succeeded for the commit you pushed.
+
+1. Find the run for your commit and wait for it to finish (poll in the background, about every 30 seconds; don't block the conversation):
+   ```
+   gh api "repos/akrawchick/study/actions/runs?per_page=3" | python3 -c "import json,sys; [print(r['id'], r['head_sha'][:7], r['status'], r['conclusion']) for r in json.load(sys.stdin)['workflow_runs']]"
+   ```
+   It is done when the run for your commit's SHA shows `completed success`. Check the jobs (`.../actions/runs/<id>/jobs`) if it's slow: "build" can succeed while "deploy" is still queued, and the site doesn't change until deploy finishes.
+2. If you can, also fetch the live page (`curl -sI https://study.krawchick.com/<path>`) and check it shows the new content. This environment's network policy may block the site; if so, say plainly that you confirmed it through GitHub only.
+3. Only then reply "it's live", and tell the user to refresh.
+
+If it hasn't finished after about 10 minutes, or it failed or was cancelled: say exactly that (which step, how long it has waited), and tell the user they can re-run it at https://github.com/akrawchick/study/actions (open the top "pages build and deployment" run → Re-run all jobs) and check https://www.githubstatus.com. Keep watching and report when it completes.
+
+Don't push to `main` again while a deploy is still pending. Each push starts a new run and cancels the waiting one, which pushes the publish back further. Batch follow-up changes, or commit them to the working branch and merge once the current deploy is done.
+
+## Reply
 
 Reply with the link (`https://study.krawchick.com/<student>/<slug>/`), the schedule table, the corrections you made to the student's notes, and anything you couldn't see clearly in the photos.
 
