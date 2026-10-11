@@ -67,26 +67,41 @@ function parseAnswer(p,raw){
     if(h===0) h = 12;
     return {v: h*60+m};
   }
+  if(t==="ineq"){
+    s = s.replace(/≤/g,"<=").replace(/≥/g,">=").replace(/=</g,"<=").replace(/=>/g,">=");
+    let m = s.match(/^x(<=|>=|<|>)(-?\d+(?:\.\d+)?)$/), op, n;
+    if(m){ op = m[1]; n = parseFloat(m[2]); }
+    else { m = s.match(/^(-?\d+(?:\.\d+)?)(<=|>=|<|>)x$/); if(!m) return {bad:true}; n = parseFloat(m[1]); op = {"<":">",">":"<","<=":">=",">=":"<="}[m[2]]; }
+    return {v: op+"|"+n};
+  }
   s = s.replace(/^[a-z]=/,"");
   const fr = s.match(/^(-?\d+)\/(-?\d+)$/);
   if(fr){ if(+fr[2]===0) return {bad:true}; return {v: fr[1]/fr[2]}; }
   if(!/^-?\d*\.?\d+$/.test(s)) return {bad:true};
   return {v: parseFloat(s)};
 }
+function ineqKey(str){
+  const m = String(str).replace(/\s+/g,"").replace(/≤/g,"<=").replace(/≥/g,">=").replace(/−/g,"-").match(/^x(<=|>=|<|>)(-?\d+(?:\.\d+)?)$/);
+  return m ? m[1]+"|"+parseFloat(m[2]) : String(str);
+}
 function answerValue(p){
   if(typeOf(p)==="time"){ const m = String(p.a).split(":"); return (+m[0])*60 + (+m[1]); }
+  if(typeOf(p)==="ineq") return ineqKey(p.a);
   return p.a;
 }
+function same(a,b){ return typeof a==="string" || typeof b==="string" ? a===b : Math.abs(a-b) < 1e-9; }
 function fmtAns(p,v){
   const t = typeOf(p);
   if(t==="money"){ return (p.unit==="cents" && v<100) ? v+"¢" : "$"+(v/100).toFixed(2); }
   if(t==="time"){ const h = Math.floor(v/60), m = v%60; return h+":"+String(m).padStart(2,"0"); }
+  if(t==="ineq"){ const q = String(v).split("|"); return "x "+({"<":"<",">":">","<=":"≤",">=":"≥"}[q[0]]||q[0])+" "+String(q[1]).replace("-","−"); }
+  if(t==="choice"){ const c = p.choices[v]; return c ? (c.review||c.text.replace(/<[^>]+>/g,"")) : "?"; }
   return (Math.round(v*1000)/1000).toString().replace("-","−");
 }
 function badMsg(p,a){
   if(a.why) return a.why;
   const t = typeOf(p);
-  return t==="money" ? "Type an amount, like 45 or $1.15." : t==="time" ? "Type a time, like 3:30." : "Enter a number, like −4 or 3/2.";
+  return t==="money" ? "Type an amount, like 45 or $1.15." : t==="time" ? "Type a time, like 3:30." : t==="ineq" ? "Type it like x < -3 or x >= 5 (use <= and >= for ≤ and ≥)." : "Enter a number, like −4 or 3/2.";
 }
 
 /* ---------- sessions ---------- */
@@ -109,17 +124,26 @@ function check(raw){
   if(a.empty){ sess.err = "Type your answer first."; render(false,true); return; }
   if(a.bad){ sess.err = badMsg(p,a); render(false,true); return; }
   sess.err = "";
-  const want = answerValue(p), ok = Math.abs(a.v - want) < 1e-9;
+  const want = answerValue(p), ok = same(a.v, want);
   it.given = a.v; it.ok = ok;
   const L = lv(it.li); L.attempts++; S.total++;
   if(ok){ L.correct++; S.correct++; sess.score++; it.cheer = CHEERS[Math.floor(Math.random()*CHEERS.length)]; }
   else {
     sess.missed.push(it); it.oops = OOPS[Math.floor(Math.random()*OOPS.length)];
-    const hint = (p.hints||[]).find(h=>Math.abs(h.v - a.v) < 1e-9);
+    const hint = (p.hints||[]).find(h=>same(typeOf(p)==="ineq"?ineqKey(h.v):h.v, a.v));
     if(hint){ it.hint = hint; S.mistakes[hint.key] = (S.mistakes[hint.key]||0)+1; }
   }
   save(); render();
   if(ok && KID) sparkle();
+}
+function choose(k){
+  const it = sess.items[sess.i], p = it.p; if(it.given!==undefined) return;
+  const c = p.choices[k]; it.given = k; it.ok = !!c.ok;
+  const L = lv(it.li); L.attempts++; S.total++;
+  if(it.ok){ L.correct++; S.correct++; sess.score++; it.cheer = CHEERS[Math.floor(Math.random()*CHEERS.length)]; }
+  else { sess.missed.push(it); it.oops = OOPS[Math.floor(Math.random()*OOPS.length)]; if(c.msg){ it.hint = {msg:c.msg, short:c.short||"", key:c.key||"choice"}; S.mistakes[it.hint.key] = (S.mistakes[it.hint.key]||0)+1; } }
+  save(); render();
+  if(it.ok && KID) sparkle();
 }
 function next(){
   sess.i++;
@@ -199,12 +223,18 @@ function viewRun(){
   h += '<div class="bar"><i style="width:'+Math.round(sess.i/n*100)+'%"></i></div>';
   h += '<section class="panel"><p class="sub">'+esc(p.prompt||P.prompt||"Solve.")+'</p><div class="eq'+(p.wide?" wide":"")+'">'+p.q+'</div>';
   const label = p.label!==undefined ? p.label : (P.label||"Answer"), suffix = p.suffix||"";
-  if(it.given===undefined){
+  if(p.choices){
+    h += '<div class="opts'+(p.grid?" grid":"")+'">'+p.choices.map((c,k)=>{
+      let cls = ""; if(it.given!==undefined){ cls = " locked"+(c.ok?" good":(it.given===k?" bad":"")); }
+      return '<button class="opt'+cls+'" data-act="choose" data-k="'+k+'"><span class="k">'+String.fromCharCode(65+k)+'</span><span>'+c.text+'</span></button>';
+    }).join("")+'</div>';
+  }
+  if(it.given===undefined && !p.choices){
     h += '<form class="ansrow" data-act="check">'+(label?'<label class="sub lab" for="ans">'+esc(label)+'</label>':"")+'<input id="ans" class="ans" autocomplete="off" inputmode="'+(typeOf(p)==="number"&&KID?"decimal":"text")+'" placeholder="'+esc(p.placeholder||P.placeholder||"?")+'" aria-describedby="err">'+(suffix?'<span class="lab">'+esc(suffix)+'</span>':"")+'<button class="btn primary" type="submit">Check</button></form>';
     h += '<p id="err" class="err">'+esc(sess.err)+'</p>';
   } else {
     h += '<div class="fb '+(it.ok?"good":"bad")+'"><b class="'+(it.ok?"good":"bad")+'">'+(it.ok?(KID?it.cheer:"Correct."):(KID?it.oops:"Not quite."))+'</b> '+
-      (it.ok?"":"You put "+fmtAns(p,it.given)+". The answer is "+fmtAns(p,answerValue(p))+".")+
+      (it.ok?"":(p.choices?"":"You put "+fmtAns(p,it.given)+". ")+"The answer is "+(p.choices?fmtAns(Object.assign({},p,{type:"choice"}),p.choices.findIndex(c=>c.ok)):fmtAns(p,answerValue(p)))+".")+
       (it.hint?'<p class="hintmsg">'+it.hint.msg+'</p>':"")+'</div>';
     h += '<div class="sol"><p class="sub">'+(KID?"How it works":"Worked solution")+'</p><ol>'+p.steps.map(s=>'<li>'+s+'</li>').join("")+'</ol>'+(p.check?'<p class="chk">'+p.check+'</p>':"")+'</div>';
     h += '<div class="btns"><button class="btn primary" id="nextq" data-act="next">'+(sess.i+1<n?"Next":"See results")+'</button></div>';
@@ -221,7 +251,7 @@ function viewResults(){
   else if(passed) h += '<p>'+(lv(sess.level).passed&&!sess.newSticker?"Passed again. Keep it sharp.":"Level passed.")+'</p>';
   else h += '<p>You need '+PASS+' of '+n+' to pass this level. '+(KID?"Look at the ones you missed, then try again. You've got this.":"Look over the misses, then try another set.")+'</p>';
   if(sess.missed.length){
-    h += '<h3>Worth another look</h3><ol class="miss">'+sess.missed.map(it=>'<li><span class="eqsmall">'+(it.p.review||it.p.q)+'</span><br><span>Answer: '+fmtAns(it.p,answerValue(it.p))+' · you put '+fmtAns(it.p,it.given)+(it.hint?' · '+it.hint.short:'')+'</span></li>').join("")+'</ol>';
+    h += '<h3>Worth another look</h3><ol class="miss">'+sess.missed.map(it=>'<li><span class="eqsmall">'+(it.p.review||it.p.q)+'</span><br><span>Answer: '+(it.p.choices?fmtAns(Object.assign({},it.p,{type:"choice"}),it.p.choices.findIndex(c=>c.ok)):fmtAns(it.p,answerValue(it.p)))+' · you put '+(it.p.choices?fmtAns(Object.assign({},it.p,{type:"choice"}),it.given):fmtAns(it.p,it.given))+(it.hint?' · '+it.hint.short:'')+'</span></li>').join("")+'</ol>';
   }
   h += '<div class="btns"><button class="btn primary" data-act="start" data-l="'+(sess.unlockedNext?sess.level+1:sess.level)+'">'+(sess.unlockedNext?"Start level "+(sess.level+2):(KID?"Play again":"Another set"))+'</button><button class="btn" data-act="go" data-to="home">Back</button></div></section>';
   return h;
@@ -258,6 +288,7 @@ const ACT = {
   start(el){ startSet(+el.dataset.l); },
   mixed(){ const open = []; LV.forEach((l,i)=>{ if(unlocked(i)) open.push(i); }); startSet(open[open.length-1], open); },
   next(){ next(); },
+  choose(el){ choose(+el.dataset.k); },
   reset(){ if(view.confirmReset){ S = blank(); save(); view = {name:"home"}; render(true); } else { view.confirmReset = true; render(); } }
 };
 document.addEventListener("click",e=>{

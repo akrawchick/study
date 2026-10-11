@@ -253,3 +253,11 @@ ol.miss span{color:var(--ink-2)}
 .cointable div{background:var(--surface-2);border-radius:14px;padding:10px}
 .cointable svg{width:56px;height:56px}
 .cointable b{display:block;font-family:var(--display);font-size:20px}
+
+/* inequalities */
+.nline{width:100%;max-width:360px;height:auto;display:block;color:var(--ink)}
+.opts.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.opts.grid .opt{grid-template-columns:28px minmax(0,1fr);align-items:center}
+.kw{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.kw div{background:var(--surface-2);border-radius:12px;padding:10px 14px;font-size:16px}
+.kw b{font-family:var(--display);font-size:22px;color:var(--accent);margin-right:8px}

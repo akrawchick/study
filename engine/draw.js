@@ -26,5 +26,18 @@ window.DRAW = (function(){
     const max = Math.max.apply(null, items.map(i=>i.n));
     return '<div class="minibars">'+items.map(i=>'<div><b>'+i.n+'</b><i style="height:'+Math.round(i.n/max*90)+'px;background:'+(i.color||"var(--accent)")+'"></i><span>'+i.label+'</span></div>').join("")+'</div>';
   }
-  return {coin, coins, clock, bars, COIN};
+  function numberLine(op,n,opts){
+    opts = opts||{}; const lo = n-5, hi = n+5, W = 320, pad = 18, step = (W-2*pad)/10;
+    const X = v => pad + (v-lo)*step;
+    const right = op===">"||op===">=", closed = op==="<="||op===">=";
+    let s = '<svg class="nline" viewBox="0 0 '+W+' 56" role="img" aria-label="number line"><line x1="4" y1="24" x2="'+(W-4)+'" y2="24" stroke="currentColor" stroke-width="2"/>';
+    s += '<polygon points="4,24 12,19 12,29" fill="currentColor"/><polygon points="'+(W-4)+',24 '+(W-12)+',19 '+(W-12)+',29" fill="currentColor"/>';
+    for(let v=lo; v<=hi; v++){ s += '<line x1="'+X(v)+'" y1="18" x2="'+X(v)+'" y2="30" stroke="currentColor" stroke-width="1.5"/><text x="'+X(v)+'" y="48" text-anchor="middle" font-size="12" fill="currentColor">'+String(v).replace("-","−")+'</text>'; }
+    const col = opts.color||"#2742B8";
+    s += '<line x1="'+X(n)+'" y1="24" x2="'+(right?W-10:10)+'" y2="24" stroke="'+col+'" stroke-width="6" stroke-linecap="round"/>';
+    s += '<polygon points="'+(right?(W-4)+',24 '+(W-14)+',17 '+(W-14)+',31':'4,24 14,17 14,31')+'" fill="'+col+'"/>';
+    s += '<circle cx="'+X(n)+'" cy="24" r="7" fill="'+(closed?col:"#FFFFFF")+'" stroke="'+col+'" stroke-width="3"/>';
+    return s+'</svg>';
+  }
+  return {coin, coins, clock, bars, numberLine, COIN};
 })();

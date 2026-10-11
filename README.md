@@ -95,7 +95,9 @@ window.PRACTICE = {
 
 Levels unlock in order (pass the previous one). Progress, streaks and mistake tallies are per device.
 
-Kid mode (`kid: true`, used for Julien): bigger text and buttons, cheers instead of "Correct.", star ratings, confetti on a passed level, and an emoji `sticker` per level collected on a sticker shelf. Answer types: `type: "money"` (`a` in cents; `unit: "cents"` expects 56, `unit: "dollars"` expects 0.56, no unit accepts either) and `type: "time"` (`a` as "h:mm"). A problem can set `prompt`, `label`, `suffix`, `placeholder`, `wide` (long story text) and `review` (plain-text version for the results list when `q` is a drawing). Load `engine/draw.js` before the content file to draw coins, clocks and mini bar charts.
+Kid mode (`kid: true`, used for Julien): bigger text and buttons, cheers instead of "Correct.", star ratings, confetti on a passed level, and an emoji `sticker` per level collected on a sticker shelf. Answer types: `type: "money"` (`a` in cents; `unit: "cents"` expects 56, `unit: "dollars"` expects 0.56, no unit accepts either) and `type: "time"` (`a` as "h:mm"). A problem can set `prompt`, `label`, `suffix`, `placeholder`, `wide` (long story text) and `review` (plain-text version for the results list when `q` is a drawing). Load `engine/draw.js` before the content file to draw coins, clocks, mini bar charts and number lines (`DRAW.numberLine(op, n)`).
+
+More answer types: `type: "ineq"` (`a` as `"x<-3"`, `"x>=5"`; the student may type it either way round) and multiple choice via `choices: [{text, ok, review?, key?, short?, msg?}]` (4 options, exactly one `ok`; wrong options carry their own explanation in `msg`; `grid: true` lays them out two-up for drawings). Example: `noah/math/two-step-inequalities/`.
 
 ## Schedule rules of thumb (test prep)
 
