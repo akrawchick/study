@@ -29,6 +29,17 @@ To add a guide: copy the closest existing one to a new folder, rewrite `content.
 
 Publishing is `git push` to `main`. GitHub Pages rebuilds in about a minute.
 
+## Canvas (WCPSS)
+
+`tools/canvas.py` reads Noah's Canvas through Alex's parent **observer** account, read-only. It is the source for test dates, what's due, teacher announcements, and lesson pages when building a guide. `tools/canvas.py --help` lists commands; `tools/canvas.py brief` is the Sunday-night summary.
+
+Secrets never live in this repo (the site is public):
+- The access token is in the macOS Keychain under `canvas-observer-token`. WCPSS caps tokens at 90 days; `canvas.py check` warns two weeks before expiry. To rotate: Canvas → Account → Settings → New Access Token, then `security add-generic-password -a "$USER" -s canvas-observer-token -U -w`, and update `token_expires` in the config.
+- Config (base URL, student ids, expiry) is `~/.config/krawchick-study/canvas.json`.
+- Downloads go to `canvas-cache/`, which is gitignored.
+
+Canvas is not the gradebook of record at WCPSS; official grades are in Infinite Campus (Campus Parent). Canvas scores are only what a teacher happens to enter there.
+
 ## Content format (`content.js`)
 
 ```js

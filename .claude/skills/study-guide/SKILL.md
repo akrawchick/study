@@ -15,7 +15,13 @@ Subjects are folders under the student: `social-studies`, `math`, `ela`, `scienc
 
 ## 1. Gather
 
-From the conversation and attachments, pin down: student (Noah or Julien), subject and unit name, **test date**, and the materials. If the test date is missing, ask; everything else can be inferred or defaulted. Ask about the test format (multiple choice, matching, short answer) only if the user hasn't said; if unknown, proceed with mixed formats.
+From the conversation and attachments, pin down: student (Noah or Julien), subject and unit name, **test date**, and the materials. If the test date is missing, check Canvas before asking (below); everything else can be inferred or defaulted.
+
+**Canvas is a source too.** `tools/canvas.py` reads Noah's Canvas through the parent observer account (read-only; token in the Keychain, config outside the repo). Use it whenever the user mentions a test without attaching everything, or asks what a unit covers:
+- `tools/canvas.py upcoming --days 21` and `tools/canvas.py announcements --days 14`: find the test date and anything the teacher said about format or scope. Teachers often post the week's agenda as an announcement.
+- `tools/canvas.py modules social` then `tools/canvas.py pages social --days 21 --full`: the social studies teacher posts one page per lesson with learning targets, vocabulary, and links to Google Slides and Docs. Read every page in the unit's module. Read each linked Google Doc or Slides deck with `tools/canvas.py gdoc URL` (the slides export includes the teacher's speaker notes, which say what was emphasized in class; the one-pagers and vocabulary sheets are the best definition sources). Fall back to the Google Drive connector if a doc isn't shared by link.
+- `tools/canvas.py files social` and `download` for posted PDFs or images.
+Course keys: `math`, `social`, `ela`, `science`. Student photos of notes still win on wording (the test draws from what the teacher said in class); Canvas fills gaps and confirms dates. Say in the reply which came from Canvas. Ask about the test format (multiple choice, matching, short answer) only if the user hasn't said; if unknown, proceed with mixed formats.
 
 Read every attached image fully. The student's own definitions are the source of truth for wording, since that's what the test draws from. Transcribe them faithfully, then fix:
 - Factual errors (e.g. "Martin Luther King" for Martin Luther). Fix on the card, and turn the confusion into a quiz question.
