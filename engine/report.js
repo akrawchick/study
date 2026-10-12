@@ -43,7 +43,7 @@ function render(data){
   const weekSec = perDay.reduce((a,x)=>a+x.sec,0), daysActive = perDay.filter(x=>x.sec>0||x.n>0).length;
   const weekActs = inWeek.filter(r=>r.kind!=="open"), wScore = weekActs.reduce((a,r)=>a+(r.score||0),0), wTotal = weekActs.reduce((a,r)=>a+(r.total||0),0);
   h += '<section class="panel"><h1>'+NAME+'\'s study report</h1><p class="sub">This week, '+fmtDay(mon)+' to '+fmtDay(days[6])+'</p>';
-  h += '<div class="stats"><div class="stat"><b>'+mins(weekSec)+' min</b><span>Study time this week</span></div><div class="stat"><b>'+daysActive+' of '+(dow+1)+'</b><span>Days studied so far</span></div><div class="stat"><b>'+weekActs.length+'</b><span>Sets and quizzes</span></div><div class="stat"><b>'+(wTotal?pct(wScore,wTotal)+'%':'–')+'</b><span>Accuracy this week</span></div></div>';
+  h += '<div class="stats"><div class="stat"><b>'+mins(weekSec)+' min</b><span>Study time this week</span></div><div class="stat"><b>'+daysActive+' of '+(dow+1)+'</b><span>Days studied so far</span></div><div class="stat"><b>'+weekActs.length+'</b><span>Sets and quizzes</span></div><div class="stat"><b>'+(wTotal?pct(wScore,wTotal)+'%':'–')+'</b><span>Accuracy this week'+(wTotal?' · '+wScore+' right, '+(wTotal-wScore)+' wrong':'')+'</span></div></div>';
   h += '<div class="cal" style="--cols:7">'+perDay.map(x=>{ const isToday = x.d.getTime()===today.getTime(), future = x.d>today; return '<div class="'+(x.sec>0||x.n>0?"done":"")+(isToday?" today":"")+'"><b>'+x.d.getDate()+'</b>'+(future?fmtDay(x.d).slice(0,3):(x.sec>0||x.n>0?mins(x.sec)+" min":"—"))+'</div>'; }).join("")+'</div></section>';
 
   /* when */
@@ -63,7 +63,7 @@ function render(data){
     const top = Object.keys(g.mk).sort((a,b)=>g.mk[b]-g.mk[a]).slice(0,3);
     return '<div style="border-top:1px solid var(--line);padding:12px 0"><div class="row"><strong>'+esc(g.title)+'</strong><span class="sub">last '+fmtDay(g.last)+' · '+mins(g.sec)+' min total</span></div>'+
       (g.t?'<div class="erarow" style="margin-top:6px"><span>Accuracy</span><div class="bar"><i style="width:'+g.acc+'%;background:'+(g.acc>=80?"var(--good)":g.acc>=65?"var(--gold)":"var(--bad)")+'"></i></div><em>'+g.acc+'%</em></div>':"")+
-      '<p class="sub" style="margin-top:6px">'+g.rows.filter(r=>r.total).length+' set'+(g.rows.filter(r=>r.total).length===1?"":"s")+(g.recent.length?' · recent: '+g.recent.map(r=>r.score+"/"+r.total).join(", "):"")+'</p>'+
+      '<p class="sub" style="margin-top:6px">'+g.rows.filter(r=>r.total).length+' set'+(g.rows.filter(r=>r.total).length===1?"":"s")+(g.t?' · <strong style="color:var(--good)">'+g.s+' right</strong>, <strong style="color:var(--bad)">'+(g.t-g.s)+' wrong</strong>':"")+(g.recent.length?' · recent: '+g.recent.map(r=>r.score+"/"+r.total).join(", "):"")+'</p>'+
       (top.length?'<div class="chips" style="margin-top:8px">'+top.map(m=>'<span class="chip">'+esc(m)+' × '+g.mk[m]+'</span>').join("")+'</div>':"")+'</div>';
   }).join("")+'</section>';
 
