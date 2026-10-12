@@ -14,7 +14,7 @@ const startOfDay = d => { const x = new Date(d); x.setHours(0,0,0,0); return x; 
 
 async function load(){
   if(cfg.endpoint && key){
-    try{ const r = await fetch(cfg.endpoint+"?k="+encodeURIComponent(key)+"&student="+encodeURIComponent(student)); const t = await r.text(); if(t.trim()==="no") return {rows:[],src:"badkey"}; return {rows:JSON.parse(t).rows||[], src:"sheet"}; }
+    try{ const r = await fetch(cfg.endpoint+"?k="+encodeURIComponent(key)+"&student="+encodeURIComponent(NAME)); const t = await r.text(); if(t.trim()==="no") return {rows:[],src:"badkey"}; return {rows:JSON.parse(t).rows||[], src:"sheet"}; }
     catch(e){ return {rows:[],src:"error",err:String(e)}; }
   }
   let log = []; try{ log = JSON.parse(localStorage.getItem("study-log")||"[]"); }catch(e){}

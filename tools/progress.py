@@ -33,7 +33,7 @@ def brief(c):
     today = datetime.now().astimezone().replace(hour=0, minute=0, second=0, microsecond=0)
     mon = today - timedelta(days=today.weekday())
     for key, name in c.get("students", {"noah": "Noah"}).items():
-        rs = [r for r in rows(c, key) if r["ts"] >= mon]
+        rs = [r for r in rows(c, name) if r["ts"] >= mon]   # the sheet filter is case-sensitive; pages log the display name
         acts = [r for r in rs if r.get("kind") != "open"]
         days = sorted({r["ts"].date() for r in rs})
         sec = sum(r["seconds"] for r in rs)
