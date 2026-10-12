@@ -106,7 +106,9 @@ function badMsg(p,a){
 
 /* ---------- sessions ---------- */
 let view = {name:"home"}, sess = null;
+function beacon(rec){ if(!window.BEACON) return; BEACON.send(Object.assign({student:P.student, guide:P.id, title:P.title}, rec)); }
 function startSet(levelIdx, mixed){
+  if(window.BEACON) BEACON.begin();
   const items = [];
   for(let k=0;k<SET;k++){
     const li = mixed ? mixed[Math.floor(Math.random()*mixed.length)] : levelIdx;
@@ -151,6 +153,8 @@ function next(){
 }
 function finish(){
   const passed = sess.score >= PASS;
+  const tally = {}; sess.items.forEach(it=>{ if(it.hint){ const n = (P.mistakeNames||{})[it.hint.key]||it.hint.key; tally[n] = (tally[n]||0)+1; } });
+  beacon({kind:"set", label:sess.title, level:sess.mixed?"mixed":sess.level+1, score:sess.score, total:sess.items.length, mistakes:Object.keys(tally).map(k=>k+(tally[k]>1?" ×"+tally[k]:"")).join(", ")});
   if(!sess.mixed){
     const L = lv(sess.level); L.sets++; L.best = Math.max(L.best, sess.score);
     if(passed && !L.passed){
@@ -305,5 +309,6 @@ document.addEventListener("keydown",e=>{
 document.addEventListener("input",e=>{ if(e.target.id==="ans" && sess && sess.err){ sess.err=""; const el = document.getElementById("err"); if(el) el.textContent=""; } });
 
 document.title = P.student+"'s "+P.title;
+beacon({kind:"open"});
 render();
 })();

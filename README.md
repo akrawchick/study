@@ -116,6 +116,14 @@ More answer types: `type: "ineq"` (`a` as `"x<-3"`, `"x>=5"`; the student may ty
 - Fewer days to the test? Drop the connect day first, then merge learn days. Keep at least one review day.
 - The app handles skipped days: unseen cards are folded into the next mission.
 
+## Progress reporting
+
+Every guide page loads `engine/config.js` and `engine/beacon.js`. When a set, quiz or flashcard round finishes, the beacon records who, which guide, which level/day, score, mistake types, when, and active seconds (gaps over 2 minutes don't count). Records are kept in the browser (`study-log`) and, when `STUDY_CONFIG.endpoint` is set, POSTed to a Google Apps Script web app that appends them to the family "Study log" sheet (`tools/apps-script.gs`).
+
+- Report page: `/noah/report/?k=KEY` reads the sheet (key is checked by the script, never stored in the repo). Without a key it shows device-only data.
+- Sunday brief: `tools/progress.py brief` prints the week's summary per student; config in `~/.config/krawchick-study/progress.json`.
+- New student: copy `noah/report/` and change `REPORT_STUDENT` / `REPORT_NAME`.
+
 ## Future: the LLM layer
 
 Plan is a small Cloudflare Worker that holds the Anthropic API key with a spending cap, so guides can offer "explain this differently" and generate fresh questions. The content format above is what that layer would produce.

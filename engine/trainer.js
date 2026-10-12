@@ -237,21 +237,26 @@ function startStep(id){
   } else if(id==="test"){ startQuiz(bigTest(), kind==="final"?"Final practice test":"Practice test","test"); }
   else if(id==="drill"){ startQuiz(makeQuestions(drillPool(),10,1),"Weak spots","drill"); }
 }
+function beacon(rec){ if(!window.BEACON) return; BEACON.send(Object.assign({student:G.student, guide:G.id, title:G.subject}, rec)); }
 function startCards(list,stepId,title){
+  if(window.BEACON) BEACON.begin();
   sess = {kind:"cards",stepId:stepId,title:title,queue:list.slice(),i:0,shown:false,again:{},total:list.length};
   view = {name:"learn"}; render(true);
 }
 function startQuiz(qs,title,stepId){
+  if(window.BEACON) BEACON.begin();
   if(!qs.length){ view = {name:"home"}; render(true); return; }
   sess = {kind:"quiz",stepId:stepId,title:title,qs:qs,i:0,score:0,missed:[],missedTerms:[]};
   view = {name:"quiz"}; render(true);
 }
 function finishCards(){
+  beacon({kind:"cards", label:sess.title, level:I()+1, score:sess.total-Object.keys(sess.again).length, total:sess.total});
   if(sess.stepId){ dayRec(I()).done[sess.stepId] = true; checkComplete(I()); }
   sess = null; view = {name:"home"}; render(true);
 }
 function finishQuiz(){
   const i = I();
+  beacon({kind:"quiz", label:sess.title, level:i+1, score:sess.score, total:sess.qs.length, mistakes:uniq(sess.missedTerms).map(id=>T[id]?T[id].term:id).join(", ")});
   if(sess.stepId){
     const rec = dayRec(i);
     rec.done[sess.stepId] = true; rec.scores[sess.stepId] = [sess.score,sess.qs.length];
@@ -493,5 +498,6 @@ document.addEventListener("keydown",e=>{
 });
 
 document.title = G.student+"'s "+G.subject;
+beacon({kind:"open"});
 render();
 })();
