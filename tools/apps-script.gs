@@ -55,3 +55,10 @@ function maybeAlert(d){
     "<p><a href=\""+ALERT.report+"\">Open the full report</a></p>";
   MailApp.sendEmail({to: ALERT.to, subject: subject, htmlBody: html});
 }
+
+/* Run this once from the editor (Run ▸ testAlert) to grant the mail permission and send yourself a sample alert. */
+function testAlert(){
+  PropertiesService.getScriptProperties().deleteProperty("alert:Test:test");
+  maybeAlert({ts:new Date().toISOString(), student:"Test", guide:"test", title:"Alert check", kind:"set", label:"Test run", level:7, score:3, total:10, seconds:90, mistakes:"Symbol pointing the wrong way ×3, Sign slips ×2", device:"Mac"});
+  Logger.log("Alert email sent to "+ALERT.to);
+}
