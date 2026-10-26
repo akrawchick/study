@@ -4,6 +4,7 @@
    GET ?k=KEY[&student=noah]: returns the rows as JSON for the report page and the Sunday brief. */
 const KEY = "PASTE-KEY-HERE";
 const COLS = ["ts","student","guide","title","kind","label","level","score","total","seconds","mistakes","device"];
+const MAIL = { allowedTo: ["alex@krawchick.com","florina@krawchick.com"] };   // the only addresses the "email" action may send to
 const ALERT = {
   to: "alex@krawchick.com",
   minQuestions: 8,      // ignore tiny warm-ups
@@ -16,6 +17,7 @@ const ALERT = {
 function doPost(e){
   try{
     const d = JSON.parse(e.postData.contents);
+    if(d.action === "email") return sendMail(d);
     sheet().appendRow(COLS.map(c => c==="ts" ? (d.ts || new Date().toISOString()) : (d[c] === undefined || d[c] === null ? "" : d[c])));
     try{ maybeAlert(d); }catch(err){ /* never let an alert problem block logging */ }
     return ContentService.createTextOutput("ok");
@@ -28,6 +30,15 @@ function doGet(e){
   const rows = v.filter(r => !p.student || String(r[1]) === p.student)
     .map(r => { const o = {}; head.forEach((h,i)=>{ o[h] = r[i] instanceof Date ? r[i].toISOString() : r[i]; }); return o; });
   return ContentService.createTextOutput(JSON.stringify({rows})).setMimeType(ContentService.MimeType.JSON);
+}
+/* Sends an email as the script owner (alex@krawchick.com). Needs the report key; recipients limited to MAIL.allowedTo. */
+function sendMail(d){
+  if((d.k||"") !== KEY) return ContentService.createTextOutput("no");
+  const to = String(d.to||"").split(",").map(s=>s.trim()).filter(Boolean);
+  if(!to.length || to.some(a => MAIL.allowedTo.indexOf(a) < 0)) return ContentService.createTextOutput("bad: recipient not allowed");
+  if(!d.subject || !d.html) return ContentService.createTextOutput("bad: subject and html required");
+  MailApp.sendEmail({to: to.join(","), subject: String(d.subject), htmlBody: String(d.html), name: "Krawchick Study"});
+  return ContentService.createTextOutput("sent");
 }
 function sheet(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();

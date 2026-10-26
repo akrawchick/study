@@ -3,6 +3,8 @@
 
   progress.py brief            this week's study time, days, sets and accuracy per student
   progress.py rows [student]   dump the raw rows
+  progress.py send --to a@x,b@y --subject "..." --html-file brief.html
+                               email the HTML file as alex@krawchick.com via the Apps Script (prints "sent")
 
 Config: ~/.config/krawchick-study/progress.json  {"endpoint": "<apps script /exec url>", "key": "<report key>", "students": {"noah": "Noah", "julien": "Julien"}}
 """
@@ -57,9 +59,26 @@ def brief(c):
         last = rs[-1]["ts"]
         print(f"  Last activity {last:%a %b %-d, %-I:%M %p}")
 
+def send(c, args):
+    import argparse
+    ap = argparse.ArgumentParser(prog="progress.py send")
+    ap.add_argument("--to", required=True); ap.add_argument("--subject", required=True); ap.add_argument("--html-file", required=True)
+    a = ap.parse_args(args)
+    html = open(a.html_file, encoding="utf-8").read()
+    body = json.dumps({"action": "email", "k": c["key"], "to": a.to, "subject": a.subject, "html": html}).encode()
+    req = urllib.request.Request(c["endpoint"], data=body, headers={"Content-Type": "text/plain"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r: out = r.read().decode(errors="replace")
+    except urllib.error.HTTPError as e:
+        out = e.read().decode(errors="replace")
+    ok = out.strip().startswith("sent")
+    print("sent" if ok else "FAILED: " + out.strip()[:200])
+    sys.exit(0 if ok else 1)
+
 def main():
     c = cfg(); cmd = sys.argv[1] if len(sys.argv) > 1 else "brief"
     if cmd == "brief": brief(c)
+    elif cmd == "send": send(c, sys.argv[2:])
     elif cmd == "rows":
         for r in rows(c, sys.argv[2] if len(sys.argv) > 2 else None): print(r["ts"].strftime("%Y-%m-%d %H:%M"), r.get("student"), r.get("title"), r.get("kind"), r.get("label"), r.get("score"), r.get("total"), int(r["seconds"]))
     else: sys.exit(__doc__)
