@@ -261,3 +261,7 @@ ol.miss span{color:var(--ink-2)}
 .kw{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
 .kw div{background:var(--surface-2);border-radius:12px;padding:10px 14px;font-size:16px}
 .kw b{font-family:var(--display);font-size:22px;color:var(--accent);margin-right:8px}
+
+.fig{width:100%;max-width:340px;height:auto;display:block;margin:0 auto;color:var(--ink)}
+.eq .fig+.story, .eq .story{margin-top:10px}
+.eq .sub{font-family:var(--body);font-weight:400;font-size:14px}

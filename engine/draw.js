@@ -39,5 +39,39 @@ window.DRAW = (function(){
     s += '<circle cx="'+X(n)+'" cy="24" r="7" fill="'+(closed?col:"#FFFFFF")+'" stroke="'+col+'" stroke-width="3"/>';
     return s+'</svg>';
   }
-  return {coin, coins, clock, bars, numberLine, COIN};
+  /* geometry figures for the angles unit: all use currentColor so they work in both themes */
+  const P = (cx,cy,deg,r)=>[cx+r*Math.cos(-deg*Math.PI/180), cy+r*Math.sin(-deg*Math.PI/180)];
+  const txt = (x,y,t,size)=>'<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" text-anchor="middle" dominant-baseline="middle" font-family="system-ui,sans-serif" font-size="'+(size||15)+'" font-weight="700" fill="currentColor">'+t+'</text>';
+  const ray = (cx,cy,deg,r)=>{ const [x,y]=P(cx,cy,deg,r); return '<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>'; };
+  const arc = (cx,cy,a0,a1,r)=>{ const [x0,y0]=P(cx,cy,a0,r),[x1,y1]=P(cx,cy,a1,r); return '<path d="M'+x0.toFixed(1)+' '+y0.toFixed(1)+' A'+r+' '+r+' 0 '+((a1-a0)>180?1:0)+' 0 '+x1.toFixed(1)+' '+y1.toFixed(1)+'" fill="none" stroke="#2742B8" stroke-width="2.5"/>'; };
+  /* rays at the given directions (degrees, counter-clockwise from east); labels[i] sits between rays i and i+1 */
+  function fan(dirs, labels, opts){
+    opts = opts||{}; const W = opts.w||320, H = opts.h||200, cx = opts.cx||160, cy = opts.cy||150, R = opts.r||120;
+    let s = '<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="angle diagram">';
+    dirs.forEach(d=>{ s += ray(cx,cy,d,R); });
+    labels.forEach((lab,i)=>{ if(!lab) return; const a0 = dirs[i], a1 = dirs[i+1]!==undefined?dirs[i+1]:dirs[0]+360; const mid = (a0+a1)/2; const [x,y] = P(cx,cy,mid, 52); s += arc(cx,cy,a0,a1,30+8*i) + txt(x,y,lab); });
+    s += '<circle cx="'+cx+'" cy="'+cy+'" r="4" fill="currentColor"/></svg>';
+    return s;
+  }
+  const angle = (a,label)=>fan([0,a],[label!==undefined?label:a+"°"],{h:a>100?210:170,cy:a>100?170:140});
+  const onLine = (angles,labels)=>{ const dirs=[0]; let acc=0; angles.slice(0,-1).forEach(x=>{ acc+=x; dirs.push(acc); }); dirs.push(180); return fan(dirs,labels,{h:180,cy:150,cx:160,r:140}); };
+  const cross = (a,labels)=>fan([0,a,180,180+a],labels,{h:260,cy:130,cx:160,r:120});
+  function tri(labels, opts){
+    const pts = (opts&&opts.pts)||[[40,180],[280,180],[120,40]];
+    let s = '<svg class="fig" viewBox="0 0 320 210" role="img" aria-label="triangle"><polygon points="'+pts.map(p=>p.join(",")).join(" ")+'" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>';
+    const off = [[28,-14],[-28,-14],[2,30]];
+    labels.forEach((l,i)=>{ if(l) s += txt(pts[i][0]+off[i][0], pts[i][1]+off[i][1], l, 14); });
+    if(opts&&opts.sides) opts.sides.forEach((l,i)=>{ if(!l) return; const a=pts[i], b=pts[(i+1)%3]; const mx=(a[0]+b[0])/2, my=(a[1]+b[1])/2; const nx=-(b[1]-a[1]), ny=(b[0]-a[0]); const n=Math.hypot(nx,ny); s += txt(mx+nx/n*16, my+ny/n*16, l, 13); });
+    return s+'</svg>';
+  }
+  function box(l,w,h,labels){
+    const d = 36; const x0=60,y0=70,W=150,Hh=90;
+    let s = '<svg class="fig" viewBox="0 0 320 210" role="img" aria-label="rectangular prism">';
+    const f = (x,y)=>'<rect x="'+x+'" y="'+y+'" width="'+W+'" height="'+Hh+'" fill="none" stroke="currentColor" stroke-width="2.5"/>';
+    s += f(x0+d,y0-d) + f(x0,y0);
+    [[x0,y0],[x0+W,y0],[x0,y0+Hh],[x0+W,y0+Hh]].forEach(p=>{ s += '<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+(p[0]+d)+'" y2="'+(p[1]-d)+'" stroke="currentColor" stroke-width="2.5"/>'; });
+    s += txt(x0+W/2, y0+Hh+22, labels[0]) + txt(x0+W+d+14, y0+Hh-10, labels[1], 13) + txt(x0-26, y0+Hh/2, labels[2]);
+    return s+'</svg>';
+  }
+  return {coin, coins, clock, bars, numberLine, fan, angle, onLine, cross, tri, box, COIN};
 })();
