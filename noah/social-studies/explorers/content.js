@@ -1,18 +1,21 @@
 /* Noah · Unit 3 Lesson 3: Explorers of Spain and Portugal · built from Mr. Montjoy's one-pagers and Lesson 3 slides
-   Plan Mon Oct 12 – test Tue Oct 20, 2026 (test date is PROVISIONAL: Canvas hasn't posted one; change `start`/`days` and bump `schedule` when it does)
+   Plan Mon Oct 12 – checkpoint Wed Oct 21, 2026 (no test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump `schedule` when one is posted)
+   Day 6 added Oct 26 from "Exploration day 3 10/14" (U3L3D3): France and England 1-pagers, Day 3 Expanding Empires Analysis Guide, Dutch East India Company (VOC) 1-pager.
    This guide is a checker, not a textbook: it quizzes what's on the one-pagers and the Explorer Profile Organizer, and walks through the answer when a question is missed. */
 window.GUIDE = {
   id: "noah-explorers",
   student: "Noah",
   subject: "Explorers",
   start: "2026-10-12",
-  schedule: 1,
+  schedule: 2,             // bumped Oct 26 when the Day 6 learn day was added
+  tbd: true,
   days: [
     {title:"Portugal starts it: Prince Henry and Dias", kind:"learn"},
     {title:"Portugal reaches India: da Gama and Vespucci", kind:"learn"},
     {title:"Spain sails west: Columbus and Magellan", kind:"learn"},
     {title:"The conquistadors: Cortés and Pizarro", kind:"learn"},
     {title:"Rivals divide the world: the Treaty of Tordesillas", kind:"learn"},
+    {title:"New rivals: France, England, and the Dutch", kind:"learn"},
     {title:"Put it together: Spain vs. Portugal", kind:"connect"},
     {title:"Practice test", kind:"review"},
     {title:"Fix the weak spots", kind:"final"},
@@ -21,7 +24,8 @@ window.GUIDE = {
   groups: [
     {key:"P", name:"Portugal"},
     {key:"S", name:"Spain"},
-    {key:"R", name:"Rivalry & results"}
+    {key:"R", name:"Rivalry & results"},
+    {key:"N", name:"New rivals"}
   ],
 
   /* Each explorer card answers the organizer's columns in order: sailed for, years, goal, what he did, challenges, impact. */
@@ -116,7 +120,33 @@ window.GUIDE = {
     {id:"threegs",day:5,group:"R",kind:"idea",term:"The 3 G's",
      def:"Gold, God, and Glory: the three main motivations for European exploration. Gold means wealth from trade (spices, gold, silver); God means spreading Christianity; Glory means fame and power for the explorer and the empire.",
      short:"Gold, God, Glory: why Europeans explored",
-     hook:"Every explorer card has a motivation line. Check it against the 3 G's: da Gama = gold (spices), Prince Henry = gold and God, Cortés = gold and glory."}
+     hook:"Every explorer card has a motivation line. Check it against the 3 G's: da Gama = gold (spices), Prince Henry = gold and God, Cortés = gold and glory."},
+
+    /* ---- Day 6: New rivals (Exploration day 3, 10/14) ---- */
+    {id:"cabot",day:6,group:"N",kind:"person",term:"John Cabot",
+     def:"Italian-born navigator (Giovanni Caboto) who sailed for England, sponsored by King Henry VII. In 1497 he sailed from Bristol across the Atlantic and reached the coast of North America, likely Newfoundland, looking for a northwest route to Asia. He claimed the land for England, giving England its first claim in North America. He may have made a second voyage in 1498, but his ship never returned.",
+     short:"Sailed for England; reached Newfoundland, 1497",
+     hook:"Another Italian with someone else's money, like Columbus. Cabot = England's first claim. He was hunting the Northwest Passage, which is a card in your Unit 3 guide."},
+    {id:"drake",day:6,group:"N",kind:"person",term:"Francis Drake",
+     def:"English sea captain and privateer supported by Queen Elizabeth I. From 1577 to 1580 he made the first English circumnavigation of the globe. He sailed through the Strait of Magellan, raided Spanish settlements along South America, captured a huge treasure ship off Peru, and claimed land in California as “Nova Albion.” He came home rich and was knighted aboard his ship by the Queen.",
+     short:"English privateer; first English trip around the world",
+     hook:"Drake = England's answer to Magellan, plus raiding. Five ships out, one ship back, full of Spanish treasure. Spain hated him; England made him a knight."},
+    {id:"privateer",day:6,group:"N",kind:"idea",term:"Privateer",
+     def:"A sea captain who has his government's permission to attack and rob enemy ships. Francis Drake was a privateer supported by Queen Elizabeth I who attacked Spanish treasure ships in the Caribbean.",
+     short:"Government-approved raider of enemy ships",
+     hook:"A pirate with a permission slip. A “private” ship, but working for the Queen against Spain."},
+    {id:"cartier",day:6,group:"N",kind:"person",term:"Jacques Cartier",
+     def:"French navigator from Saint-Malo chosen by King Francis I to find riches or a sea route to Asia. On his first voyage in 1534 he explored and mapped the Gulf of Saint Lawrence and the Saint Lawrence River in what is now eastern Canada, and claimed land for France. His reports encouraged French settlement and trade in Canada.",
+     short:"French; mapped the Saint Lawrence River, 1534",
+     hook:"Cartier came first and drew the map; Champlain came later and built the town. Both French, both Saint Lawrence River, both Canada."},
+    {id:"champlain",day:6,group:"N",kind:"person",term:"Samuel de Champlain",
+     def:"French explorer, son of a sea captain, who founded Quebec in 1608 as a trading post on the Saint Lawrence River. It was the first lasting French settlement in North America. He found Lake Champlain in 1609 and reached Lake Huron in 1615, the first European known to reach the Great Lakes.",
+     short:"Founded Quebec, 1608, France's first lasting colony",
+     hook:"Champlain = the founder. Quebec (1608), Lake Champlain (named after him), and the Great Lakes. If the question says “first permanent French colony,” it's Champlain."},
+    {id:"jointstock",day:6,group:"N",kind:"idea",term:"Joint-stock company",
+     def:"A company where many investors buy shares to pay for voyages and split the profits. The Dutch East India Company (VOC), founded in 1602, was the world's first. Backed by the Dutch government, it could build ships and armies, set up colonies and trading posts, make treaties, and wage war, so it acted like a nation-state for trade. Its main base in Asia was Batavia (now Jakarta, Indonesia).",
+     short:"Investors buy shares to fund voyages",
+     hook:"Lots of people chip in, so no one person loses everything if a ship sinks. The VOC started it; the Dutch East India Company card itself is in your Unit 3 guide."}
   ],
 
   /* Hand-written questions. a[0] is always the correct answer. d = learn day it unlocks, "C" = connect day. */
@@ -299,6 +329,50 @@ window.GUIDE = {
      a:["Atlantic ports, strong monarchies that funded voyages, and the desire for wealth, power, and religion","They had bigger armies than everyone else","They were the only countries with ships","They discovered gold in Europe"],
      e:"The exit ticket answer: location on the Atlantic, rulers like Ferdinand, Isabella, and Prince Henry paying for voyages, and the 3 G's driving them."},
 
+    /* Day 6: New rivals (France and England 1-pagers, VOC 1-pager, Day 3 Expanding Empires Analysis Guide) */
+    {t:["cabot"],d:6,q:"Which country did John Cabot sail for?",
+     a:["England","Italy","France","Spain"],
+     e:"Cabot was born in Italy, but King Henry VII of England paid for his voyage. Same pattern as Columbus: born in one country, sailed for another."},
+    {t:["cabot"],d:6,q:"What was John Cabot's 1497 voyage most important for?",
+     a:["It gave England its first claim to land in North America","It was the first trip around the world","It found the route around Africa","It founded Quebec"],
+     e:"The Cabot one-pager's big takeaway: his voyage gave England a foothold in the New World and set the stage for later English colonies."},
+    {t:["drake","privateer"],d:6,q:"Francis Drake was a privateer. What does that mean?",
+     a:["He had his government's support to attack enemy ships, especially Spanish treasure ships","He sailed only for his own fun","He was a priest who traveled with explorers","He was a merchant who never fought"],
+     e:"A privateer is a raider with permission. Queen Elizabeth I backed Drake, and he raided Spanish ships and colonies."},
+    {t:["drake"],d:6,q:"What was Francis Drake the first to do for England?",
+     a:["Sail all the way around the globe (1577–1580)","Reach India by sea","Found a colony in Canada","Cross the Atlantic"],
+     e:"Drake made the first English circumnavigation, going through the Strait of Magellan like Magellan's crew did about 55 years earlier."},
+    {t:["drake"],d:6,q:"How did Drake's voyage affect Spain?",
+     a:["His raids brought fortunes to England and weakened Spanish control of the seas","He helped Spain conquer the Inca","He signed a peace treaty with Spain","It had no effect on Spain"],
+     e:"The Drake one-pager says he proved England could challenge Spain. That's the theme of the whole day: new rivals pushing back on Spain and Portugal."},
+    {t:["cartier"],d:6,q:"Which river did Jacques Cartier explore and map for France?",
+     a:["The Saint Lawrence River","The Mississippi River","The Amazon River","The Hudson River"],
+     e:"Cartier mapped the Gulf of Saint Lawrence and the Saint Lawrence River in eastern Canada in 1534. That's where France's claims in North America began."},
+    {t:["champlain"],d:6,q:"What did Samuel de Champlain found in 1608?",
+     a:["Quebec, the first lasting French settlement in North America","Jamestown, the first English colony","Batavia, the Dutch base in Asia","Newfoundland's first town"],
+     e:"Champlain built Quebec as a trading post on the Saint Lawrence River. The one-pager calls it France's first permanent colony in North America."},
+    {t:["cartier","champlain"],d:6,q:"Cartier and Champlain both sailed for France. What is the difference between them?",
+     a:["Cartier explored and mapped the Saint Lawrence first; Champlain later founded Quebec","Cartier founded Quebec; Champlain only mapped it","Cartier sailed for England; Champlain sailed for France","Champlain came first; Cartier came 70 years later"],
+     e:"Cartier (1534) drew the map; Champlain (1608) built the settlement. Look at the two French 1-pagers side by side."},
+    {t:["cabot","cartier","champlain"],d:6,q:"What were France and England mostly looking for when they first sent explorers to North America?",
+     a:["A sea route to Asia, riches, and new lands to claim","A way around Africa","Gold from the Aztecs","Permission from the pope"],
+     e:"Check the Motivation line on each 1-pager: Cabot wanted a northwest route to Asia; Cartier and Champlain wanted a route to Asia, riches, and land for France."},
+    {t:["jointstock"],d:6,q:"What made the Dutch East India Company (VOC) different from earlier explorers and empires?",
+     a:["It was a company owned by investors who bought shares, the world's first joint-stock company","It was run by the pope","It only explored Africa","It never used ships"],
+     e:"Earlier voyages were paid for by kings and queens. The VOC was paid for by investors buying shares, which is question 1 on the Day 3 Analysis Guide."},
+    {t:["jointstock"],d:6,q:"Which power did the VOC have that made it act like a nation-state for trade?",
+     a:["It could build armies, make treaties, and wage war","It could choose the pope","It could print money for Spain","It could vote in the English Parliament"],
+     e:"The VOC 1-pager lists it: build ships and armies, set up colonies and trading posts, negotiate treaties, and wage war. A business with the powers of a country."},
+    {t:["jointstock"],d:6,q:"Where was the VOC's main base in Asia?",
+     a:["Batavia (now Jakarta, Indonesia)","Quebec","Lisbon","Calicut, India"],
+     e:"The map task on the Analysis Guide had you label Batavia. Headquarters were in Amsterdam; Batavia ran things in Asia."},
+    {t:["jointstock"],d:6,q:"What were the Dutch mainly after when they formed the VOC in 1602?",
+     a:["A share of the Asian spice trade (cloves, nutmeg, pepper)","Gold from the Inca","Furs from Canada","A route through the Arctic"],
+     e:"Portugal and Spain had controlled Asian trade for a century. The Dutch united their small companies into the VOC to compete for the spices."},
+    {t:["cabot","drake","cartier","jointstock"],d:6,q:"How did France, England, and the Netherlands challenge Spain and Portugal?",
+     a:["They ignored the Treaty of Tordesillas, claimed their own lands, raided Spanish ships, and competed for trade","They asked Spain for permission to explore","They joined Spain's empire","They stayed in Europe"],
+     e:"Part 3 of the Analysis Guide. Cabot and Cartier claimed North America, Drake raided Spain, and the VOC took over spice routes. Competition grew global trade and conflict."},
+
     /* Connect day */
     {t:["dias","dagama"],d:"C",q:"Which explorer's voyage made da Gama's trip to India possible?",
      a:["Dias, who proved Africa could be rounded","Columbus, who found the Caribbean","Magellan, who found the strait","Vespucci, who mapped South America"],
@@ -338,7 +412,10 @@ window.GUIDE = {
      e:"1492, then the 1519 pair (Magellan sails, Cortés lands in Mexico), then Pizarro in the 1530s."},
     {q:"Put these events in order.",
      items:["Dias rounds Africa (1488)","Columbus lands in the Caribbean (1492)","Treaty of Tordesillas divides the world (1494)","Da Gama reaches India (1498)","Magellan's ship completes the trip around the world (1522)"],
-     e:"The treaty came two years after Columbus, when Spain and Portugal realized their claims would collide. Da Gama and Magellan came after the line was drawn."}
+     e:"The treaty came two years after Columbus, when Spain and Portugal realized their claims would collide. Da Gama and Magellan came after the line was drawn."},
+    {q:"Put the new rivals in order, earliest first.",
+     items:["Cabot reaches Newfoundland for England (1497)","Cartier maps the Saint Lawrence for France (1534)","Drake sails around the world for England (1577–1580)","The Dutch form the VOC (1602)","Champlain founds Quebec (1608)"],
+     e:"England and France start in North America in the 1490s–1530s; Drake raids Spain in the 1570s; the VOC and Quebec come in the 1600s."}
   ],
 
   bigPicture: {
@@ -348,6 +425,7 @@ window.GUIDE = {
     sections:[
       {h:"Portugal: around Africa to Asia", chain:["Prince Henry funds voyages and a school","Dias rounds the Cape of Good Hope (1488)","Da Gama reaches India (1498)","Portugal controls the spice trade"]},
       {h:"Spain: west to the Americas", chain:["Columbus reaches the Caribbean (1492)","Vespucci: it's a New World","Magellan's crew circles the globe (1522)","Cortés and Pizarro conquer the Aztecs and Inca"], note:"Columbus and Magellan weren't Spanish, but Spain paid, so Spain got the credit and the land."},
+      {h:"New rivals join", chain:["Cabot claims Newfoundland for England (1497)","Cartier and Champlain build New France in Canada","Drake raids Spain and circles the globe","The VOC takes over the spice trade"], note:"From Exploration day 3: France, England, and the Netherlands ignored the Treaty of Tordesillas."},
       {h:"Results", chain:["Columbian Exchange: crops, animals, people, disease","Millions of Indigenous people die","Spain rich from gold and silver, Portugal from spices","Other nations (France, England, the Dutch) join the race"]}
     ]
   }
