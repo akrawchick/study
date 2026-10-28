@@ -2,8 +2,9 @@
    Sources: "Columbian Exchange Day 1-10/15" (U3L4 Day 1: Lesson 4 slides, Resource Trading Cards, Columbian Exchange & Cultural Diffusion reading),
    "Columbian Exchange (day 2) 10/19" (U3L4 Day 2: source sets, Sources Analysis Graphic Organizer, Impact Sorting Cards),
    "Spanish Conquest 10/22" (Unit 3 slides 12–13, xenophobia, Spanish Conquest reading docs 1, 2, 9, 10, Columbus letters close reading).
+   "Amistad- 10/28" (Slave Ship video guide, questions 1–9; Day 4 cards answer them, Middle Passage and Triangular Trade stay in the Unit 3 guide).
    The 10/22 page has no lesson label; it is probably the start of Lesson 5 (colonization). If more Lesson 5 pages follow, they may need their own guide.
-   Plan Mon Oct 26 – checkpoint Sat Oct 31, 2026. No test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump `schedule` when one is posted.
+   Plan Mon Oct 26 – checkpoint Sun Nov 1, 2026 (Day 4 added Oct 28, schedule 2). No test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump `schedule` when one is posted.
    Already elsewhere, so not repeated here: Columbian Exchange, Columbus, Cortés, Pizarro (Explorers guide); New World, Indigenous, Encomienda, Missionary, Transatlantic Slave Trade (Unit 3 guide).
    This guide is a checker, not a textbook: it quizzes what's on the handouts and walks through the answer when a question is missed. */
 window.GUIDE = {
@@ -11,11 +12,13 @@ window.GUIDE = {
   student: "Noah",
   subject: "Columbian Exchange",
   start: "2026-10-26",
+  schedule: 2,
   tbd: true,
   days: [
     {title:"Trade or trouble? What crossed the ocean", kind:"learn"},
     {title:"Winners, losers, and legacies", kind:"learn"},
     {title:"Spanish conquest: Las Casas and Hatuey", kind:"learn"},
+    {title:"The slave ship and the Amistad", kind:"learn"},
     {title:"Practice test", kind:"review"},
     {title:"Fix the weak spots", kind:"final"},
     {title:"Checkpoint", kind:"test"}
@@ -23,7 +26,8 @@ window.GUIDE = {
   groups: [
     {key:"G", name:"Goods & disease"},
     {key:"I", name:"Impacts"},
-    {key:"C", name:"Conquest"}
+    {key:"C", name:"Conquest"},
+    {key:"S", name:"Slave trade"}
   ],
 
   terms: [
@@ -95,7 +99,33 @@ window.GUIDE = {
     {id:"hispaniola",day:3,group:"C",kind:"place",term:"Hispaniola",
      def:"The Caribbean island Columbus named on his first voyage and called “a marvel” in his 1493 letter. Las Casas wrote that it was the first land in the New World to be destroyed and depopulated by the Spanish. Today it is Haiti and the Dominican Republic.",
      short:"Island Columbus praised; first one devastated",
-     hook:"Hispan- = Spain (like Hispanic), so “little Spain.” Columbus's letter describes paradise; Las Casas describes the same island being destroyed. Two sources, one place."}
+     hook:"Hispan- = Spain (like Hispanic), so “little Spain.” Columbus's letter describes paradise; Las Casas describes the same island being destroyed. Two sources, one place."},
+
+    /* ---- Day 4: Slave Ship video guide (Amistad 10/28) ---- */
+    {id:"shipconditions",day:4,group:"S",kind:"idea",term:"Conditions on slave ships",
+     def:"On the Middle Passage, captive Africans were chained below deck and packed tightly, with little room to move, little food or water, and almost no fresh air. Disease spread fast and many people died on the voyage. People who resisted were punished harshly.",
+     short:"Chained, crowded, sick; many died",
+     hook:"Traders treated the ship as cargo space, not living space, and packed in as many people as they could to make more money. That's why so many died. The Middle Passage itself is a card in your Unit 3 guide.",
+     ask:"Video guide #3: What were the conditions and common practices aboard a typical slave ship?"},
+    {id:"africantraders",day:4,group:"S",kind:"idea",term:"African traders in the slave trade",
+     def:"Some African rulers and traders captured people, often prisoners from wars and raids on rival groups, and sold them to European traders on the coast. In return they got European goods, especially guns, which made them stronger than their rivals and able to capture even more people.",
+     short:"Sold captives to Europeans for guns",
+     hook:"A cycle: trade captives for guns, then use the guns to capture more people. Groups that stayed out risked being raided by rivals who had guns.",
+     ask:"Video guide #6: Why did other Africans participate in the sale of other Africans?"},
+    {id:"westafrica",day:4,group:"S",kind:"idea",term:"Impact on West Africa",
+     def:"The Transatlantic Slave Trade took millions of people, mostly young men and women, out of West Africa. Families and communities were torn apart, wars and raids increased, and the region lost the workers and skills it needed to build its own economy, while European traders and plantation owners got rich.",
+     short:"Lost millions of people; more war",
+     hook:"Take away a society's young, strong workers for more than 300 years and it can't farm, build, or trade like before. Europe and the Americas got richer; West Africa got weaker.",
+     ask:"Video guide #9: What was an impact of the Transatlantic slave trade on West African culture and economics?",auto:false},
+    {id:"amistad",day:4,group:"S",kind:"place",article:"the",term:"Amistad",
+     def:"A Spanish ship carrying 53 kidnapped Africans along the coast of Cuba in 1839. Led by a man named Sengbe Pieh (called Cinqué), the captives broke free and took control of the ship. They tried to sail home to Africa, but the ship ended up off the coast of New York, where a U.S. Navy ship seized it.",
+     short:"1839 revolt by captives on a Spanish ship",
+     hook:"Amistad means “friendship” in Spanish, a sad irony for a ship carrying kidnapped people. Remember: the captives took over the ship themselves."},
+    {id:"amistadruling",day:4,group:"S",kind:"idea",term:"Amistad Supreme Court decision (1841)",
+     def:"In 1841 the U.S. Supreme Court ruled that the Africans from the Amistad had been kidnapped illegally and were free people, not property. Former President John Quincy Adams argued their case. In 1842 the survivors sailed home to Africa. The win gave a boost to abolitionists, the people working to end slavery.",
+     short:"Court ruled the Amistad Africans were free",
+     hook:"A rare win: the highest court in the U.S. said these captives were people with a right to be free, at a time when slavery was still legal in the U.S. South. It did not end slavery; that came in 1865.",
+     ask:"Video guide #4: What was important about the United States Supreme Court decision regarding the Amistad affair?"}
   ],
 
   /* Hand-written questions. a[0] is always the correct answer. d = learn day it unlocks. */
@@ -224,7 +254,48 @@ window.GUIDE = {
      e:"Spanish skills, crops, and animals spreading to Indigenous people is cultural diffusion. The doc's question asks “to what extent,” because it was forced as well as shared."},
     {t:[],d:3,q:"In his letter to Charles V (Document 2), what did Cortés say he did to end Aztec human sacrifice?",
      a:["Removed the statues of their gods, cleaned the temples, and taught his religion","Paid the priests to stop","Built a new capital","Signed a treaty with Moctezuma"],
-     e:"Cortés says he removed the statues, cleaned the temples, and taught the Aztecs Christianity. Remember this is Cortés's own account, written to his king."}
+     e:"Cortés says he removed the statues, cleaned the temples, and taught the Aztecs Christianity. Remember this is Cortés's own account, written to his king."},
+
+    /* Day 4 (Amistad 10/28: Slave Ship video guide) */
+    {t:["shipconditions"],d:4,q:"Which best describes conditions aboard a typical slave ship?",
+     a:["Captives were chained and packed tightly below deck, with little food, water, or air","Captives had cabins and regular meals","Captives could walk freely around the deck","Ships carried only a few people so the trip was comfortable"],
+     e:"That's video guide question 3. Traders packed in as many people as they could, because more people meant more profit."},
+    {t:["shipconditions"],d:4,q:"Why did so many captives die during the Middle Passage?",
+     a:["Crowding, disease, and too little food and water","Most ships sank in storms","They were left on islands along the way","The trip was too short to bring enough supplies"],
+     e:"Packed tightly with little air, food, or water, disease spread fast. Look back at your notes from the video for the details the teacher pointed out."},
+    {t:["africantraders"],d:4,q:"What did European traders mostly use to pay for enslaved Africans?",
+     a:["Manufactured goods like guns, cloth, and alcohol","Gold from the Americas","Potatoes and corn","Land in Europe"],
+     e:"Video guide question 2. It matches the Triangular Trade card in your Unit 3 guide: Europe sent guns, alcohol, and other goods to Africa."},
+    {t:["africantraders"],d:4,q:"Why did some African rulers and traders sell captives to Europeans?",
+     a:["To get European goods, especially guns, that made them more powerful than their rivals","Because Europeans paid them with land in Europe","Because the pope ordered them to","Because they wanted to move to the Americas"],
+     e:"Video guide question 6. Guns gave a group power over its rivals, and that power could be used to capture more people to sell."},
+    {t:["africantraders"],d:4,q:"Who were most of the people African traders sold to Europeans?",
+     a:["People captured in wars and raids on rival groups","Their own soldiers","European sailors","Spanish monks"],
+     e:"Most captives were taken in wars and raids, often from other groups. That's how the trade fed more fighting."},
+    {t:["westafrica"],d:4,q:"What was one impact of the Transatlantic Slave Trade on West Africa?",
+     a:["It lost millions of young people, so families broke apart and the economy was weakened","It became the richest region in the world","Its population grew faster than ever","It had almost no effect"],
+     e:"Video guide question 9. Losing so many young workers hurt farming, trade, and family life for generations."},
+    {t:["westafrica","africantraders"],d:4,q:"How did trading captives for guns increase war in West Africa?",
+     a:["Groups used the guns to raid rivals and capture more people to sell","Guns were only used for hunting","Europeans made everyone stop fighting","Guns were too expensive for anyone to use"],
+     e:"It's a cycle: captives for guns, guns to take more captives. Peaceful groups had to arm themselves or risk being raided."},
+    {t:["amistad"],d:4,q:"What happened aboard the Amistad in 1839?",
+     a:["The captive Africans broke free and took control of the ship","The crew sailed the captives to freedom on purpose","The ship sank in a storm","Spain gave the ship to the United States"],
+     e:"The captives freed themselves and took over the ship. They tried to sail back to Africa but ended up off New York."},
+    {t:["amistad"],d:4,q:"Who led the revolt on the Amistad?",
+     a:["Sengbe Pieh (Cinqué)","John Quincy Adams","Bartolomé de Las Casas","Chief Hatuey"],
+     e:"Sengbe Pieh, called Cinqué, led the revolt. John Quincy Adams was the former president who argued their case in court later."},
+    {t:["amistadruling"],d:4,q:"What did the U.S. Supreme Court decide in the Amistad case (1841)?",
+     a:["The Africans had been kidnapped illegally and were free","They had to be returned to Spain as property","They had to stay in jail","They had to work on plantations in the South"],
+     e:"Video guide question 4. The court said they were free people, and in 1842 the survivors sailed home to Africa."},
+    {t:["amistadruling"],d:4,q:"Why was the Amistad decision important?",
+     a:["The highest court in the U.S. treated the captives as free people, not property, which encouraged the movement to end slavery","It ended slavery everywhere in the United States","It started the Transatlantic Slave Trade","It gave Spain control of New York"],
+     e:"It was a big win for abolitionists, but it did not end slavery in the U.S. That took the Civil War and the 13th Amendment in 1865."},
+    {t:["cashcrop"],d:4,q:"Video guide question 5 asks why enslaved people were seen as “more valuable than gold.” Why did traders see them that way?",
+     a:["Their forced labor grew cash crops like sugar that made huge profits","They were paid well for their work","They knew where the gold mines were","Gold was worthless at the time"],
+     e:"Cash crops like sugar made plantation owners rich, and that wealth depended on forced labor. Check your notes from the video for how it explained this."},
+    {t:["xenophobia","unequal"],d:4,q:"Video guide question 8: How can discriminatory behavior lead to big differences in power and opportunity between groups?",
+     a:["One group treats another as less than human and takes its freedom, labor, and land, so it gains power while the other loses it","Discrimination makes every group equal","It only affects feelings, not power or wealth","It gives the group being discriminated against more opportunities"],
+     e:"That's the standard on top of the video guide (7.H.1.5). Same pattern as the Columbian Exchange: unequal treatment led to unequal outcomes."}
   ],
 
   orders: [
@@ -233,7 +304,10 @@ window.GUIDE = {
      e:"Contact, then disease, then population loss, then forced labor to replace the workers who died. That's the cause-and-effect chain from the reading."},
     {q:"Put the Spanish conquest events in order, earliest first.",
      items:["Columbus reaches Hispaniola and writes his letter (1492–1493)","Cortés conquers the Aztecs (1521)","Pizarro conquers the Inca (1532)","Las Casas publishes his account of the destruction (1552)"],
-     e:"Columbus first, the two conquests in the 1520s–30s, and Las Casas's book looking back on it all in 1552."}
+     e:"Columbus first, the two conquests in the 1520s–30s, and Las Casas's book looking back on it all in 1552."},
+    {q:"Put the Amistad story in order.",
+     items:["Africans are kidnapped and taken to Cuba (1839)","The captives take over the Amistad","A U.S. Navy ship seizes the Amistad off New York","The Supreme Court rules they are free (1841)","The survivors sail home to Africa (1842)"],
+     e:"Kidnapping, revolt, capture, court case, home. The whole story took about three years."}
   ],
 
   bigPicture: {
@@ -243,6 +317,7 @@ window.GUIDE = {
     sections:[
       {h:"What went where", chain:["West to the Americas: horses, cattle, pigs, wheat, sugar, smallpox","East to the Old World: corn, potatoes, tomatoes, cacao","Both ways: languages, religions, skills"]},
       {h:"Human cost", chain:["No immunity","Smallpox spreads","Population collapses","Forced labor and enslaved Africans"]},
+      {h:"The slave trade", chain:["Plantations need workers","Captives traded for guns","The Middle Passage","Amistad: captives fight back and win in court"]},
       {h:"Two views of the conquest", chain:["Columbus: Hispaniola is a marvel to claim","Las Casas: the Spanish are wild wolves","Hatuey: resists and refuses baptism"], note:"Ask who wrote each source and why. The Florentine Codex is the Indigenous side."}
     ]
   }
