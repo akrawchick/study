@@ -3,8 +3,9 @@
    "Columbian Exchange (day 2) 10/19" (U3L4 Day 2: source sets, Sources Analysis Graphic Organizer, Impact Sorting Cards),
    "Spanish Conquest 10/22" (Unit 3 slides 12–13, xenophobia, Spanish Conquest reading docs 1, 2, 9, 10, Columbus letters close reading).
    "Amistad- 10/28" (Slave Ship video guide, questions 1–9; Day 4 cards answer them, Middle Passage and Triangular Trade stay in the Unit 3 guide).
+   "Mercantilism 10/29" (Unit 3 slides 25–30, Colonization Systems one-pager, Inquiry Resources Reading, Mercantilism worksheet; Days 5–6. The VOC videos and Kahoot are not quizzed).
    The 10/22 page has no lesson label; it is probably the start of Lesson 5 (colonization). If more Lesson 5 pages follow, they may need their own guide.
-   Plan Mon Oct 26 – checkpoint Sun Nov 1, 2026 (Day 4 added Oct 28, schedule 2). No test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump `schedule` when one is posted.
+   Plan Mon Oct 26 – checkpoint Tue Nov 3, 2026 (Day 4 added Oct 28, schedule 2; Days 5–6 added Oct 29, schedule 3). No test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump `schedule` when one is posted.
    Already elsewhere, so not repeated here: Columbian Exchange, Columbus, Cortés, Pizarro (Explorers guide); New World, Indigenous, Encomienda, Missionary, Transatlantic Slave Trade (Unit 3 guide).
    This guide is a checker, not a textbook: it quizzes what's on the handouts and walks through the answer when a question is missed. */
 window.GUIDE = {
@@ -12,13 +13,15 @@ window.GUIDE = {
   student: "Noah",
   subject: "Columbian Exchange",
   start: "2026-10-26",
-  schedule: 2,
+  schedule: 3,
   tbd: true,
   days: [
     {title:"Trade or trouble? What crossed the ocean", kind:"learn"},
     {title:"Winners, losers, and legacies", kind:"learn"},
     {title:"Spanish conquest: Las Casas and Hatuey", kind:"learn"},
     {title:"The slave ship and the Amistad", kind:"learn"},
+    {title:"Mercantilism: colonies make the Mother Country rich", kind:"learn"},
+    {title:"Systems of control and the need for workers", kind:"learn"},
     {title:"Practice test", kind:"review"},
     {title:"Fix the weak spots", kind:"final"},
     {title:"Checkpoint", kind:"test"}
@@ -27,7 +30,7 @@ window.GUIDE = {
     {key:"G", name:"Goods & disease"},
     {key:"I", name:"Impacts"},
     {key:"C", name:"Conquest"},
-    {key:"S", name:"Slave trade"}
+    {key:"S", name:"Slave trade & mercantilism"}
   ],
 
   terms: [
@@ -125,7 +128,58 @@ window.GUIDE = {
      def:"In 1841 the U.S. Supreme Court ruled that the Africans from the Amistad had been kidnapped illegally and were free people, not property. Former President John Quincy Adams argued their case. In 1842 the survivors sailed home to Africa. The win gave a boost to abolitionists, the people working to end slavery.",
      short:"Court ruled the Amistad Africans were free",
      hook:"A rare win: the highest court in the U.S. said these captives were people with a right to be free, at a time when slavery was still legal in the U.S. South. It did not end slavery; that came in 1865.",
-     ask:"Video guide #4: What was important about the United States Supreme Court decision regarding the Amistad affair?"}
+     ask:"Video guide #4: What was important about the United States Supreme Court decision regarding the Amistad affair?"},
+
+    /* ---- Day 5: Mercantilism (10/29: slides 28–30, Mercantilism worksheet, Inquiry Resources Reading) ---- */
+    {id:"mercantilism",day:5,group:"S",kind:"idea",term:"Mercantilism",
+     def:"An economic system of the 1600s and 1700s based on the belief that a nation's power depended on how much wealth it controlled, especially gold and silver. Colonies existed only to benefit their Mother Country: they sent it raw materials and bought its manufactured goods, so the Mother Country exported more than it imported.",
+     short:"Colonies exist to make the Mother Country rich",
+     hook:"Mercantilism has “merchant” inside it: the whole country acts like a merchant trying to end up with the most gold. Slide 30 sums it up: “Nation with the most gold wins!”",
+     ask:"Mercantilism worksheet, Part I #1: Why did European nations want to collect gold during the Age of Colonization?"},
+    {id:"mothercountry",day:5,group:"S",kind:"place",article:"the",term:"Mother Country",
+     def:"The European nation in charge of a colony, like Spain, England, or France. Under mercantilism, the colony could only trade with its Mother Country and had to buy its finished goods.",
+     short:"European nation that controls a colony",
+     hook:"Like a strict parent who makes all the rules: the colony answers to the Mother Country, and its job is to make her rich."},
+    {id:"rawmaterials",day:5,group:"S",kind:"idea",plural:true,term:"Raw materials",
+     def:"Natural resources that haven't been made into products yet, like wood, sugar, cotton, tobacco, and sometimes gold and silver. Under mercantilism, colonies shipped them to the Mother Country.",
+     short:"Unfinished resources colonies sent to Europe",
+     hook:"Raw = not made into anything yet. Cotton is raw; a shirt is finished. On your map, raw materials flow FROM the colonies TO the Mother Country."},
+    {id:"manufactured",day:5,group:"S",kind:"idea",plural:true,term:"Manufactured goods",
+     def:"Finished products made by workers and factories in the Mother Country from raw materials, like cloth, rum, tools, furniture, ships, and paper. European merchants sold them back to the colonies or to other countries, often at higher prices.",
+     short:"Finished products sold back to the colonies",
+     hook:"Cotton sails to England and comes back as cloth that costs more, so the colony pays extra for its own cotton. On your map, manufactured goods flow FROM the Mother Country TO the colonies."},
+    {id:"balance",day:5,group:"S",kind:"idea",article:"a",term:"Favorable balance of trade",
+     def:"Exporting more than you import: selling more than you buy, so more gold and silver comes into the country than goes out. This was the main goal of mercantilism.",
+     short:"Export more than you import",
+     hook:"EXport = goods EXit and money comes in. IMport = goods come IN and money goes out. Favorable = more going out than coming in.",
+     ask:"Mercantilism worksheet, Part I #2: How did nations increase their supply of gold and silver?"},
+    {id:"navigationact",day:5,group:"S",kind:"idea",article:"the",term:"British Navigation Act of 1660",
+     def:"An English law saying that sugar, tobacco, cotton, indigo, ginger, and other goods from English plantations in America, Asia, or Africa could only be shipped to England or to other English colonies. It's a primary source showing a Mother Country controlling its colonies' trade.",
+     short:"Colony goods could ship only to England",
+     hook:"Navigation = sailing. The law told colony ships where they were allowed to sail: home to England, nowhere else. No shopping around for a better price."},
+
+    /* ---- Day 6: Colonization systems, the labor shortage, slides 25–26 (10/29) ---- */
+    {id:"colsystems",day:6,group:"S",kind:"idea",plural:true,term:"Systems of colonization",
+     def:"A system is a set of rules or actions that shape how something works. Europeans used four main systems to control their colonies: Law (government rules), Labor (who works and how), Trade (how goods are bought, sold, and moved), and Belief (ideas used to justify control). These systems did not affect everyone equally.",
+     short:"Law, labor, trade, and belief",
+     hook:"Four questions: Who makes the rules? (Law) Who does the work? (Labor) Where does the money go? (Trade) What excuse did they give? (Belief)"},
+    {id:"mita",day:6,group:"S",kind:"idea",article:"the",term:"Mita",
+     def:"A Spanish system of forced labor in South America. Starting in the 1570s, it sent Indigenous workers (mitayos) to the silver mines of Potosí, where they carried heavy loads of ore up ladders hundreds of feet deep. Accidents, lung disease, and mercury poisoning killed many.",
+     short:"Spanish forced labor in the silver mines",
+     hook:"Mita = mines. Encomienda (in your Unit 3 guide) and mita were both Spanish forced labor of Indigenous people; the mita is the one tied to the Potosí silver mines."},
+    {id:"laborshortage",day:6,group:"S",kind:"idea",article:"the",term:"Labor shortage in the colonies",
+     def:"By the early 1500s, disease, violence, and brutal work had killed 70–90% of the Indigenous people on many Caribbean islands. Colonies still had to produce sugar and silver for Europe but no longer had enough workers. Europe's answer was to buy enslaved Africans through the triangular trade.",
+     short:"Too few workers after Indigenous deaths",
+     hook:"Mercantilism said “make more,” but the workers were dying. That gap is why the triangular trade grew: cause (labor shortage) → effect (slavery).",
+     ask:"Inquiry Resources Reading, Supporting Question #2: Why couldn't colonies meet Europe's demands?"},
+    {id:"commercialrev",day:6,group:"S",kind:"idea",article:"the",term:"Commercial Revolution",
+     def:"A period of European economic expansion, colonialism, and mercantilism from about the 1500s to the early 1700s. It began when the Crusades brought spices, silks, and other rare goods back to Europe, creating a new desire for trade.",
+     short:"Europe's trade boom, 1500s to early 1700s",
+     hook:"Commercial = buying and selling (like a TV commercial). A revolution in trade, not a war."},
+    {id:"capitalism",day:6,group:"S",kind:"idea",term:"Capitalism",
+     def:"An economic system where property is privately owned and capital (money) is used to make a profit. Joint-stock companies raised the huge amounts of money needed to buy a ship and pay a crew to sail far away.",
+     short:"Private owners invest money for profit",
+     hook:"Capital = money to invest. Capitalism = put money in to get more money out. The joint-stock company card is on Day 6 of your Explorers guide."}
   ],
 
   /* Hand-written questions. a[0] is always the correct answer. d = learn day it unlocks. */
@@ -295,7 +349,101 @@ window.GUIDE = {
      e:"Cash crops like sugar made plantation owners rich, and that wealth depended on forced labor. Check your notes from the video for how it explained this."},
     {t:["xenophobia","unequal"],d:4,q:"Video guide question 8: How can discriminatory behavior lead to big differences in power and opportunity between groups?",
      a:["One group treats another as less than human and takes its freedom, labor, and land, so it gains power while the other loses it","Discrimination makes every group equal","It only affects feelings, not power or wealth","It gives the group being discriminated against more opportunities"],
-     e:"That's the standard on top of the video guide (7.H.1.5). Same pattern as the Columbian Exchange: unequal treatment led to unequal outcomes."}
+     e:"That's the standard on top of the video guide (7.H.1.5). Same pattern as the Columbian Exchange: unequal treatment led to unequal outcomes."},
+
+    /* Day 5 (Mercantilism 10/29: slides 28–30, Mercantilism worksheet Part I–II, Navigation Act source) */
+    {t:["mercantilism"],d:5,q:"Under mercantilism, what were colonies for?",
+     a:["Making their Mother Country rich","Trading freely with any country they chose","Building their own factories","Becoming independent nations"],
+     e:"The Mercantilism worksheet says colonies existed only to benefit their Mother Country. Everything else about the system follows from that one idea."},
+    {t:["mercantilism"],d:5,q:"What did mercantilists believe made a nation powerful?",
+     a:["How much wealth it controlled, especially gold and silver","How many people lived there","How many churches it built","How many languages its people spoke"],
+     e:"Worksheet Part I, first paragraph: the more gold a nation had stored, the stronger and more secure it was thought to be."},
+    {t:["mercantilism"],d:5,q:"Mercantilists believed the world's total wealth was fixed. What did that mean to them?",
+     a:["One nation's gain was another nation's loss","Every nation could get rich at the same time","Wealth grew every year for everyone","Gold and silver didn't matter"],
+     e:"If the pie can't grow, the only way to get a bigger slice is to take someone else's. That's why nations fought so hard over colonies and trade routes."},
+    {t:["rawmaterials","manufactured"],d:5,q:"Which list shows raw materials a colony would send to its Mother Country?",
+     a:["Wood, sugar, cotton, tobacco","Cloth, rum, tools, furniture","Ships, paper, cloth, tools","Furniture, rum, paper, ships"],
+     e:"Raw materials aren't made into anything yet. Cloth, rum, tools, furniture, ships, and paper are the manufactured goods the worksheet lists."},
+    {t:["manufactured","mothercountry"],d:5,q:"What did a Mother Country do with the raw materials it got from its colonies?",
+     a:["Turned them into manufactured goods and sold them, often back to the colonies at higher prices","Gave them back to the colonies for free","Stored them and never used them","Sent them to Asia to trade for spices"],
+     e:"That's worksheet Part III, question 4. Workers and factories turned raw materials into finished goods, and merchants sold them back for more."},
+    {t:["rawmaterials","manufactured"],d:5,q:"On your mercantilism map (worksheet Part II), which way do the arrows go?",
+     a:["Raw materials: colonies → Mother Country. Manufactured goods: Mother Country → colonies.","Raw materials: Mother Country → colonies. Manufactured goods: colonies → Mother Country.","Both go from the colonies to Asia","Both go from the Mother Country to the colonies"],
+     e:"Raw in, finished out, from the Mother Country's point of view. And the gold symbol goes on the Mother Country, because that's where the wealth ended up."},
+    {t:["balance"],d:5,q:"What is a favorable balance of trade?",
+     a:["Exporting more than you import","Importing more than you export","Trading exactly the same amount both ways","Refusing to trade with anyone"],
+     e:"Slide 30: you export more than you import, you sell more than you buy. More money comes in than goes out."},
+    {t:["balance","mothercountry"],d:5,q:"Why did colonies have to sell raw materials only to Europe and buy finished goods only from Europe?",
+     a:["So the Mother Country exported more than it imported and collected more gold and silver","So the colonies could build their own factories","So the colonies could save money","So other European countries got richer"],
+     e:"That's worksheet question 2: controlling the colonies' trade was how a nation increased its gold and silver."},
+    {t:["mercantilism","mothercountry"],d:5,q:"Under mercantilism, what were colonies NOT allowed to do?",
+     a:["Trade freely or build their own industries","Grow crops","Send raw materials to the Mother Country","Buy goods from the Mother Country"],
+     e:"The worksheet says colonies weren't allowed to trade freely or develop their own industries. They had to buy finished goods from Europe."},
+    {t:["mercantilism"],d:5,q:"Slide 29: you're a king or queen and your country is running out of natural resources. Why would a mercantilist rather take over a resource-rich land than buy from other nations?",
+     a:["Buying sends your money to another country, which might become too strong and wealthy","Buying from other nations was against the law","Other nations never had anything to sell","Taking over land cost nothing"],
+     e:"Choice 1 on the slide gives your gold away to a rival. Choice 2, a colony, gives you the resources and keeps the gold at home."},
+    {t:["mercantilism"],d:5,q:"Why did European rulers tax international trade instead of raising taxes on people at home?",
+     a:["Empires needed huge amounts of money for soldiers, navies, wars, and royal courts, and taxing trade raised it without taxing people at home","Trade was the only thing that existed to tax","People at home had no money at all","The pope ordered them to"],
+     e:"Worksheet question 3. They also sold exclusive trading rights to companies in the colonies."},
+    {t:["navigationact"],d:5,q:"What did the British Navigation Act of 1660 require?",
+     a:["Goods like sugar and tobacco from English plantations could only be shipped to England or other English colonies","Colonies could sell their goods to any country","English ships had to sail around Africa","Colonies had to build their own factories"],
+     e:"The source lists sugar, tobacco, cotton-wool, indigo, ginger, and dye wood, and says they can't go anywhere except England or its own plantations."},
+    {t:["navigationact","mercantilism"],d:5,q:"The Navigation Act is a good example of which idea?",
+     a:["Mercantilism: the Mother Country controlled its colonies' trade","Cultural diffusion: ideas spreading between peoples","Immunity: resistance to disease","Xenophobia: fear of strangers"],
+     e:"It's in the Inquiry Resources Reading under Supporting Question #1 as proof of mercantilism. The law decided who the colonies could trade with."},
+    {t:["mercantilism"],d:5,q:"The worksheet says many colonists grew frustrated with mercantilism. What did that frustration help lead to later?",
+     a:["Revolutions","The Crusades","The Renaissance","The fall of Constantinople"],
+     e:"Last sentence of Part I: colonists were tired of existing just to make the Mother Country rich, which helped lead to future revolutions. The others all happened before colonization."},
+
+    /* Day 6 (Colonization Systems one-pager, Inquiry Resources Reading Supporting Questions 1–4, slides 25–26) */
+    {t:["colsystems"],d:6,q:"What are the four main systems of colonization on the Colonization Systems one-pager?",
+     a:["Law, Labor, Trade, Belief","God, Gold, Glory, Guns","Land, Sea, Air, Space","Kings, Popes, Merchants, Explorers"],
+     e:"Law (government rules), Labor (work systems), Trade (buying and selling), and Belief (ideas used to justify control)."},
+    {t:["colsystems"],d:6,q:"Plantations using enslaved people to grow sugar for European markets is an example of which system?",
+     a:["Labor","Law","Belief","Trade"],
+     e:"That's the one-pager's Labor example. Labor systems decide who works and how the work is done."},
+    {t:["colsystems"],d:6,q:"European writers claiming Indigenous peoples needed to be ruled and taught Christianity is an example of which system?",
+     a:["Belief","Labor","Trade","Law"],
+     e:"Belief systems are ideas people use to explain or defend what they do. Here, the idea was used to justify taking land and forcing people to convert."},
+    {t:["colsystems","mercantilism"],d:6,q:"Requiring colonies to use European ships and sell their goods to Europe is an example of which system?",
+     a:["Trade","Belief","Labor","Law"],
+     e:"That's the one-pager's Trade example. It's also mercantilism in action, just like the Navigation Act."},
+    {t:["colsystems"],d:6,q:"Which is a long-term effect of the colonial Trade system?",
+     a:["Colonies became economically dependent on European countries","Indigenous governments grew stronger","Colonies became richer than Europe","European languages disappeared"],
+     e:"Short-term, wealth flowed to Europe. Long-term, the colonies depended on Europe. Check the effects boxes on the Colonization Systems one-pager."},
+    {t:["colsystems"],d:6,q:"Which is a long-term effect of the colonial Labor system?",
+     a:["Social classes formed based on race and labor","Every worker was paid the same","Slavery ended right away","Colonies stopped growing crops"],
+     e:"Short-term, lots of goods were produced. Long-term, it left social classes based on race and who was forced to work."},
+    {t:["mita"],d:6,q:"What was the mita?",
+     a:["A Spanish forced-labor system that sent Indigenous workers to the silver mines of Potosí","A trading company owned by investors","An English law about shipping","A ship with triangular sails"],
+     e:"Supporting Question #2 in the Inquiry Resources Reading. The historian's quote describes how dangerous the Potosí mines were."},
+    {t:["mita"],d:6,q:"According to the historian in the reading, why was work in the Potosí silver mines so deadly?",
+     a:["Heavy loads up ladders hundreds of feet deep, frequent accidents, lung disease, and mercury poisoning","Workers were only allowed to work at night","The mines were underwater","Pirates attacked the mines every week"],
+     e:"Peter Bakewell's quote lists accidents, freezing air after hot shafts, pneumonia, tuberculosis, and mercury poisoning in the refineries."},
+    {t:["laborshortage","poploss"],d:6,q:"Why couldn't the colonies meet Europe's demands by the early 1500s?",
+     a:["Disease, violence, and brutal work killed most of the Indigenous workers","Europe stopped wanting sugar and silver","The colonies ran out of land","The workers moved to Europe"],
+     e:"Supporting Question #2: many Caribbean islands lost 70–90% of their Indigenous people, but Europe still expected the same exports."},
+    {t:["laborshortage","africantraders"],d:6,q:"How did Europe respond to the labor shortage in its colonies?",
+     a:["Merchants traded guns, metal tools, cloth, and alcohol to African traders for enslaved people","They paid Indigenous workers higher wages","They stopped asking colonies for sugar and silver","They sent European nobles to work in the fields"],
+     e:"Supporting Question #3: that trade was the first leg of the triangular trade, Europe → Africa."},
+    {t:["cashcrop","laborshortage"],d:6,q:"Which export became one of the most profitable, but needed constant, dangerous labor in fields and boiling houses?",
+     a:["Sugar","Wheat","Fur","Paper"],
+     e:"Supporting Question #1: Thomas Tryon described workers in boiling houses “almost broiled alive.” Sugar is a cash crop, like the card on Day 2."},
+    {t:["mercantilism","laborshortage"],d:6,q:"How does the triangular trade show cause and effect between mercantilism and slavery?",
+     a:["Mercantilism demanded more raw materials, and after Indigenous workers died, enslaved Africans were forced to produce them","Slavery caused mercantilism to end","Mercantilism had nothing to do with the colonies","Enslaved Africans were paid to grow sugar"],
+     e:"Cause: Europe wanted more exports and its workers were gone. Effect: the triangular trade brought enslaved Africans to the plantations. That's Supporting Question #4."},
+    {t:["commercialrev"],d:6,q:"What was the Commercial Revolution?",
+     a:["A period of European economic expansion, colonialism, and mercantilism (about 1500s to early 1700s)","A war between England and Spain","A revolt by colonists against Spain","A new kind of sailing ship"],
+     e:"Slide 26. “Commercial” means buying and selling, so it was a revolution in trade, not a war."},
+    {t:["commercialrev"],d:6,q:"According to slide 26, what first gave Europeans a new desire for trade?",
+     a:["The Crusades, which brought back spices, silks, and other rare goods","The Amistad case","The Navigation Act","The fall of the Aztecs"],
+     e:"Crusaders came home with a taste for spices and silks, and trade grew from there."},
+    {t:["capitalism"],d:6,q:"What is capitalism?",
+     a:["An economic system where property is privately owned and money is used to make a profit","A system where the king owns everything","A system where colonies rule the Mother Country","A system where trade is banned"],
+     e:"Slide 25. Capital means money you invest to make more money."},
+    {t:["capitalism"],d:6,q:"Which example from slide 25 shows capitalism?",
+     a:["Investors pooling money in a joint-stock company to pay for a ship and crew","A king taking land by force","The pope dividing the world with a line","A colony growing food just for itself"],
+     e:"Investors put in their own money hoping for a profit. The joint-stock company card is on Day 6 of your Explorers guide."}
   ],
 
   orders: [
@@ -307,7 +455,13 @@ window.GUIDE = {
      e:"Columbus first, the two conquests in the 1520s–30s, and Las Casas's book looking back on it all in 1552."},
     {q:"Put the Amistad story in order.",
      items:["Africans are kidnapped and taken to Cuba (1839)","The captives take over the Amistad","A U.S. Navy ship seizes the Amistad off New York","The Supreme Court rules they are free (1841)","The survivors sail home to Africa (1842)"],
-     e:"Kidnapping, revolt, capture, court case, home. The whole story took about three years."}
+     e:"Kidnapping, revolt, capture, court case, home. The whole story took about three years."},
+    {q:"Follow the mercantilism cycle. Put it in order.",
+     items:["Colonies produce raw materials like sugar and tobacco","Ships carry them to the Mother Country","Factories turn them into manufactured goods","Merchants sell the goods back to the colonies at higher prices","Gold and silver pile up in the Mother Country"],
+     e:"Raw materials out, finished goods back, gold stays home. It's the same path you drew on the worksheet map."},
+    {q:"Follow the Inquiry Resources Reading's four supporting questions. Put the chain in order.",
+     items:["Europe demands sugar and silver from its colonies","Indigenous workers die from disease, violence, and brutal work","European merchants trade goods to African traders for enslaved people","Enslaved Africans are forced to work on plantations","Sugar, cotton, and tobacco ship to Europe"],
+     e:"Demand, then a labor shortage, then the triangular trade to fill it. That's how mercantilism and slavery are linked."}
   ],
 
   bigPicture: {
@@ -318,6 +472,7 @@ window.GUIDE = {
       {h:"What went where", chain:["West to the Americas: horses, cattle, pigs, wheat, sugar, smallpox","East to the Old World: corn, potatoes, tomatoes, cacao","Both ways: languages, religions, skills"]},
       {h:"Human cost", chain:["No immunity","Smallpox spreads","Population collapses","Forced labor and enslaved Africans"]},
       {h:"The slave trade", chain:["Plantations need workers","Captives traded for guns","The Middle Passage","Amistad: captives fight back and win in court"]},
+      {h:"Mercantilism", chain:["Colonies send raw materials","Mother Country sells manufactured goods","Export more than import","Most gold wins"], note:"When workers ran out, mercantilism's demand for exports fed the slave trade."},
       {h:"Two views of the conquest", chain:["Columbus: Hispaniola is a marvel to claim","Las Casas: the Spanish are wild wolves","Hatuey: resists and refuses baptism"], note:"Ask who wrote each source and why. The Florentine Codex is the Indigenous side."}
     ]
   }
