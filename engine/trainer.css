@@ -265,3 +265,5 @@ ol.miss span{color:var(--ink-2)}
 .fig{width:100%;max-width:340px;height:auto;display:block;margin:0 auto;color:var(--ink)}
 .eq .fig+.story, .eq .story{margin-top:10px}
 .eq .sub{font-family:var(--body);font-weight:400;font-size:14px}
+.brand .guidename{color:var(--ink-2);font-weight:600}
+@media (max-width:520px){.brand{font-size:16px;flex-wrap:wrap}}

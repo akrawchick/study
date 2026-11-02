@@ -497,7 +497,8 @@ document.addEventListener("keydown",e=>{
   }
 });
 
-document.title = G.student+"'s "+G.subject;
+const SUBJ = window.SITE ? SITE.brand(G.student, G.subject) : null;
+document.title = G.student+" · "+(SUBJ?SUBJ[0]+" · ":"")+G.subject;
 beacon({kind:"open"});
 render();
 })();

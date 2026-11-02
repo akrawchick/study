@@ -308,7 +308,8 @@ document.addEventListener("keydown",e=>{
 });
 document.addEventListener("input",e=>{ if(e.target.id==="ans" && sess && sess.err){ sess.err=""; const el = document.getElementById("err"); if(el) el.textContent=""; } });
 
-document.title = P.student+"'s "+P.title;
+const SUBJ = window.SITE ? SITE.brand(P.student, P.title) : null;
+document.title = P.student+" · "+(SUBJ?SUBJ[0]+" · ":"")+P.title;
 beacon({kind:"open"});
 render();
 })();
