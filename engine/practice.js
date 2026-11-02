@@ -42,6 +42,12 @@ function streak(){
 function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 function typeOf(p){ return p.type || P.answerType || "number"; }
 function parseAnswer(p,raw){
+  if(typeOf(p)==="word"){                    // spelling: letters only, any case; "Glide " counts as glide
+    const w = String(raw).trim().toLowerCase().replace(/[’']/g,"");
+    if(w==="") return {empty:true};
+    if(!/^[a-z]+$/.test(w)) return {bad:true};
+    return {v:w};
+  }
   let s = String(raw).trim().toLowerCase().replace(/−/g,"-").replace(/,/g,".").replace(/\s+/g,"");
   const t = typeOf(p);
   if(s==="") return {empty:true};
@@ -95,13 +101,34 @@ function fmtAns(p,v){
   if(t==="money"){ return (p.unit==="cents" && v<100) ? v+"¢" : "$"+(v/100).toFixed(2); }
   if(t==="time"){ const h = Math.floor(v/60), m = v%60; return h+":"+String(m).padStart(2,"0"); }
   if(t==="ineq"){ const q = String(v).split("|"); return "x "+({"<":"<",">":">","<=":"≤",">=":"≥"}[q[0]]||q[0])+" "+String(q[1]).replace("-","−"); }
+  if(t==="word") return String(v);
   if(t==="choice"){ const c = p.choices[v]; return c ? (c.review||c.text.replace(/<[^>]+>/g,"")) : "?"; }
   return (Math.round(v*1000)/1000).toString().replace("-","−");
 }
 function badMsg(p,a){
   if(a.why) return a.why;
   const t = typeOf(p);
+  if(t==="word") return "Type the word with letters only.";
   return t==="money" ? "Type an amount, like 45 or $1.15." : t==="time" ? "Type a time, like 3:30." : t==="ineq" ? "Type it like x < -3 or x >= 5 (use <= and >= for ≤ and ≥)." : "Enter a number, like −4 or 3/2.";
+}
+
+/* ---------- read aloud (spelling) ---------- */
+/* A problem with `say` (an array of phrases, e.g. [word, sentence, word]) gets a speaker button and is read aloud
+   when it first appears. Speech starts from a tap (Start / Next), which iPad Safari requires. */
+const CAN_SPEAK = !!(window.speechSynthesis && window.SpeechSynthesisUtterance);
+function speak(parts){
+  if(!CAN_SPEAK || !parts) return;
+  try{
+    speechSynthesis.cancel();
+    const voices = speechSynthesis.getVoices().filter(v=>/^en[-_]US/i.test(v.lang));
+    const voice = voices.find(v=>/Samantha|Google US English|Aria|Jenny/i.test(v.name)) || voices[0];
+    [].concat(parts).forEach(t=>{ const u = new SpeechSynthesisUtterance(t); u.lang = "en-US"; u.rate = 0.8; if(voice) u.voice = voice; speechSynthesis.speak(u); });
+  }catch(e){}
+}
+function sayButton(p){
+  if(!p.say) return "";
+  return CAN_SPEAK ? '<button type="button" class="btn sayit" data-act="say">🔊 Hear it again</button>'
+                   : '<p class="sub">This browser can\'t read words aloud. Ask a grown-up to read the word and the sentence.</p>';
 }
 
 /* ---------- sessions ---------- */
@@ -225,7 +252,7 @@ function viewRun(){
   const it = sess.items[sess.i], p = it.p, n = sess.items.length;
   let h = '<div class="row"><button class="btn quiet" data-act="quit">← Quit</button><span class="sub">'+esc(sess.title)+' · '+(sess.i+1)+' of '+n+' · '+(KID?"⭐ ":"score ")+sess.score+'</span></div>';
   h += '<div class="bar"><i style="width:'+Math.round(sess.i/n*100)+'%"></i></div>';
-  h += '<section class="panel"><p class="sub">'+esc(p.prompt||P.prompt||"Solve.")+'</p><div class="eq'+(p.wide?" wide":"")+'">'+p.q+'</div>';
+  h += '<section class="panel"><p class="sub">'+esc(p.prompt||P.prompt||"Solve.")+'</p>'+sayButton(p)+'<div class="eq'+(p.wide?" wide":"")+'">'+p.q+'</div>';
   const label = p.label!==undefined ? p.label : (P.label||"Answer"), suffix = p.suffix||"";
   if(p.choices){
     h += '<div class="opts'+(p.grid?" grid":"")+'">'+p.choices.map((c,k)=>{
@@ -234,9 +261,9 @@ function viewRun(){
     }).join("")+'</div>';
   }
   if(it.given===undefined && !p.choices){
-    h += '<form class="ansrow" data-act="check">'+(label?'<label class="sub lab" for="ans">'+esc(label)+'</label>':"")+'<input id="ans" class="ans" autocomplete="off" inputmode="'+(typeOf(p)==="number"&&KID?"decimal":"text")+'" placeholder="'+esc(p.placeholder||P.placeholder||"?")+'" aria-describedby="err">'+(suffix?'<span class="lab">'+esc(suffix)+'</span>':"")+'<button class="btn primary" type="submit">Check</button></form>';
+    h += '<form class="ansrow" data-act="check">'+(label?'<label class="sub lab" for="ans">'+esc(label)+'</label>':"")+'<input id="ans" class="ans'+(typeOf(p)==="word"?" word":"")+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="'+(typeOf(p)==="number"&&KID?"decimal":"text")+'" placeholder="'+esc(p.placeholder||P.placeholder||"?")+'" aria-describedby="err">'+(suffix?'<span class="lab">'+esc(suffix)+'</span>':"")+'<button class="btn primary" type="submit">Check</button></form>';
     h += '<p id="err" class="err">'+esc(sess.err)+'</p>';
-  } else {
+  } else if(it.given!==undefined){                  // feedback only after an answer (choice questions used to show it before)
     h += '<div class="fb '+(it.ok?"good":"bad")+'"><b class="'+(it.ok?"good":"bad")+'">'+(it.ok?(KID?it.cheer:"Correct."):(KID?it.oops:"Not quite."))+'</b> '+
       (it.ok?"":(p.choices?"":"You put "+fmtAns(p,it.given)+". ")+"The answer is "+(p.choices?fmtAns(Object.assign({},p,{type:"choice"}),p.choices.findIndex(c=>c.ok)):fmtAns(p,answerValue(p)))+".")+
       (it.hint?'<p class="hintmsg">'+it.hint.msg+'</p>':"")+'</div>';
@@ -283,6 +310,7 @@ function render(top,keepInput){
   const inp = document.getElementById("ans");
   if(inp){ if(prev!==null) inp.value = prev; inp.focus(); }
   const nx = document.getElementById("nextq"); if(nx) nx.focus();
+  if(v==="run" && sess){ const it = sess.items[sess.i]; if(it.p.say && !it.spoken){ it.spoken = true; speak(it.p.say); } }
 }
 
 /* ---------- actions ---------- */
@@ -292,6 +320,7 @@ const ACT = {
   start(el){ startSet(+el.dataset.l); },
   mixed(){ const open = []; LV.forEach((l,i)=>{ if(unlocked(i)) open.push(i); }); startSet(open[open.length-1], open); },
   next(){ next(); },
+  say(){ if(sess) speak(sess.items[sess.i].p.say); },
   choose(el){ choose(+el.dataset.k); },
   reset(){ if(view.confirmReset){ S = blank(); save(); view = {name:"home"}; render(true); } else { view.confirmReset = true; render(); } }
 };

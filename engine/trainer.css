@@ -220,6 +220,10 @@ ol.miss span{color:var(--ink-2)}
 .kid .eq.wide{font-size:clamp(20px,4vw,26px);font-weight:600;text-align:left;line-height:1.5}
 .kid .eq svg{max-width:100%;height:auto}
 .kid .ans{font-size:32px;width:200px;padding:10px 14px;border-radius:16px}
+.kid .ans.word{width:min(100%,280px);letter-spacing:.04em}
+.sayit{margin:4px 0 10px}
+.kid .sayit{font-size:20px;padding:12px 22px}
+.blank{display:inline-block;min-width:3.2em;border-bottom:3px solid var(--ink-2);margin:0 .15em;vertical-align:-.1em}
 .kid .btn{border-radius:16px;padding:12px 22px;font-size:18px}
 .kid .btn.small{padding:8px 16px;font-size:16px}
 .kid .lab{font-family:var(--display);font-weight:700;font-size:26px;color:var(--ink)}
