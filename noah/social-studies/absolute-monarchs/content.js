@@ -4,7 +4,11 @@
    page says "Today we focus on 1-10"; and the printed "Blank notes" packet Noah keeps for the whole unit. The Absolutism intro video isn't quizzed.
    Wording follows the slides. The slides don't define "Armada"; the card uses the standard meaning (a fleet of warships).
    Not repeated here: Absolutism, Queen Elizabeth I, Parliament (Unit 4 vocabulary guide). Questions about Elizabeth and Parliament use t:[]
-   and the hooks point to that guide. Slides 11+ (Stuarts, Charles I, Civil War) go on new learn days when Montjoy posts those days.
+   and the hooks point to that guide. Nov 5: Montjoy's "Guy Fawkes Day- Gunpowder Conspiracy 11/5" page (slides 11-14, House of Stuart) added King James I and the
+   Gunpowder Plot to Day 3. The House of Stuart and Divine Right cards stay in the Unit 4 vocabulary guide; hooks point there. The
+   Gunpowder Plot Packet and article are Drive files that couldn't be read, and the video isn't quizzed. The slides don't name Guy Fawkes;
+   the Gunpowder Plot card adds the standard fact (he was caught with the gunpowder under Parliament on November 5, 1605), since the page
+   is titled "Guy Fawkes Day". Slides 15+ (Charles I, Civil War) go on new learn days when Montjoy posts those days.
    Plan Wed Nov 4 – checkpoint Mon Nov 9, 2026. No test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump
    `schedule` when one is posted.
    This guide is a checker, not a textbook: it quizzes what was taught and walks through the answer when a question is missed. */
@@ -17,7 +21,7 @@ window.GUIDE = {
   days: [
     {title:"What makes a ruler absolute (characteristics 1–4)", kind:"learn"},
     {title:"Money, pride, loyalty, law, purpose (characteristics 5–10)", kind:"learn"},
-    {title:"Elizabeth I, Parliament, and the Spanish Armada", kind:"learn"},
+    {title:"Elizabeth I, the Spanish Armada, and the first Stuart king", kind:"learn"},
     {title:"Practice test", kind:"review"},
     {title:"Fix the weak spots", kind:"final"},
     {title:"Checkpoint", kind:"test"}
@@ -25,7 +29,8 @@ window.GUIDE = {
   groups: [
     {key:"C", name:"Characteristics 1–4"},
     {key:"P", name:"Characteristics 5–10"},
-    {key:"E", name:"Elizabeth's England"}
+    {key:"E", name:"Elizabeth's England"},
+    {key:"S", name:"James I and the Gunpowder Plot"}
   ],
 
   /* day = which learn day (1-based) the card opens on. kind: person | place | idea. */
@@ -98,7 +103,17 @@ window.GUIDE = {
     {id:"gravelines",day:3,group:"E",kind:"idea",article:"the",term:"Battle of Gravelines",
      def:"The battle on August 8, 1588, where the English met the Spanish Armada. The English sailed ships set on fire against the enemy, producing panic that broke the Spanish formation.",
      short:"1588: English fire ships break the Armada",
-     hook:"Wooden ships packed close together + burning ships drifting at them = panic. That's how England won."}
+     hook:"Wooden ships packed close together + burning ships drifting at them = panic. That's how England won."},
+
+    /* Day 3 (added Nov 5): the first Stuart king and the Gunpowder Plot (Unit 4 slides 11-14) */
+    {id:"james1",day:3,group:"S",kind:"person",term:"King James I",
+     def:"James Stuart, Elizabeth I's cousin. When Elizabeth died childless in 1603, he succeeded her as the first king of both England and Scotland. He was a strong believer in the divine right of kings and replaced the feudal power of the nobility with a strong central government. His views brought him into conflict with Parliament.",
+     short:"First Stuart king of England and Scotland",
+     hook:"Elizabeth had no children, so the crown went to her cousin from Scotland: one king, two countries. The House of Stuart and Divine Right cards are in your Unit 4 vocabulary guide."},
+    {id:"gunpowder",day:3,group:"S",kind:"idea",article:"the",term:"Gunpowder Plot",
+     def:"A plot in 1605 by a group of prominent Roman Catholics to kill King James I and destroy Parliament, eliminating the entire English government. It came from James's severe treatment of Roman Catholics. Guy Fawkes, one of the plotters, was caught with the gunpowder under Parliament on November 5, 1605.",
+     short:"1605 Catholic plot to blow up Parliament",
+     hook:"Remember, remember the 5th of November: England still lights bonfires and fireworks every Guy Fawkes Day for the plot that failed."}
   ],
 
   questions: [
@@ -223,7 +238,42 @@ window.GUIDE = {
      e:"Defending the kingdom is the first half of #1, Protect and Expand the State."},
     {t:["purpose","philip2"],d:3,q:"Philip II hoped to reconvert England to Catholicism. Which characteristic does that fit?",
      a:["Establish a sense of purpose (religious defense)","Maintain an independent source of income","Control the nobility","Use the power of the law"],
-     e:"Religious defense is one of #10's examples. Philip saw the attack as a mission for his faith."}
+     e:"Religious defense is one of #10's examples. Philip saw the attack as a mission for his faith."},
+
+    /* Day 3, added Nov 5: James I and the Gunpowder Plot (slides 11-14) */
+    {t:["james1"],d:3,q:"Who became king when Elizabeth I died childless in 1603?",
+     a:["James Stuart (James I), her cousin","Philip II of Spain","Charles II","Oliver Cromwell"],
+     e:"Slide 11: Elizabeth had no children, so her cousin James Stuart took the throne."},
+    {t:["james1"],d:3,q:"What was new about James I's rule?",
+     a:["He was the first king of both England and Scotland","He was the first king to have no Parliament","He was the first Catholic king of Spain","He was the first king elected by the people"],
+     e:"The Stuarts already ruled Scotland, so when James took England's crown too, one king ruled both (slide 11)."},
+    {t:[],d:3,q:"Before James I took England's throne, the Stuarts had ruled Scotland since what year?",
+     a:["1371","1588","1603","1649"],
+     e:"Slide 11: since 1371. 1588 is the Armada and 1603 is when James became king of England."},
+    {t:["james1"],d:3,q:"James I was a strong believer in which idea?",
+     a:["The divine right of kings","Representative government","Freedom of religion for everyone","Sharing power with Parliament"],
+     e:"Slide 12: divine right means the king's power comes from God. That card is in your Unit 4 vocabulary guide."},
+    {t:["james1"],d:3,q:"Why did James I come into conflict with Parliament?",
+     a:["His belief in divine right and strong central rule clashed with Parliament","Parliament wanted him to attack Spain","He tried to make England Catholic","He refused to live in London"],
+     e:"A king who says his power comes from God doesn't want Parliament telling him no (slide 12). That fight keeps growing under Charles I."},
+    {t:["james1","controlnobles"],d:3,q:"James I replaced the feudal power of the nobility with a strong central government. Which characteristic does that fit best?",
+     a:["Control the nobility","Develop nationalism","Promote economic growth","Establish a sense of purpose"],
+     e:"Taking power away from the nobles and keeping it in the king's government is #4, Control the Nobility."},
+    {t:["gunpowder"],d:3,q:"What was the Gunpowder Plot?",
+     a:["A 1605 plan by Roman Catholics to kill James I and destroy Parliament","A Spanish attack on England with fire ships","A plan by Parliament to remove Elizabeth I","A Protestant revolt in the Netherlands"],
+     e:"Slide 13: prominent Roman Catholics conspired to kill James and destroy Parliament. Fire ships were the Armada battle, back in 1588."},
+    {t:["gunpowder","james1"],d:3,q:"What led to the Gunpowder Plot?",
+     a:["James I's severe treatment of Roman Catholics","James I's war with Spain","Elizabeth I's death","Parliament refusing to pay taxes"],
+     e:"James was Protestant and treated Catholics harshly, and a group of Catholics struck back (slide 13)."},
+    {t:["gunpowder"],d:3,q:"What did the plotters hope to do by destroying Parliament along with the king?",
+     a:["Eliminate the entire English government","Make Parliament stronger","Bring Elizabeth I back","Start a war with Scotland"],
+     e:"Slide 13: kill the king and blow up Parliament at once, wiping out the whole government."},
+    {t:["gunpowder"],d:3,q:"Why is November 5 called Guy Fawkes Day in England?",
+     a:["Guy Fawkes, one of the plotters, was caught with the gunpowder that day in 1605","It's the day the Spanish Armada was defeated","It's the day James I was crowned","It's the day Parliament first met"],
+     e:"The plot was stopped on November 5, 1605, and England still marks it with bonfires. Check your Gunpowder Plot Packet for the details from class."},
+    {t:["gunpowder","order"],d:3,q:"James I's harsh treatment of Catholics led to a plot to kill him. Which characteristic was he struggling with?",
+     a:["Maintain public order","Promote economic growth","Maintain an independent source of income","Protect and expand the state"],
+     e:"#2 is about avoiding uprisings by force or compromise. Treating a group harshly can push people toward rebellion instead."}
   ],
 
   orders: [
@@ -232,6 +282,9 @@ window.GUIDE = {
      e:"That's slides 7 to 10 in your Unit 4 notes packet, in order."},
     {q:"Put these in order, earliest first.",
      items:["English Parliament emerges (1200s)","Elizabeth I becomes queen (1558)","The Battle of Gravelines (1588)","Elizabeth I's reign ends (1603)"],
-     e:"Parliament is centuries older than Elizabeth. She ruled 1558–1603, and the Armada battle came near the end of her reign."}
+     e:"Parliament is centuries older than Elizabeth. She ruled 1558–1603, and the Armada battle came near the end of her reign."},
+    {q:"Put these in order, earliest first.",
+     items:["The Stuarts rule Scotland (since 1371)","The Battle of Gravelines (1588)","Elizabeth I dies childless; James I becomes king of England and Scotland (1603)","The Gunpowder Plot (1605)"],
+     e:"That's slides 9 to 13 in your Unit 4 notes packet: Armada, then the first Stuart king, then the plot against him."}
   ]
 };

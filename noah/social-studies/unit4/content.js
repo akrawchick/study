@@ -3,8 +3,8 @@
    "Overview" page (Unit 4 Overview for Parents: absolute monarchs → Enlightenment → revolutions). The Unit 4 Intro Video isn't quizzed.
    Definitions use the slide wording, lightly fixed for grammar (Deism, Enlightenment). One correction: the slide says the House of Stuart
    ruled "since the 1200s"; the Stuarts ruled Scotland from 1371 and England and Ireland from 1603 to 1714, so the card leaves out the date.
-   Plan Mon Nov 2 – checkpoint Mon Nov 9, 2026. No vocabulary quiz date on Canvas yet (the Unit 3 quiz came 8 days after its vocab day),
-   so `tbd` is on; change `start`/`days`, drop `tbd` and bump `schedule` when one is posted.
+   Plan Mon Nov 2 – vocabulary quiz Tue Nov 10, 2026. Montjoy's announcement "Absolute & Enlightenment Vocabulary quiz/ Autopsy Project"
+   (Thu Nov 5) set the quiz for Tue 11/10, so `tbd` came off and the plan gained a second practice-test day (schedule 2).
    Not repeated here: Henry VIII (Unit 2 guide), Francis Drake (Explorers guide); hooks point to them.
    This guide is a checker, not a textbook: it quizzes the vocabulary slides and walks through the answer when a question is missed. */
 window.GUIDE = {
@@ -12,7 +12,7 @@ window.GUIDE = {
   student: "Noah",
   subject: "Unit 4",
   start: "2026-11-02",
-  tbd: true,
+  schedule: 2,             // bumped Nov 5 when the quiz date (Tue Nov 10) was posted
   days: [
     {title:"Kings and queens with total power", kind:"learn"},
     {title:"King vs. Parliament: the English Civil War", kind:"learn"},
@@ -20,8 +20,9 @@ window.GUIDE = {
     {title:"The Enlightenment thinkers", kind:"learn"},
     {title:"Connect the ideas", kind:"connect"},
     {title:"Practice test", kind:"review"},
+    {title:"Practice test, round 2", kind:"review"},
     {title:"Fix the weak spots", kind:"final"},
-    {title:"Checkpoint", kind:"test"}
+    {title:"Vocabulary quiz", kind:"test"}
   ],
   groups: [
     {key:"A", name:"Absolute monarchs"},
