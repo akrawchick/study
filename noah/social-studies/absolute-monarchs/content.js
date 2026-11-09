@@ -9,19 +9,29 @@
    Gunpowder Plot Packet and article are Drive files that couldn't be read, and the video isn't quizzed. The slides don't name Guy Fawkes;
    the Gunpowder Plot card adds the standard fact (he was caught with the gunpowder under Parliament on November 5, 1605), since the page
    is titled "Guy Fawkes Day". Slides 15+ (Charles I, Civil War) go on new learn days when Montjoy posts those days.
-   Plan Wed Nov 4 – checkpoint Mon Nov 9, 2026. No test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump
-   `schedule` when one is posted.
+   Nov 9: Montjoy's "Absolute Monarchies Bios 11/9" page (CW: Lesson 1 Slides, Day 2; the Absolute Monarchy mini-bios doc; the Monarch
+   Mini-Bios worksheet) added learn Day 4: Louis XIV ("L'État, c'est moi", Versailles), Frederick the Great, enlightened absolutism,
+   Catherine the Great, Qianlong, and the Mandate of Heaven. The Louis XIV card stays in the Unit 4 vocabulary guide. Corrections: the
+   bio says Frederick II "came to the throne in 1712" (he was born in 1712; his reign began in 1740, as the bio's own header says), and the
+   worksheet's Decision Matrix says "Louis XVI" where it means Louis XIV. The Louis XIV video isn't quizzed. Groups "Elizabeth's England"
+   and "James I and the Gunpowder Plot" were merged (the engine has 4 group colors) to make room for "Monarchs around the world".
+   Plan Wed Nov 4 – checkpoint Thu Nov 12, 2026 (schedule 2): Days 1–3, the weekend review (as it happened), Day 4 on Mon Nov 9, then
+   review, final, checkpoint. No test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump `schedule` when one is posted.
    This guide is a checker, not a textbook: it quizzes what was taught and walks through the answer when a question is missed. */
 window.GUIDE = {
   id: "noah-absolute-monarchs",
   student: "Noah",
   subject: "Absolute Monarchs",
   start: "2026-11-04",
+  schedule: 2,             // bumped Nov 9 when learn Day 4 (monarch mini-bios) was added
   tbd: true,
   days: [
     {title:"What makes a ruler absolute (characteristics 1–4)", kind:"learn"},
     {title:"Money, pride, loyalty, law, purpose (characteristics 5–10)", kind:"learn"},
     {title:"Elizabeth I, the Spanish Armada, and the first Stuart king", kind:"learn"},
+    {title:"Weekend practice test (Days 1–3)", kind:"review"},
+    {title:"Fix the weak spots", kind:"final"},
+    {title:"Louis XIV and absolute monarchs around the world", kind:"learn"},
     {title:"Practice test", kind:"review"},
     {title:"Fix the weak spots", kind:"final"},
     {title:"Checkpoint", kind:"test"}
@@ -29,8 +39,8 @@ window.GUIDE = {
   groups: [
     {key:"C", name:"Characteristics 1–4"},
     {key:"P", name:"Characteristics 5–10"},
-    {key:"E", name:"Elizabeth's England"},
-    {key:"S", name:"James I and the Gunpowder Plot"}
+    {key:"E", name:"England: Elizabeth and James I"},
+    {key:"W", name:"Monarchs around the world"}
   ],
 
   /* day = which learn day (1-based) the card opens on. kind: person | place | idea. */
@@ -106,14 +116,44 @@ window.GUIDE = {
      hook:"Wooden ships packed close together + burning ships drifting at them = panic. That's how England won."},
 
     /* Day 3 (added Nov 5): the first Stuart king and the Gunpowder Plot (Unit 4 slides 11-14) */
-    {id:"james1",day:3,group:"S",kind:"person",term:"King James I",
+    {id:"james1",day:3,group:"E",kind:"person",term:"King James I",
      def:"James Stuart, Elizabeth I's cousin. When Elizabeth died childless in 1603, he succeeded her as the first king of both England and Scotland. He was a strong believer in the divine right of kings and replaced the feudal power of the nobility with a strong central government. His views brought him into conflict with Parliament.",
      short:"First Stuart king of England and Scotland",
      hook:"Elizabeth had no children, so the crown went to her cousin from Scotland: one king, two countries. The House of Stuart and Divine Right cards are in your Unit 4 vocabulary guide."},
-    {id:"gunpowder",day:3,group:"S",kind:"idea",article:"the",term:"Gunpowder Plot",
+    {id:"gunpowder",day:3,group:"E",kind:"idea",article:"the",term:"Gunpowder Plot",
      def:"A plot in 1605 by a group of prominent Roman Catholics to kill King James I and destroy Parliament, eliminating the entire English government. It came from James's severe treatment of Roman Catholics. Guy Fawkes, one of the plotters, was caught with the gunpowder under Parliament on November 5, 1605.",
      short:"1605 Catholic plot to blow up Parliament",
-     hook:"Remember, remember the 5th of November: England still lights bonfires and fireworks every Guy Fawkes Day for the plot that failed."}
+     hook:"Remember, remember the 5th of November: England still lights bonfires and fireworks every Guy Fawkes Day for the plot that failed."},
+
+    /* Day 4 (added Nov 9): Lesson 1 Day 2, the Absolute Monarchy mini-bios */
+    {id:"letat",day:4,group:"W",kind:"idea",term:"“L'État, c'est moi”",
+     def:"King Louis XIV of France's famous quote. It means “I am the state.” He said it as a declaration of his total control over the country.",
+     short:"Louis XIV: “I am the state”",
+     hook:"État looks like “state,” and moi means “me.” If the king IS the state, nobody else gets a say. The Louis XIV card is in your Unit 4 vocabulary guide."},
+    {id:"versailles",day:4,group:"W",kind:"place",article:"the",term:"Palace of Versailles",
+     def:"The massive palace with large gardens that Louis XIV built at Versailles. It began as a hunting lodge for his father, Louis XIII. Louis XIV created a system of etiquette (rules of behavior) for the members of his court there. It is a national monument in France today.",
+     short:"Louis XIV's huge palace and gardens",
+     hook:"A hunting lodge blown up into a giant palace. The bill (plus his wars) landed on France's common people as higher taxes, and that anger paved the way for revolution."},
+    {id:"frederick2",day:4,group:"W",kind:"person",term:"Frederick the Great (Frederick II)",
+     def:"King of Prussia (reign 1740–1786). He inherited a highly trained army, and his strength as a military leader earned him the nickname “the Great” as Prussia became a major European power. He saw himself as a philosopher-king, spent time with philosophers like Voltaire, and ruled with more equality between social classes: he reformed the legal system, improved agriculture, expanded religious rights and freedom of the press, reduced corruption, and expanded education, arts, and literature. He viewed the monarch as a servant to the government and the people.",
+     short:"Prussia's enlightened absolute monarch",
+     hook:"Frederick = Prussia (northern Europe). He still held all the power, but he used it for reforms. The bio calls him an example of an enlightened absolute monarch."},
+    {id:"enlightabs",day:4,group:"W",kind:"idea",term:"Enlightened absolutism",
+     def:"When absolute monarchs are influenced by Enlightenment ideals. The ruler keeps total power but uses it for reforms, like Frederick the Great's fairer laws, religious rights, and education.",
+     short:"Absolute rulers influenced by Enlightenment ideas",
+     hook:"Still absolute (one ruler, all the power), but “enlightened” (listening to thinkers like Voltaire). The Enlightenment card is in your Unit 4 vocabulary guide."},
+    {id:"catherine2",day:4,group:"W",kind:"person",term:"Catherine the Great (Catherine II)",
+     def:"Empress of Russia (reign 1762–1796). Born a German princess named Sophie, she came to Russia at 15 to marry the heir, Peter. When Tsar Peter III proved unpopular, she had him arrested with the army's support and declared herself Empress. Her reign was a golden era for Russian journalism, theater, architecture, and philosophy; she built Russia's first school for girls, gained access to the Black Sea and Crimea in a war with Turkey, and partitioned (divided) Poland with allies. After a peasant rebellion, she strengthened the nobility's power over the serfs with the Charter to the Nobility (1785).",
+     short:"Russian empress who seized the throne",
+     hook:"Catherine = Russia, with two sides: progressive early (arts, a school for girls) and harsh after the rebellion (nobles get more power over serfs)."},
+    {id:"qianlong",day:4,group:"W",kind:"person",term:"Qianlong",
+     def:"The fifth emperor of China's Qing dynasty (reign 1735–1796) and one of the longest-reigning monarchs in Chinese history. His armies conquered territory across Central and Southeast Asia, which grew the empire but strained its economy. He had scholars build a massive library of over 36,000 handwritten works to preserve Chinese culture, but he also censored writing he believed was against the dynasty. Later he faced accusations of corruption, and he abdicated (left) the throne to his son in 1796.",
+     short:"Qing emperor: conquest, library, and censorship",
+     hook:"Say it “chyen-loong.” He's the one bio from outside Europe: China. The library preserved ideas; censorship controlled them. Both kept the dynasty strong."},
+    {id:"mandate",day:4,group:"W",kind:"idea",article:"the",term:"Mandate of Heaven",
+     def:"The idea the Qing dynasty used to legitimize (justify) its rule, calling the emperor the Son of Heaven. The Qing, also called the Manchu dynasty, were China's last monarchy, reigning from 1644 until the 1911 Revolution.",
+     short:"Chinese emperor's right to rule from Heaven",
+     hook:"China's version of the Divine Right of Kings: both say the ruler's power comes from above, so nobody below can question it."}
   ],
 
   questions: [
@@ -273,7 +313,96 @@ window.GUIDE = {
      e:"The plot was stopped on November 5, 1605, and England still marks it with bonfires. Check your Gunpowder Plot Packet for the details from class."},
     {t:["gunpowder","order"],d:3,q:"James I's harsh treatment of Catholics led to a plot to kill him. Which characteristic was he struggling with?",
      a:["Maintain public order","Promote economic growth","Maintain an independent source of income","Protect and expand the state"],
-     e:"#2 is about avoiding uprisings by force or compromise. Treating a group harshly can push people toward rebellion instead."}
+     e:"#2 is about avoiding uprisings by force or compromise. Treating a group harshly can push people toward rebellion instead."},
+
+    /* Day 4, added Nov 9: Lesson 1 Day 2, the Absolute Monarchy mini-bios */
+    {t:["letat"],d:4,q:"What does Louis XIV's quote “L'État, c'est moi” mean?",
+     a:["“I am the state”","“The people are the state”","“God save the king”","“Long live France”"],
+     e:"État = state, moi = me. It was his declaration of total control over France (the portrait slide in Lesson 1, Day 2)."},
+    {t:["letat"],d:4,q:"Why did Louis XIV say “I am the state”?",
+     a:["To declare his total control over the country","To give power to Parliament","To announce he was leaving the throne","To thank the nobles for their help"],
+     e:"The bio says he said it as a declaration of his total control. If the king is the state, there's no one to share power with."},
+    {t:[],d:4,q:"Why was Louis XIV nicknamed the Sun King?",
+     a:["He used the sun as a symbol for his reign","He was born on the longest day of the year","He built a palace with no roof","He conquered lands in the far south"],
+     e:"The mini-bio: he used the sun as the symbol of his reign. Everything in France was supposed to revolve around him, like planets around the sun."},
+    {t:[],d:4,q:"Louis XIV became king at age five. Who served as regent while he was a child?",
+     a:["His mother, Queen Anne","King Philip II of Spain","Frederick the Great","Queen Elizabeth I"],
+     e:"A regent rules for a young monarch. His mother, Queen Anne, was regent, and he also relied on Cardinal Mazarin's guidance."},
+    {t:[],d:4,q:"What did Louis XIV do when Cardinal Mazarin died?",
+     a:["Named himself prime minister and took full control of the government","Gave the government to Parliament","Moved to Spain","Made his mother queen"],
+     e:"No more advisor in charge: Louis named himself prime minister. The Decision Matrix on your worksheet asks whether that was a use or an abuse of power."},
+    {t:[],d:4,q:"How long did Louis XIV reign?",
+     a:["72 years (1643–1715), the longest of any European monarch","12 years","5 years","40 years, the shortest in France"],
+     e:"He took the throne at five and ruled 72 years, the longest reign of any European monarch (mini-bio)."},
+    {t:["versailles"],d:4,q:"What was Versailles before Louis XIV expanded it?",
+     a:["A hunting lodge for his father, Louis XIII","A Catholic church","A fort on the Spanish border","A school for nobles"],
+     e:"The bio: it began as Louis XIII's hunting lodge, and Louis XIV turned it into a massive palace with large gardens."},
+    {t:["versailles"],d:4,q:"What did Louis XIV create for the members of his court at Versailles?",
+     a:["A system of etiquette (rules of behavior)","A new Parliament","A navy","A national bank"],
+     e:"Etiquette = rules for how to act. At Versailles the court lived by Louis's rules, right under his eye."},
+    {t:["versailles"],d:4,q:"What effect did Louis XIV's wars and his spending at Versailles have on France?",
+     a:["They raised taxes on the common people, causing unrest that paved the way for revolution","They made France debt-free","They ended all of France's wars","They gave the common people more power"],
+     e:"Wars plus palace spending = a bigger tax burden on ordinary people. That anger is a seed of the French Revolution later in Unit 4."},
+    {t:["protect"],d:4,q:"Louis XIV started wars in Belgium, the Netherlands, Germany, and Spain to expand France. Which characteristic is this?",
+     a:["Protect and expand the state","Maintain public order","Develop nationalism","Maintain an independent source of income"],
+     e:"Growing the kingdom through conquest is the “expand” half of #1."},
+    {t:["frederick2"],d:4,q:"Which country did Frederick the Great rule?",
+     a:["Prussia","Russia","France","Spain"],
+     e:"Frederick II was King of Prussia, 1740–1786. Prussia and Russia sound alike; Catherine the Great ruled Russia."},
+    {t:["frederick2"],d:4,q:"How did Frederick II earn the nickname “the Great”?",
+     a:["His strength as a military leader","He built the palace of Versailles","He was the tallest king in Europe","He conquered China"],
+     e:"The mini-bio: Prussia's highly trained army and his military strength earned him the name."},
+    {t:["frederick2"],d:4,q:"Which famous philosopher did Frederick the Great spend time with?",
+     a:["Voltaire","Thomas Hobbes","Martin Luther","Christopher Columbus"],
+     e:"He saw himself as a philosopher-king and spent time with great thinkers of the era, including Voltaire (mini-bio)."},
+    {t:["frederick2"],d:4,q:"How did Frederick II view the role of a monarch?",
+     a:["As a servant to the government and the people","As the owner of everything in the country","As God's only voice on Earth","As a figurehead with no real power"],
+     e:"That's what made him unusual for an absolute monarch. He still had all the power, but said he served the people."},
+    {t:["frederick2"],d:4,q:"Which of these was one of Frederick the Great's reforms?",
+     a:["Greater freedom of the press","Censoring writing against the king","Strengthening nobles' power over serfs","Building a giant palace from a hunting lodge"],
+     e:"Frederick reformed the legal system, improved agriculture, expanded religious rights, and allowed greater freedom of the press. The other answers belong to Qianlong, Catherine, and Louis XIV."},
+    {t:["enlightabs"],d:4,q:"What is enlightened absolutism?",
+     a:["Absolute monarchs who are influenced by Enlightenment ideals","Kings who share power with an elected Parliament","A country with no monarch at all","Rulers chosen by the Mandate of Heaven"],
+     e:"It's on the “Absolute Monarchies of Europe by 1789” map in the Lesson 1 slides: still absolute, but influenced by Enlightenment ideas."},
+    {t:["enlightabs","frederick2"],d:4,q:"Which monarch from the mini-bios is called an example of an enlightened absolute monarch?",
+     a:["Frederick the Great","Louis XIV","Qianlong","King James I"],
+     e:"The last line of Frederick's bio says so: reforms, philosophers, and serving the people, while still holding all the power."},
+    {t:["catherine2"],d:4,q:"How did Catherine the Great become Empress of Russia?",
+     a:["With the army's support, she had her husband, Tsar Peter III, arrested and declared herself Empress","She was elected by the Russian people","She inherited the throne from her father","She won it in a war with Turkey"],
+     e:"Peter III was unpopular, and in July 1762 Catherine took the throne with the army behind her (mini-bio)."},
+    {t:["catherine2"],d:4,q:"Which country did Catherine the Great rule?",
+     a:["Russia","Prussia","China","England"],
+     e:"She was born a German princess but ruled Russia as Empress, 1762–1796."},
+    {t:["catherine2"],d:4,q:"What did Catherine the Great do after a peasant rebellion?",
+     a:["Strengthened the nobility's power over the serfs (Charter to the Nobility, 1785)","Freed all the serfs","Gave up her throne","Built Russia's first school for girls"],
+     e:"Her early ideas were progressive, but after the rebellion she sided with the nobles. The school for girls was one of her earlier, progressive steps."},
+    {t:["catherine2","protect"],d:4,q:"Catherine gained access to the Black Sea and Crimea through a war with Turkey. Which characteristic is this?",
+     a:["Protect and expand the state","Inspire loyalty","Establish a sense of purpose","Control the nobility"],
+     e:"Winning new territory is the “expand” half of #1."},
+    {t:["qianlong"],d:4,q:"Which empire did Qianlong rule?",
+     a:["China, under the Qing dynasty","Russia","Prussia","The Ottoman Empire"],
+     e:"Qianlong was the fifth emperor of the Qing dynasty. He's the one non-European monarch in the mini-bios."},
+    {t:["qianlong"],d:4,q:"How did Qianlong preserve Chinese culture?",
+     a:["Scholars built a massive library of over 36,000 handwritten works","He banned all books","He moved the capital to Europe","He invited Voltaire to China"],
+     e:"Classical, historical, philosophical, and literary works, all handwritten (mini-bio)."},
+    {t:["qianlong"],d:4,q:"In the Decision Matrix, Qianlong censoring writing he believed was against the dynasty served whose interest most?",
+     a:["The monarch's: it kept the dynasty in power","The country's: it made trade grow","The serfs': it gave them more rights","Nobody's: it had no effect"],
+     e:"Silencing critics protects the ruler. On your worksheet you decide if it's a use or an abuse of power and explain why."},
+    {t:["qianlong"],d:4,q:"What was one cost of Qianlong's military conquests across Asia?",
+     a:["Economic strain on the empire","The loss of all Chinese land","The end of the Qing dynasty that year","A war with Spain"],
+     e:"His campaigns grew Qing territory but strained the economy (mini-bio)."},
+    {t:["mandate"],d:4,q:"How did the Qing dynasty legitimize (justify) its rule?",
+     a:["Through the Mandate of Heaven, calling the emperor the Son of Heaven","By holding elections","Through a Parliament","Through the Glorious Revolution"],
+     e:"The Qing were seen as outsiders at first, so they used the Mandate of Heaven to show their rule was rightful (Qianlong's bio)."},
+    {t:["mandate"],d:4,q:"The Mandate of Heaven is most like which European idea?",
+     a:["The Divine Right of Kings","Representative government","The Gunpowder Plot","Mercantilism"],
+     e:"Both say a ruler's power comes from above (God or Heaven), so people shouldn't question it. Divine Right is in your Unit 4 vocabulary guide."},
+    {t:["letat","frederick2","catherine2","qianlong"],d:4,q:"Which pair is matched correctly?",
+     a:["Catherine the Great: Russia","Frederick the Great: France","Louis XIV: Prussia","Qianlong: Russia"],
+     e:"Louis XIV: France. Frederick II: Prussia. Catherine II: Russia. Qianlong: China."},
+    {t:["frederick2","qianlong"],d:4,q:"Which two monarchs from the bios are opposites on freedom of writing?",
+     a:["Frederick II expanded freedom of the press; Qianlong censored writing","Louis XIV and Catherine both banned newspapers","Frederick II and Qianlong both censored writing","Catherine and Frederick both closed all schools"],
+     e:"Same absolute power, different choices. That's the point of the Power Profile chart on your worksheet."}
   ],
 
   orders: [
@@ -285,6 +414,9 @@ window.GUIDE = {
      e:"Parliament is centuries older than Elizabeth. She ruled 1558–1603, and the Armada battle came near the end of her reign."},
     {q:"Put these in order, earliest first.",
      items:["The Stuarts rule Scotland (since 1371)","The Battle of Gravelines (1588)","Elizabeth I dies childless; James I becomes king of England and Scotland (1603)","The Gunpowder Plot (1605)"],
-     e:"That's slides 9 to 13 in your Unit 4 notes packet: Armada, then the first Stuart king, then the plot against him."}
+     e:"That's slides 9 to 13 in your Unit 4 notes packet: Armada, then the first Stuart king, then the plot against him."},
+    {q:"Put these monarchs in order by when their reign began, earliest first.",
+     items:["Louis XIV, France (1643)","Qianlong, China (1735)","Frederick the Great, Prussia (1740)","Catherine the Great, Russia (1762)"],
+     e:"The reign dates are at the top of each mini-bio. Louis XIV came first, and he was still on the throne until 1715."}
   ]
 };
