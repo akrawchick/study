@@ -43,8 +43,13 @@ function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",
 function typeOf(p){ return p.type || P.answerType || "number"; }
 function parseAnswer(p,raw){
   if(typeOf(p)==="word"){                    // spelling: letters only, any case; "Glide " counts as glide
-    const w = String(raw).trim().toLowerCase().replace(/[’']/g,"");
+    let w = String(raw).trim().toLowerCase().replace(/[’']/g,"");
     if(w==="") return {empty:true};
+    if(p.phrase || P.phrase){              // number words and the like: letters, spaces and hyphens ("one hundred twenty-one")
+      w = w.replace(/[‐‑–—−]/g,"-").replace(/\s*-\s*/g,"-").replace(/\s+/g," ");
+      if(!/^[a-z]+([ -][a-z]+)*$/.test(w)) return {bad:true, why:"Use letters only. A space or a dash between words is OK."};
+      return {v:w};
+    }
     if(!/^[a-z]+$/.test(w)) return {bad:true};
     return {v:w};
   }
@@ -153,7 +158,8 @@ function check(raw){
   if(a.empty){ sess.err = "Type your answer first."; render(false,true); return; }
   if(a.bad){ sess.err = badMsg(p,a); render(false,true); return; }
   sess.err = "";
-  const want = answerValue(p), ok = same(a.v, want);
+  const want = answerValue(p); let ok = same(a.v, want);
+  if(!ok && p.accept){ const n = p.accept(a.v); if(n){ ok = true; it.nudge = n; S.mistakes[n.key] = (S.mistakes[n.key]||0)+1; } }   // right, with a reminder
   it.given = a.v; it.ok = ok;
   const L = lv(it.li); L.attempts++; S.total++;
   if(ok){ L.correct++; S.correct++; sess.score++; it.cheer = CHEERS[Math.floor(Math.random()*CHEERS.length)]; }
@@ -261,12 +267,12 @@ function viewRun(){
     }).join("")+'</div>';
   }
   if(it.given===undefined && !p.choices){
-    h += '<form class="ansrow" data-act="check">'+(label?'<label class="sub lab" for="ans">'+esc(label)+'</label>':"")+'<input id="ans" class="ans'+(typeOf(p)==="word"?" word":"")+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="'+(typeOf(p)==="number"&&KID?"decimal":"text")+'" placeholder="'+esc(p.placeholder||P.placeholder||"?")+'" aria-describedby="err">'+(suffix?'<span class="lab">'+esc(suffix)+'</span>':"")+'<button class="btn primary" type="submit">Check</button></form>';
+    h += '<form class="ansrow" data-act="check">'+(label?'<label class="sub lab" for="ans">'+esc(label)+'</label>':"")+'<input id="ans" class="ans'+(typeOf(p)==="word"?" word":"")+((p.phrase||P.phrase)?" phrase":"")+'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="'+(typeOf(p)==="number"&&KID?"decimal":"text")+'" placeholder="'+esc(p.placeholder||P.placeholder||"?")+'" aria-describedby="err">'+(suffix?'<span class="lab">'+esc(suffix)+'</span>':"")+'<button class="btn primary" type="submit">Check</button></form>';
     h += '<p id="err" class="err">'+esc(sess.err)+'</p>';
   } else if(it.given!==undefined){                  // feedback only after an answer (choice questions used to show it before)
     h += '<div class="fb '+(it.ok?"good":"bad")+'"><b class="'+(it.ok?"good":"bad")+'">'+(it.ok?(KID?it.cheer:"Correct."):(KID?it.oops:"Not quite."))+'</b> '+
       (it.ok?"":(p.choices?"":"You put "+fmtAns(p,it.given)+". ")+"The answer is "+(p.choices?fmtAns(Object.assign({},p,{type:"choice"}),p.choices.findIndex(c=>c.ok)):fmtAns(p,answerValue(p)))+".")+
-      (it.hint?'<p class="hintmsg">'+it.hint.msg+'</p>':"")+'</div>';
+      (it.hint?'<p class="hintmsg">'+it.hint.msg+'</p>':"")+(it.nudge?'<p class="hintmsg">'+it.nudge.msg+'</p>':"")+'</div>';
     h += '<div class="sol"><p class="sub">'+(KID?"How it works":"Worked solution")+'</p><ol>'+p.steps.map(s=>'<li>'+s+'</li>').join("")+'</ol>'+(p.check?'<p class="chk">'+p.check+'</p>':"")+'</div>';
     h += '<div class="btns"><button class="btn primary" id="nextq" data-act="next">'+(sess.i+1<n?"Next":"See results")+'</button></div>';
   }

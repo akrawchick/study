@@ -271,3 +271,5 @@ ol.miss span{color:var(--ink-2)}
 .eq .sub{font-family:var(--body);font-weight:400;font-size:14px}
 .brand .guidename{color:var(--ink-2);font-weight:600}
 @media (max-width:520px){.brand{font-size:16px;flex-wrap:wrap}}
+.kid .ans.word.phrase{width:min(100%,520px);font-size:26px;letter-spacing:.02em}
+.numeral{font-family:var(--display);font-weight:700;font-size:clamp(64px,14vw,110px);line-height:1;text-align:center}

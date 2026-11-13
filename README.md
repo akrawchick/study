@@ -110,6 +110,8 @@ Kid mode (`kid: true`, used for Julien): bigger text and buttons, cheers instead
 
 More answer types: `type: "ineq"` (`a` as `"x<-3"`, `"x>=5"`; the student may type it either way round) and multiple choice via `choices: [{text, ok, review?, key?, short?, msg?}]` (4 options, exactly one `ok`; wrong options carry their own explanation in `msg`; `grid: true` lays them out two-up for drawings). Example: `noah/math/two-step-inequalities/`.
 
+Spelling answers: `type: "word"` takes letters only; add `phrase: true` (on the problem or on `PRACTICE`) to allow spaces and hyphens, for number words like "one hundred twenty-one". A problem may also give `accept(given)` returning `{key, msg}` for answers that are right apart from a small convention (a missing dash, an added "and"): they count as correct and show the reminder. Example: `julien/ela/number-words/`.
+
 ## Schedule rules of thumb (test prep)
 
 - Roughly one week of `learn` days, 4–6 new terms each, then a `connect` day, then two review days (`review`, `final`), then `test`.
