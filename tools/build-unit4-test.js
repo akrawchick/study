@@ -1,0 +1,61 @@
+const fs=require("fs"), path=require("path");
+const root=process.argv[2];
+const load=g=>{ global.window={}; delete require.cache[require.resolve(path.join(root,"noah/social-studies",g,"content.js"))]; require(path.join(root,"noah/social-studies",g,"content.js")); return window.GUIDE; };
+const V=load("unit4"), M=load("absolute-monarchs"), R=load("glorious-revolution");
+const DAY={}; const put=(d,ids)=>ids.split(" ").forEach(i=>DAY[i]=d);
+put(1,"absolutism divineright louis14 absmonarchy protect order winnobles controlnobles economy income nationalism loyalty law purpose letat versailles frederick2 enlightabs catherine2 qianlong mandate");
+put(2,"elizabeth philip2 armada gravelines stuart james1 gunpowder parliament lords commons charles1 succession dissolve petition longparl civilwar roundheads cavaliers");
+put(3,"cromwell newmodel puritan commonwealth restoration charles2 james2 william williammary glorious billofrights limitedmon constmonarchy enlightenment agereason deism philosophes naturalrights socialcontract hobbes locke rousseau montesquieu");
+const GROUP=id=>DAY[id]===1?"M":(["enlightenment","agereason","deism","philosophes","naturalrights","socialcontract","hobbes","locke","rousseau","montesquieu"].includes(id)?"L":"G");
+const terms=[], src={};
+[["unit4",V],["absolute-monarchs",M],["glorious-revolution",R]].forEach(([g,G])=>G.terms.forEach(t=>{
+  if(!DAY[t.id]) throw new Error("no day for "+t.id);
+  const o=Object.assign({},t,{day:DAY[t.id],group:GROUP(t.id)});
+  ["def","short","hook","ask"].forEach(k=>{ if(o[k]) o[k]=o[k].replace(/ The Enlightenment card is in your Unit 4 vocabulary guide\./,"").replace(/ \(in your Unit 4 vocabulary guide\)/g,""); });
+  terms.push(o); src[t.id]=g; }));
+if(terms.length!==62||Object.keys(DAY).length!==62) throw new Error("count "+terms.length);
+const questions=[];
+[V,M,R].forEach(G=>(G.questions||[]).forEach(q=>{
+  const d = q.d==="C" ? "C" : (q.t.length ? Math.max(...q.t.map(i=>{ if(!DAY[i]) throw new Error("q term "+i); return DAY[i]; })) : 3);
+  questions.push(Object.assign({},q,{d}));
+}));
+const orders=[].concat(V.orders||[],M.orders||[],R.orders||[]);
+const line=o=>"    "+JSON.stringify(o);
+const out=`/* Noah · Unit 4 test: Absolutism and Enlightenment · test Fri Nov 20, 2026
+   Combines his three Unit 4 guides, unchanged in wording: the Unit 4 vocabulary (22 terms, Mr. Montjoy's vocabulary slides),
+   Absolute Monarchs (25 terms: the 10 Characteristics, Elizabeth I, the Spanish Armada, James I, the monarch mini-bios) and
+   From Charles I to the Glorious Revolution (15 terms). Generated from those guides' content.js files on Nov 16; their questions,
+   put-in-order items and the vocabulary guide's big picture are carried over. Plan Mon Nov 16 – test Fri Nov 20. */
+window.GUIDE = {
+  id: "noah-unit4-test",
+  student: "Noah",
+  subject: "Unit 4",
+  start: "2026-11-16",
+  schedule: 1,
+  days: [
+    {title:"Absolute monarchs: the 10 characteristics and the rulers", kind:"learn"},
+    {title:"England: Elizabeth I to the English Civil War", kind:"learn"},
+    {title:"Cromwell, the Glorious Revolution, and the Enlightenment", kind:"learn"},
+    {title:"Review day", kind:"final"},
+    {title:"Test day", kind:"test"}
+  ],
+  groups: [
+    {key:"M", name:"Absolute monarchs"},
+    {key:"G", name:"England's revolutions"},
+    {key:"L", name:"Enlightenment"}
+  ],
+  terms: [
+${terms.map(line).join(",\n")}
+  ],
+  questions: [
+${questions.map(line).join(",\n")}
+  ],
+  orders: [
+${orders.map(line).join(",\n")}
+  ],
+  bigPicture: ${JSON.stringify(V.bigPicture,null,2).replace(/\n/g,"\n  ")}
+};
+`;
+fs.writeFileSync(path.join(root,"noah/social-studies/unit4-test/content.js"),out);
+const c={};terms.forEach(t=>c[t.day]=(c[t.day]||0)+1);
+console.log("terms",terms.length,JSON.stringify(c),"questions",questions.length,"C",questions.filter(q=>q.d==="C").length,"orders",orders.length);
