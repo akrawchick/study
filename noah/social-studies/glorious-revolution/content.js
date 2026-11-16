@@ -18,21 +18,24 @@
    - Neither source defines "Puritan" or "succession"; the cards use the standard meanings.
    No test date on Canvas, so `tbd` is on: plan Fri Nov 13 – checkpoint Wed Nov 18. When a date is posted, change `start`/`days`,
    drop `tbd`, bump `schedule`.
+   Nov 16: Montjoy's announcement "Absolutism and Enlightenment Test" set the unit test for Fri 11/20. `tbd` came off and the plan now
+   runs Fri Nov 13 – test Fri Nov 20 (schedule 2). Today's slides 35–74 went into the Absolute Monarchs guide (learn Days 5–6).
    This guide is a checker, not a textbook: it quizzes what was taught and walks through the answer when a question is missed. */
 window.GUIDE = {
   id: "noah-glorious-revolution",
   student: "Noah",
   subject: "Glorious Revolution",
   start: "2026-11-13",
-  schedule: 1,
-  tbd: true,
+  schedule: 2,             // bumped Nov 16: Montjoy's announcement set the Absolutism and Enlightenment test for Fri Nov 20
   days: [
-    {title:"Charles I vs. Parliament", kind:"learn"},
-    {title:"Civil war, Cromwell, and the king's return", kind:"learn"},
-    {title:"The Glorious Revolution and the Bill of Rights", kind:"learn"},
-    {title:"Practice test", kind:"review"},
-    {title:"Fix the weak spots", kind:"final"},
-    {title:"Checkpoint", kind:"test"}
+    {title:"Charles I vs. Parliament", kind:"learn"},                          // Fri Nov 13
+    {title:"Civil war, Cromwell, and the king's return", kind:"learn"},        // Sat Nov 14
+    {title:"The Glorious Revolution and the Bill of Rights", kind:"learn"},    // Sun Nov 15
+    {title:"Practice test", kind:"review"},                                    // Mon Nov 16
+    {title:"Fix the weak spots", kind:"final"},                                // Tue Nov 17
+    {title:"Practice test, round 2", kind:"review"},                           // Wed Nov 18
+    {title:"Fix the weak spots", kind:"final"},                                // Thu Nov 19
+    {title:"Test day", kind:"test"}                                            // Fri Nov 20
   ],
   groups: [
     {key:"K", name:"King vs. Parliament"},

@@ -17,30 +17,48 @@
    and "James I and the Gunpowder Plot" were merged (the engine has 4 group colors) to make room for "Monarchs around the world".
    Plan Wed Nov 4 – checkpoint Thu Nov 12, 2026 (schedule 2): Days 1–3, the weekend review (as it happened), Day 4 on Mon Nov 9, then
    review, final, checkpoint. No test date on Canvas yet, so `tbd` is on; change `start`/`days`, drop `tbd` and bump `schedule` when one is posted.
+   Nov 16: Montjoy's announcement "Absolutism and Enlightenment Test" (Mon Nov 16) set the unit test for Fri 11/20, so `tbd` came off and
+   the plan now runs Wed Nov 4 – test Fri Nov 20 (schedule 3; Nov 12–15 are recorded as review days). The same day's page
+   "Sun King Valley/ Baroque Art- / King Charles Execution 11/16" (CW: Unit 4 slides 35–63 "Absolute Monarchs", slides 64–74 "Baroque art
+   and the Scientific Revolution", the reading "The Sun King at Versailles", a Versailles video) added learn Day 5 (nobles at Versailles,
+   the getting-up ceremony, the City of Lights, Louis's wars and taxes, Ivan the Terrible, Peter the Great) and Day 6 (Baroque, Rubens and
+   Bernini, Bach, Francis Bacon). Slides 75+ (Enlightenment thinkers) are not used: no Canvas page has assigned them, and the thinkers'
+   cards are in the Unit 4 vocabulary guide. Not repeated: Divine Right of Kings, Louis XIV (Unit 4 vocabulary guide); Scientific
+   Revolution, Copernicus, Galileo, Newton (Unit 2 guide) - questions on those use t:[] with the slide wording. The slides don't say what
+   kind of artists Rubens and Bernini were; the card adds the standard facts (painter, sculptor). "The Execution of King Charles I"
+   reading (just read, no questions) couldn't be opened (401) and isn't quizzed; Charles I is in the Glorious Revolution guide.
+   Groups "Characteristics 1–4" and "5–10" were merged to free a color for "Baroque and the new science".
    This guide is a checker, not a textbook: it quizzes what was taught and walks through the answer when a question is missed. */
 window.GUIDE = {
   id: "noah-absolute-monarchs",
   student: "Noah",
   subject: "Absolute Monarchs",
   start: "2026-11-04",
-  schedule: 2,             // bumped Nov 9 when learn Day 4 (monarch mini-bios) was added
-  tbd: true,
+  schedule: 3,             // bumped Nov 16: test date posted (Fri Nov 20) and learn Days 5–6 added
   days: [
-    {title:"What makes a ruler absolute (characteristics 1–4)", kind:"learn"},
-    {title:"Money, pride, loyalty, law, purpose (characteristics 5–10)", kind:"learn"},
-    {title:"Elizabeth I, the Spanish Armada, and the first Stuart king", kind:"learn"},
-    {title:"Weekend practice test (Days 1–3)", kind:"review"},
-    {title:"Fix the weak spots", kind:"final"},
-    {title:"Louis XIV and absolute monarchs around the world", kind:"learn"},
-    {title:"Practice test", kind:"review"},
-    {title:"Fix the weak spots", kind:"final"},
-    {title:"Checkpoint", kind:"test"}
+    {title:"What makes a ruler absolute (characteristics 1–4)", kind:"learn"},                 // Wed Nov 4
+    {title:"Money, pride, loyalty, law, purpose (characteristics 5–10)", kind:"learn"},        // Thu Nov 5
+    {title:"Elizabeth I, the Spanish Armada, and the first Stuart king", kind:"learn"},        // Fri Nov 6
+    {title:"Weekend practice test (Days 1–3)", kind:"review"},                                 // Sat Nov 7
+    {title:"Fix the weak spots", kind:"final"},                                                // Sun Nov 8
+    {title:"Louis XIV and absolute monarchs around the world", kind:"learn"},                  // Mon Nov 9
+    {title:"Practice test", kind:"review"},                                                    // Tue Nov 10
+    {title:"Fix the weak spots", kind:"final"},                                                // Wed Nov 11
+    {title:"Checkpoint practice test", kind:"review"},                                         // Thu Nov 12
+    {title:"Keep the cards fresh", kind:"final"},                                              // Fri Nov 13
+    {title:"Keep the cards fresh", kind:"final"},                                              // Sat Nov 14
+    {title:"Keep the cards fresh", kind:"final"},                                              // Sun Nov 15
+    {title:"The Sun King's France and Russia's tsars", kind:"learn"},                          // Mon Nov 16
+    {title:"Baroque art and the Scientific Revolution", kind:"learn"},                         // Tue Nov 17
+    {title:"Practice test", kind:"review"},                                                    // Wed Nov 18
+    {title:"Fix the weak spots", kind:"final"},                                                // Thu Nov 19
+    {title:"Test day", kind:"test"}                                                            // Fri Nov 20
   ],
   groups: [
-    {key:"C", name:"Characteristics 1–4"},
-    {key:"P", name:"Characteristics 5–10"},
+    {key:"C", name:"The 10 characteristics"},
     {key:"E", name:"England: Elizabeth and James I"},
-    {key:"W", name:"Monarchs around the world"}
+    {key:"W", name:"Monarchs around the world"},
+    {key:"B", name:"Baroque and the new science"}
   ],
 
   /* day = which learn day (1-based) the card opens on. kind: person | place | idea. */
@@ -68,27 +86,27 @@ window.GUIDE = {
      hook:"A noble living in the king's palace can't plot a rebellion back home without the king noticing."},
 
     /* Day 2: characteristics 5-10 */
-    {id:"economy",day:2,group:"P",kind:"idea",term:"Promote economic growth",
+    {id:"economy",day:2,group:"C",kind:"idea",term:"Promote economic growth",
      def:"An absolute monarch uses economic principles to increase the nation's wealth. This may include trade, colonial expansion, or investments in technology or education within their own country.",
      short:"Make the whole nation wealthier",
      hook:"This is the NATION getting richer (trade, colonies, schools). Remember mercantilism from Unit 3: colonies make the Mother Country rich."},
-    {id:"income",day:2,group:"P",kind:"idea",term:"Maintain an independent source of income",
+    {id:"income",day:2,group:"C",kind:"idea",term:"Maintain an independent source of income",
      def:"An absolute monarch maintains their own source of income (revenue) that they can spend on their own projects. This may be through private ownership of land or investments, royal colonies, or royal taxation.",
      short:"The ruler's own money for own projects",
      hook:"Independent = doesn't depend on anyone. With his own money, the king never has to ask Parliament or the nobles. Revenue is another word for income."},
-    {id:"nationalism",day:2,group:"P",kind:"idea",term:"Develop nationalism",
+    {id:"nationalism",day:2,group:"C",kind:"idea",term:"Develop nationalism",
      def:"An absolute monarch attempts to increase a strong emotional attachment to the nation through positive imagery, national anthems, or military successes.",
      short:"Build pride and love for the nation",
      hook:"Nation-alism = feeling proud of your nation. Think of the national anthem before a big game, or a whole country celebrating a win."},
-    {id:"loyalty",day:2,group:"P",kind:"idea",term:"Inspire loyalty",
+    {id:"loyalty",day:2,group:"C",kind:"idea",term:"Inspire loyalty",
      def:"An absolute monarch is able to convince the citizens to have a sense of loyalty to them.",
      short:"Citizens feel loyal to the ruler",
      hook:"Nationalism = love for the COUNTRY. Loyalty = devotion to the RULER as a person. Two different targets."},
-    {id:"law",day:2,group:"P",kind:"idea",term:"Use the power of the law",
+    {id:"law",day:2,group:"C",kind:"idea",term:"Use the power of the law",
      def:"An absolute monarch uses police forces, military forces, and the court systems to their advantage and to achieve their goals.",
      short:"Use police, military, and courts",
      hook:"Police, soldiers, judges: the people who enforce rules. An absolute monarch makes all of them work for the crown."},
-    {id:"purpose",day:2,group:"P",kind:"idea",term:"Establish a sense of purpose",
+    {id:"purpose",day:2,group:"C",kind:"idea",term:"Establish a sense of purpose",
      def:"An absolute monarch creates a sense of purpose within their nation. Examples might be religious defense, expansion, or creating a trade network.",
      short:"Give the nation a shared mission",
      hook:"Purpose = a mission. “We defend our faith” or “we build a trade empire” gives everyone a reason to pull the same way."},
@@ -153,7 +171,51 @@ window.GUIDE = {
     {id:"mandate",day:4,group:"W",kind:"idea",article:"the",term:"Mandate of Heaven",
      def:"The idea the Qing dynasty used to legitimize (justify) its rule, calling the emperor the Son of Heaven. The Qing, also called the Manchu dynasty, were China's last monarchy, reigning from 1644 until the 1911 Revolution.",
      short:"Chinese emperor's right to rule from Heaven",
-     hook:"China's version of the Divine Right of Kings: both say the ruler's power comes from above, so nobody below can question it."}
+     hook:"China's version of the Divine Right of Kings: both say the ruler's power comes from above, so nobody below can question it."},
+
+    /* Day 5 (Mon Nov 16): Unit 4 slides 35-63 and "The Sun King at Versailles" reading */
+    {id:"noblesversailles",day:5,group:"W",kind:"idea",term:"Nobles at Versailles",
+     def:"In 1682, Louis XIV transferred the capital from Paris to Versailles. The high-ranking nobles of France would reside (live) at Versailles, where the king could easily control them.",
+     short:"Nobles lived at the palace, under Louis's eye",
+     hook:"This is characteristic #5, Control the nobility, in real life. A noble busy watching fireworks at the palace isn't raising an army back home."},
+    {id:"gettingup",day:5,group:"W",kind:"idea",article:"the",term:"Getting-up ceremony",
+     def:"How Louis XIV's day began at Versailles. At 8:30 am, favored members of the court were invited into the king's bedchamber to watch as he was washed, shaved, and dressed. Then about 100 people watched him eat breakfast. Every part of his day was a public ritual meant to reinforce his glorious image.",
+     short:"Court watches Louis XIV wake and dress",
+     hook:"Being allowed to watch the king put on his shirt was an honor. He rose and went to bed in front of the court like the sun rising and setting: the Sun King. It's in The Sun King at Versailles reading."},
+    {id:"citylights",day:5,group:"W",kind:"place",article:"the",term:"City of Lights",
+     def:"The nickname Paris earned in 1662 when, at Louis XIV's command, it offered the world's first street lamps. The lamps allowed late-night outings to the theater, the opera, and lavish parties.",
+     short:"Paris: the world's first street lamps",
+     hook:"Lights = lamps. The Sun King lit up his city at night. Louis set the style, and other monarchs copied him."},
+    {id:"louiswars",day:5,group:"W",kind:"idea",term:"Louis XIV's army, wars, and taxes",
+     def:"Louis quadrupled the size of the army and led France through almost forty years of constant warfare; the fighting was largely a stalemate. Nobles in Louis's France were not taxed, so commoners carried the entire tax burden. The cost of his luxuries and wars caused great hardship: many ordinary people starved, fled France, or lived in terror of persecution.",
+     short:"Bigger army, constant war, commoners pay",
+     hook:"Quadrupled = four times as big. Stalemate = nobody wins. So the people paid for forty years of war that mostly went nowhere, plus the palace."},
+    {id:"ivan",day:5,group:"W",kind:"person",term:"Ivan the Terrible",
+     def:"The first tsar of Russia (1547–1584). A brutal and cruel tyrant.",
+     short:"First tsar of Russia; brutal and cruel",
+     hook:"Ivan = first. The nickname tells you the rest. A tsar is Russia's word for its absolute ruler."},
+    {id:"peter",day:5,group:"W",kind:"person",term:"Peter the Great",
+     def:"Emperor of Russia (1682–1725). Peter was responsible for Russia's rise as a great world power. He brought Western culture to Russia, built roads and canals, modernized the army and navy, and secured seaports for trade.",
+     short:"Made Russia a modern world power",
+     hook:"Peter = Progress: roads, canals, navy, ports. Don't mix him up with Catherine the Great (also Russia, but later) or Frederick the Great (Prussia)."},
+
+    /* Day 6 (Tue Nov 17): Unit 4 slides 64-74, Baroque art and the Scientific Revolution */
+    {id:"baroque",day:6,group:"B",kind:"idea",term:"Baroque",
+     def:"The style of art, architecture, literature, and music dominating European culture throughout the 1600s. Baroque style is extravagant, crowded with movement, action, and color.",
+     short:"Extravagant 1600s style full of movement and color",
+     hook:"Think “more is more.” Versailles is the Baroque idea as a building: huge, golden, and showing off. It's the style of the age of absolute monarchs."},
+    {id:"baroqueartists",day:6,group:"B",kind:"person",plural:true,term:"Rubens and Bernini",
+     def:"Two Baroque artists on your slides. Peter Paul Rubens painted The Assumption of the Virgin (about 1626). Giovanni Bernini made The Ecstasy of St. Theresa (about 1647–52), a sculpture. Both works are extravagant and crowded with movement, action, and color.",
+     short:"Baroque artists: a painter and a sculptor",
+     hook:"Rubens = the painter (think “brush”). Bernini = the sculptor. Look at the two art slides in the Unit 4 deck: nothing in them is standing still."},
+    {id:"bach",day:6,group:"B",kind:"person",term:"Johann Sebastian Bach",
+     def:"A Baroque composer. Baroque music expressed the same ideas as Baroque art. Baroque music later led to classical music: Wolfgang Amadeus Mozart, then Ludwig van Beethoven.",
+     short:"Baroque composer, before Mozart and Beethoven",
+     hook:"B for Bach, B for Baroque. The order on the slides is Bach, then Mozart, then Beethoven (“Da Da Da Duh”)."},
+    {id:"bacon",day:6,group:"B",kind:"person",term:"Francis Bacon",
+     def:"A thinker of the Scientific Revolution who believed that scientists should observe, gather information, and then draw conclusions from that information. This is known as the experimental method.",
+     short:"Observe, gather information, then conclude",
+     hook:"Bacon wanted evidence first, conclusions second, the same order you use in a science lab. Copernicus, Galileo, and Newton are in your Unit 2 guide."}
   ],
 
   questions: [
@@ -403,9 +465,112 @@ window.GUIDE = {
     {t:["frederick2","qianlong"],d:4,q:"Which two monarchs from the bios are opposites on freedom of writing?",
      a:["Frederick II expanded freedom of the press; Qianlong censored writing","Louis XIV and Catherine both banned newspapers","Frederick II and Qianlong both censored writing","Catherine and Frederick both closed all schools"],
      e:"Same absolute power, different choices. That's the point of the Power Profile chart on your worksheet."}
+    ,
+    /* Day 5 (Mon Nov 16): slides 35-63 and The Sun King at Versailles reading */
+    {t:[],d:5,q:"Louis XIV believed strongly in the divine right of kings. What does that belief say?",
+     a:["Sovereigns are representatives of God and get their right to rule directly from God","Kings must be elected by the nobles","Parliament can remove a king who breaks the law","A king's power comes from the consent of the people"],
+     e:"Slide 36: the ruler answers only to God. That's why Louis could say “I am the state.” The Divine Right card is in your Unit 4 vocabulary guide."},
+    {t:["noblesversailles"],d:5,q:"In 1682, Louis XIV transferred France's capital. Where did it go?",
+     a:["From Paris to Versailles","From Versailles to Paris","From Paris to London","From Paris to Madrid"],
+     e:"Slide 39: the capital moved out of Paris to his palace at Versailles, so the government was wherever the king was."},
+    {t:["noblesversailles","controlnobles"],d:5,q:"Why did the high-ranking nobles of France live at Versailles?",
+     a:["So the king could easily control them","So they could vote in Parliament","Because Paris had no street lamps","Because nobles paid lower taxes there"],
+     e:"Slide 41. It's characteristic #5 from your 10 Characteristics notes: keep the nobles close so you can watch them."},
+    {t:["gettingup"],d:5,q:"What happened at Louis XIV's getting-up ceremony?",
+     a:["Favored members of the court watched the king be washed, shaved, and dressed","The king gave a speech to Parliament","Nobles paid their taxes to the king","The army paraded through the gardens"],
+     e:"From The Sun King at Versailles reading: it started at 8:30 am in the king's bedchamber, and being invited was an honor."},
+    {t:["gettingup"],d:5,q:"Why did Louis XIV turn washing, dressing, and eating into public ceremonies?",
+     a:["To reinforce his glorious image and his absolute, God-given power","Because he was too sick to do them alone","To save money on servants","Because Parliament required it"],
+     e:"The reading says he “had to play the part.” Every ritual put him at the center, like the sun, with the court circling around him."},
+    {t:["gettingup"],d:5,q:"About how many people watched Louis XIV eat breakfast?",
+     a:["Around 100","Just his family","Around 10","No one; he ate alone"],
+     e:"The reading: about 100 male subjects watched him eat. Nothing in his day was private."},
+    {t:["citylights"],d:5,q:"How did Paris earn the nickname “the City of Lights” in 1662?",
+     a:["It offered the world's first street lamps, at Louis XIV's command","It held the world's largest fireworks show","It was the first city with a Hall of Mirrors","Its churches burned candles all night"],
+     e:"Slide 56: street lamps meant people could go out at night to the theater, opera, and parties. (The fireworks were at Versailles.)"},
+    {t:["louiswars"],d:5,q:"What did Louis XIV do to the size of France's army?",
+     a:["Quadrupled it","Cut it in half","Kept it the same","Replaced it with a navy"],
+     e:"Slide 58: quadrupled means four times as big. Then he used it for almost forty years of constant warfare."},
+    {t:["louiswars"],d:5,q:"How did Louis XIV's almost forty years of warfare mostly turn out?",
+     a:["The fighting was largely a stalemate","France conquered all of Europe","France lost all of its land","The wars ended within one year"],
+     e:"Slide 58: a stalemate means neither side wins. Lots of cost, not much to show for it."},
+    {t:["louiswars"],d:5,q:"Who carried the tax burden in Louis XIV's France?",
+     a:["Commoners carried all of it; nobles were not taxed","Nobles carried all of it; commoners were not taxed","Everyone paid the same amount","Only the Church paid taxes"],
+     e:"Slide 59: nobles were not taxed, so ordinary people paid for everything, and the money went to the monarch, not to the people."},
+    {t:["louiswars"],d:5,q:"What did the cost of Louis's luxuries and wars mean for ordinary people?",
+     a:["Great hardship: many starved, fled France, or lived in terror of persecution","Lower taxes and more food","More say in the government","Free homes near Versailles"],
+     e:"Slide 60, the one with the “Landscape with Peasants” painting. The glitter of Versailles was paid for by people who had very little."},
+    {t:["ivan"],d:5,q:"Who was the first tsar of Russia?",
+     a:["Ivan the Terrible","Peter the Great","Catherine the Great","Frederick the Great"],
+     e:"Slide 62: Ivan the Terrible (1547–1584), remembered as a brutal and cruel tyrant. Peter and Catherine came later; Frederick ruled Prussia."},
+    {t:["peter"],d:5,q:"What was Peter the Great responsible for?",
+     a:["Russia's rise as a great world power","Building the Palace of Versailles","Defeating the Spanish Armada","Writing the English Bill of Rights"],
+     e:"Slide 63: Peter modernized Russia and made it a great world power."},
+    {t:["peter"],d:5,q:"Which of these did Peter the Great do?",
+     a:["Brought Western culture to Russia and modernized the army and navy","Closed Russia's seaports to trade","Moved Russia's capital to Versailles","Gave his power to a parliament"],
+     e:"Slide 63: Western culture, roads and canals, a modern army and navy, and seaports for trade."},
+    {t:["ivan","peter"],d:5,q:"Which pair is matched correctly?",
+     a:["Ivan the Terrible: a brutal, cruel tyrant · Peter the Great: a modernizer","Ivan the Terrible: a modernizer · Peter the Great: a cruel tyrant","Ivan the Terrible: king of Prussia · Peter the Great: king of France","Ivan the Terrible: built canals · Peter the Great: first tsar"],
+     e:"Both were absolute rulers of Russia. Ivan came first and is remembered for cruelty; Peter is remembered for building Russia up."},
+    {t:["frederick2"],d:5,q:"Slide 61 calls Frederick the Great one of the most enlightened despots in Europe. Which fact fits that?",
+     a:["He studied philosophy and wrote to French philosophers, notably Voltaire","He was the first tsar of Russia","He made nobles live at Versailles","He was a brutal and cruel tyrant"],
+     e:"A despot is a ruler with total power. “Enlightened” means he cared about ideas and reform. He was also a military genius who grew the army."},
+
+    /* Day 6 (Tue Nov 17): slides 64-74, Baroque art and the Scientific Revolution */
+    {t:["baroque"],d:6,q:"Which words describe Baroque style?",
+     a:["Extravagant, crowded with movement, action, and color","Plain, quiet, and simple","Small, dark, and empty","Black and white, with straight lines only"],
+     e:"Slides 65 and 66 use the same sentence for both artworks: extravagant, crowded with movement, action, and color."},
+    {t:["baroque"],d:6,q:"When did Baroque style dominate European culture?",
+     a:["Throughout the 1600s","Throughout the 1200s","During the 1900s","Only in 1789"],
+     e:"Slide 64: the 1600s, the same century as Louis XIV and the English Civil War."},
+    {t:["baroque"],d:6,q:"Baroque was a style of which of these?",
+     a:["Art, architecture, literature, and music","Only painting","Only music","Only clothing"],
+     e:"Slide 64 lists all four. That's why a painting, a sculpture, a palace, and a piece of music can all be Baroque."},
+    {t:["baroqueartists"],d:6,q:"Who painted The Assumption of the Virgin (about 1626)?",
+     a:["Peter Paul Rubens","Giovanni Bernini","Johann Sebastian Bach","Francis Bacon"],
+     e:"Slide 65. Rubens is the Baroque painter; Bernini is the sculptor; Bach is the composer; Bacon is the scientist."},
+    {t:["baroqueartists"],d:6,q:"Which Baroque artist made The Ecstasy of St. Theresa?",
+     a:["Giovanni Bernini","Peter Paul Rubens","Wolfgang Amadeus Mozart","Louis XIV"],
+     e:"Slide 66: Bernini, about 1647–52."},
+    {t:["bach"],d:6,q:"Which composer is the example of Baroque music on your slides?",
+     a:["Johann Sebastian Bach","Wolfgang Amadeus Mozart","Ludwig van Beethoven","Peter Paul Rubens"],
+     e:"Slide 67: Bach. Mozart and Beethoven come after, when Baroque music led to classical."},
+    {t:["bach"],d:6,q:"According to the slides, what did Baroque music lead to?",
+     a:["Classical music, like Mozart's","The Scientific Revolution","The English Civil War","The Reformation"],
+     e:"Slide 68: “Baroque music led to classical: Wolfgang Amadeus Mozart.” Then comes Beethoven."},
+    {t:["bacon"],d:6,q:"What did Francis Bacon believe scientists should do?",
+     a:["Observe, gather information, and then draw conclusions from it","Accept what ancient books say","Decide the answer first, then look for proof","Ask the king what is true"],
+     e:"Slide 73: evidence first, conclusion last. That's the experimental method."},
+    {t:["bacon"],d:6,q:"What is Francis Bacon's way of doing science called?",
+     a:["The experimental method","The divine right","The social contract","The heliocentric theory"],
+     e:"Slide 73. The heliocentric (sun-centered) theory belongs to Copernicus."},
+    {t:[],d:6,q:"How do your slides describe the Scientific Revolution?",
+     a:["A new way of thinking about the natural world, based on observation and questioning accepted beliefs","A war between scientists and kings","A new style of painting and music","A law that limited the king's power"],
+     e:"Slide 70. The key ideas are observation and a willingness to question. You met this in Unit 2, too."},
+    {t:[],d:6,q:"What theory did Copernicus publish after 25 years of study?",
+     a:["The planets revolve around the sun","The sun revolves around the Earth","Every object has gravity according to its mass","Objects fall at the same speed"],
+     e:"Slide 71. It contradicted the religious views of the time. His card is in your Unit 2 guide."},
+    {t:[],d:6,q:"Which is true of Galileo, according to your slides?",
+     a:["He built his own telescope and defended Copernicus's work","He wrote that every object has gravity","He published the theory after 25 years of study","He invented the experimental method"],
+     e:"Slide 72: he also proved that objects fall at the same speed, and a court forced him, under threat of torture, to reject Copernicus's ideas."},
+    {t:[],d:6,q:"How did Newton describe the universe?",
+     a:["As a giant working clock, all parts working together","As the center of the solar system","As too mysterious to study","As a painting crowded with action"],
+     e:"Slide 74: Newton's law of gravity says every object has gravity according to its mass, and the universe runs like a giant clock."},
+    {t:["bacon"],d:6,q:"Match the scientist to the idea. Which pair is correct?",
+     a:["Bacon: the experimental method","Bacon: the planets revolve around the sun","Newton: built his own telescope","Copernicus: the law of gravity"],
+     e:"Copernicus: sun-centered planets. Galileo: telescope. Bacon: experimental method. Newton: gravity. Slides 71 to 74, in that order."},
+    {t:["baroque","louiswars"],d:6,q:"Versailles, fireworks, Rubens's paintings: what do Baroque style and absolute monarchs like Louis XIV have in common?",
+     a:["Both are about being extravagant and showing off power and glory","Both wanted simple, cheap living","Both gave more power to commoners","Both began in the 1900s"],
+     e:"Baroque is the look of the age of absolutism: big, rich, and impressive. Ordinary people paid the bill."}
   ],
 
   orders: [
+    {q:"Put these on Louis XIV's timeline in order, earliest first.",
+     items:["Louis XIV becomes king (1643)","Paris gets the world's first street lamps (1662)","The capital moves from Paris to Versailles (1682)","Louis XIV's 72-year reign ends (1715)"],
+     e:"Slides 37, 56, and 39 in your Unit 4 notes: king first, lights in Paris, then the move to Versailles."},
+    {q:"Put these rulers of Russia in order, earliest first.",
+     items:["Ivan the Terrible, first tsar (1547)","Peter the Great (1682)","Catherine the Great (1762)"],
+     e:"Ivan is first (he was the first tsar), Peter modernized Russia, and Catherine came after Peter."},
     {q:"Put the Armada story in order, earliest first.",
      items:["Philip II can't stop the Protestant Dutch revolt","Philip decides to conquer England first","The English meet the Spanish Armada at Gravelines (August 8, 1588)","English fire ships break the Spanish formation","England is safe, and English nationalism grows"],
      e:"That's slides 7 to 10 in your Unit 4 notes packet, in order."},
