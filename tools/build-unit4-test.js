@@ -1,5 +1,6 @@
 const fs=require("fs"), path=require("path");
-const root=process.argv[2];
+/* Rebuilds noah/social-studies/unit4-test/content.js from the three Unit 4 guides. Run from anywhere: node tools/build-unit4-test.js <repo root> */
+const root=process.argv[2]||path.join(__dirname,"..");
 const load=g=>{ global.window={}; delete require.cache[require.resolve(path.join(root,"noah/social-studies",g,"content.js"))]; require(path.join(root,"noah/social-studies",g,"content.js")); return window.GUIDE; };
 const V=load("unit4"), M=load("absolute-monarchs"), R=load("glorious-revolution");
 const DAY={}; const put=(d,ids)=>ids.split(" ").forEach(i=>DAY[i]=d);
@@ -11,7 +12,7 @@ const terms=[], src={};
 [["unit4",V],["absolute-monarchs",M],["glorious-revolution",R]].forEach(([g,G])=>G.terms.forEach(t=>{
   if(!DAY[t.id]) throw new Error("no day for "+t.id);
   const o=Object.assign({},t,{day:DAY[t.id],group:GROUP(t.id)});
-  ["def","short","hook","ask"].forEach(k=>{ if(o[k]) o[k]=o[k].replace(/ The Enlightenment card is in your Unit 4 vocabulary guide\./,"").replace(/ \(in your Unit 4 vocabulary guide\)/g,""); });
+  ["def","short","hook","ask"].forEach(k=>{ if(o[k]) o[k]=o[k].replace(/ The Enlightenment card is in your Unit 4 vocabulary guide\./,"").replace(/ \(in your Unit 4 vocabulary guide\)/g,"").replace(/ in your Unit 4 vocabulary guide/g," in this guide too"); });
   terms.push(o); src[t.id]=g; }));
 if(terms.length!==62||Object.keys(DAY).length!==62) throw new Error("count "+terms.length);
 const questions=[];
@@ -56,6 +57,6 @@ ${orders.map(line).join(",\n")}
   bigPicture: ${JSON.stringify(V.bigPicture,null,2).replace(/\n/g,"\n  ")}
 };
 `;
-fs.writeFileSync(path.join(root,"noah/social-studies/unit4-test/content.js"),out);
+fs.writeFileSync(path.join(root,"noah/social-studies/unit4-test/content.js"),out.replace(/ in your Unit 4 vocabulary guide/g," in this guide too"));
 const c={};terms.forEach(t=>c[t.day]=(c[t.day]||0)+1);
 console.log("terms",terms.length,JSON.stringify(c),"questions",questions.length,"C",questions.filter(q=>q.d==="C").length,"orders",orders.length);
