@@ -6,6 +6,11 @@
    Plan Mon Nov 2 – vocabulary quiz Tue Nov 10, 2026. Montjoy's announcement "Absolute & Enlightenment Vocabulary quiz/ Autopsy Project"
    (Thu Nov 5) set the quiz for Tue 11/10, so `tbd` came off and the plan gained a second practice-test day (schedule 2).
    Not repeated here: Henry VIII (Unit 2 guide), Francis Drake (Explorers guide); hooks point to them.
+   Nov 17: Montjoy's page "Enlightened Thinkers 11/17" (CW: Unit 4 slides 75-85; the printed "Hobbes versus Locke" handout, iCivics
+   "Why Government?"; a video and a graded EdHelper form, not quizzed) added 6 cards to Day 4: Voltaire, Mary Wollstonecraft, Denis
+   Diderot, Adam Smith, State of nature, Consent of the governed, plus slide-wording questions on Hobbes, Locke, Montesquieu and
+   Rousseau (22 questions). The vocabulary quiz was Nov 10, so this guide's plan is not changed; the new cards show up in its deck
+   and in the Unit 4 test guide (tools/build-unit4-test.js), which counts down to the Fri Nov 20 test.
    This guide is a checker, not a textbook: it quizzes the vocabulary slides and walks through the answer when a question is missed. */
 window.GUIDE = {
   id: "noah-unit4",
@@ -127,7 +132,33 @@ window.GUIDE = {
     {id:"montesquieu",day:4,group:"T",kind:"person",term:"Baron de Montesquieu",
      def:"A French aristocrat and lawyer who thought that separating the powers of government would keep one part of government from becoming too powerful.",
      short:"Separation of powers",
-     hook:"Montesquieu = split it three ways. The U.S. uses his idea: Congress, the President, and the courts each check the others."}
+     hook:"Montesquieu = split it three ways. The U.S. uses his idea: Congress, the President, and the courts each check the others."},
+
+    /* Added Nov 17 from Montjoy's page "Enlightened Thinkers 11/17" (Unit 4 slides 75–85 and the Hobbes versus Locke handout) */
+    {id:"voltaire",day:4,group:"T",kind:"person",term:"Voltaire",
+     def:"A French writer and philosopher who was one of the leaders of the Enlightenment. He rejected everything irrational and called on people to act against intolerance, tyranny, and superstition, with respect for all individuals.",
+     short:"French writer against intolerance, tyranny, superstition",
+     hook:"Voltaire's three enemies: intolerance, tyranny, superstition. Think “VOLT”: he gave a shock to anyone who bullied people for what they believed. His slide is in the Enlightened Thinkers slides (75–85)."},
+    {id:"wollstonecraft",day:4,group:"T",kind:"person",term:"Mary Wollstonecraft",
+     def:"An English author and feminist. Her best-known work, A Vindication of the Rights of Woman, pleads for equality of education and opportunity between the sexes.",
+     short:"A Vindication of the Rights of Woman",
+     hook:"The other thinkers wrote about the rights of “man.” Wollstonecraft asked: what about women? The answer is in her title: the Rights of Woman. Equal education, equal chances."},
+    {id:"diderot",day:4,group:"T",kind:"person",term:"Denis Diderot",
+     def:"A French philosopher and writer who compiled the Encyclopédie, a work meant to show the order and system of human knowledge: the sciences, the arts, and the trades.",
+     short:"Compiled the Encyclopédie",
+     hook:"Diderot = the encyclopedia guy. Encyclopédie is just French for encyclopedia: one giant set of books with everything people knew, so anyone could look it up."},
+    {id:"adamsmith",day:4,group:"T",kind:"person",term:"Adam Smith",
+     def:"Wrote the book The Wealth of Nations. He argued that if individuals freely followed their own self-interest, the world would be an orderly place. He called this “the invisible hand.”",
+     short:"The Wealth of Nations; “the invisible hand”",
+     hook:"Smith is the money thinker: WEALTH is in his title. The invisible hand: a baker bakes bread to earn money for himself, and the town gets fed anyway, with no king giving orders."},
+    {id:"stateofnature",day:4,group:"N",kind:"idea",article:"the",term:"State of nature",
+     def:"What life would be like before there were governments: no rules, no one in charge, and no way for people to protect their rights. Hobbes said people in a state of nature would always be at war with everyone else.",
+     short:"Life with no government and no rules",
+     hook:"Picture school with no teachers and no rules at all. Hobbes and Locke both thought that would go badly, and that is why people make governments. It's on the Hobbes versus Locke handout from class."},
+    {id:"consent",day:4,group:"N",kind:"idea",term:"Consent of the governed",
+     def:"John Locke's idea that government's power is based on the agreement of the people it governs. If government does not uphold its obligations, the people have the right of revolution.",
+     short:"Government's power comes from the people's agreement",
+     hook:"Consent = saying yes. The governed = the people being ruled. A government only has power because the people agree to it, and if it breaks the deal, they can replace it. Look at the John Locke & Government slide."}
   ],
 
   questions: [
@@ -244,6 +275,59 @@ window.GUIDE = {
      a:["French aristocrat and lawyer","English general","King of France","Spanish explorer"],
      e:"The slide calls him a French aristocrat and lawyer."},
 
+    /* Day 4, added Nov 17: "Enlightened Thinkers 11/17" (slides 75–85, Hobbes versus Locke handout) */
+    {t:["voltaire"],d:4,q:"Voltaire called on people to act against…",
+     a:["Intolerance, tyranny, and superstition","Reason, science, and education","Parliament, taxes, and trade","Books, art, and music"],
+     e:"The Voltaire slide lists his three targets: intolerance, tyranny, and superstition. He wanted respect for all individuals."},
+    {t:["voltaire"],d:4,q:"Which thinker was a French writer and one of the leaders of the Enlightenment who wanted respect for all individuals?",
+     a:["Voltaire","Thomas Hobbes","Adam Smith","Mary Wollstonecraft"],
+     e:"That's Voltaire. Hobbes and Wollstonecraft were English, and Adam Smith is the Wealth of Nations writer."},
+    {t:["wollstonecraft"],d:4,q:"What did Mary Wollstonecraft argue for in A Vindication of the Rights of Woman?",
+     a:["Equality of education and opportunity between the sexes","A ruler with absolute power","Separating the powers of government","Following your own self-interest in business"],
+     e:"Her slide says she pleads for equality of education and opportunity between the sexes. The other answers are Hobbes, Montesquieu, and Adam Smith."},
+    {t:["wollstonecraft"],d:4,q:"Who wrote A Vindication of the Rights of Woman?",
+     a:["Mary Wollstonecraft","Queen Elizabeth I","Catherine the Great","Denis Diderot"],
+     e:"Wollstonecraft was an English author and feminist. The title tells you the topic: the rights of woman."},
+    {t:["diderot"],d:4,q:"What is Denis Diderot known for?",
+     a:["Compiling the Encyclopédie","Writing Leviathan","Writing The Wealth of Nations","Writing The Social Contract"],
+     e:"Diderot compiled the Encyclopédie. Leviathan is Hobbes, The Wealth of Nations is Adam Smith, and The Social Contract is Rousseau."},
+    {t:["diderot"],d:4,q:"What was Diderot's Encyclopédie meant to do?",
+     a:["Show the order and system of human knowledge: sciences, arts, and trades","Prove the Divine Right of Kings","List the laws of France","Tell the story of the English Civil War"],
+     e:"The Diderot slide says it was to exhibit the order and system of human knowledge, covering every science and every art."},
+    {t:["adamsmith"],d:4,q:"Which book did Adam Smith write?",
+     a:["The Wealth of Nations","Two Treatises of Government","The Social Contract","Leviathan"],
+     e:"Smith wrote The Wealth of Nations. Two Treatises is Locke, The Social Contract is Rousseau, and Leviathan is Hobbes."},
+    {t:["adamsmith"],d:4,q:"What did Adam Smith mean by “the invisible hand”?",
+     a:["If individuals freely follow their own self-interest, the world will be an orderly place","The king secretly controls all trade","God guides every decision a ruler makes","Parliament should set every price"],
+     e:"The Adam Smith slide: people freely following their own self-interest makes things orderly, as if an invisible hand were guiding them."},
+    {t:["hobbes"],d:4,q:"According to the Hobbes's Leviathan slide, why do all individuals surrender their natural rights?",
+     a:["To ensure peace","To make the king rich","To win more land","To please the Church"],
+     e:"The slide says all individuals in society surrender their natural rights to ensure peace, and government should be a Leviathan, an absolute authority."},
+    {t:["hobbes"],d:4,q:"Thomas Hobbes's political ideas were formed during the turmoil of which event?",
+     a:["The English Civil War","The Glorious Revolution","The Spanish Armada","The Gunpowder Plot"],
+     e:"The Thomas Hobbes slide says his theories were formed during the turmoil of the English Civil War. After seeing a war, he wanted a strong ruler to stop the fighting."},
+    {t:["locke"],d:4,q:"In Two Treatises of Government, what did John Locke attack?",
+     a:["The divine right of kings and Hobbes's view of the state","Natural rights and the social contract","Parliament and the Bill of Rights","The Encyclopédie and The Wealth of Nations"],
+     e:"The John Locke slide says he attacked the theory of the divine right of kings and Hobbes's view of the state."},
+    {t:["consent","locke"],d:4,q:"According to John Locke, government's power is based on…",
+     a:["The consent of the governed","The Divine Right of Kings","The size of the army","The wealth of the nobles"],
+     e:"The John Locke & Government slide: power is based on “the consent of the governed,” meaning the people agree to it."},
+    {t:["consent","locke"],d:4,q:"What did Locke say people have if government does not uphold its obligations?",
+     a:["The right of revolution","The duty to obey anyway","The right to pick a new religion","No rights at all"],
+     e:"Locke said the people have the right of revolution. Hobbes said the opposite: once people hand over power, they can't take it back."},
+    {t:["stateofnature"],d:4,q:"What is a state of nature?",
+     a:["Life before governments, with no rules and no one in charge","A country ruled by an absolute monarch","A government with three branches","A law passed by Parliament"],
+     e:"The Hobbes versus Locke handout: in a state of nature there are no rules and no one in charge, so nobody's rights are protected."},
+    {t:["stateofnature","hobbes"],d:4,q:"How did Hobbes think people would live in a state of nature?",
+     a:["Always at war with everyone else","Peacefully, sharing everything","Under a wise king","In a constitutional monarchy"],
+     e:"Hobbes saw people as selfish and quick to fight, so life without government would be constant war. Look at page 1 of the Hobbes versus Locke handout."},
+    {t:["montesquieu"],d:4,q:"According to the Montesquieu slide, why should governmental powers be separated and balanced?",
+     a:["To guarantee individual rights and freedom","To make the king stronger","To end all taxes","To let the army rule"],
+     e:"The slide says he believed in the balanced separation of governmental powers to guarantee individual rights and freedom."},
+    {t:["rousseau"],d:4,q:"In The Social Contract, Rousseau defended the popular will against…",
+     a:["Divine right","Natural rights","The Encyclopédie","Separation of powers"],
+     e:"Popular will means what the people want. Rousseau put it up against divine right, the idea that the king's power came from God. The slide says this helped set up the French Revolution."},
+
     /* Connect day */
     {t:["hobbes","locke","rousseau","montesquieu"],d:"C",q:"Which Enlightenment thinker does NOT belong with the others because he supported absolute power?",
      a:["Thomas Hobbes","John Locke","Jean-Jacques Rousseau","Baron de Montesquieu"],
@@ -271,7 +355,23 @@ window.GUIDE = {
      e:"The other three groups are about kings and England's fights over power. Philosophes, deism, and the Age of Reason are Enlightenment ideas."},
     {t:["socialcontract","naturalrights"],d:"C",q:"In the social contract, what do people agree to limit?",
      a:["Some of their natural rights","The number of kings","How much Parliament can talk","Trade with other countries"],
-     e:"The social contract slide: people define and limit their natural rights, and that creates an organized government."}
+     e:"The social contract slide: people define and limit their natural rights, and that creates an organized government."},
+    /* Connect, added Nov 17 */
+    {t:["hobbes","locke","consent"],d:"C",q:"What is the biggest difference between Hobbes and Locke?",
+     a:["Hobbes said people can never overthrow the ruler; Locke said they can if government fails them","Hobbes wanted three branches; Locke wanted one king","Hobbes believed in natural rights; Locke did not","Hobbes was French; Locke was English"],
+     e:"For Hobbes the deal was one-way: hand over power and obey. For Locke it worked both ways: government protects your rights or the people can revolt. That's the Agree or Disagree part of the Hobbes versus Locke handout."},
+    {t:["hobbes","locke","stateofnature"],d:"C",q:"What did Hobbes and Locke agree on?",
+     a:["Life in a state of nature, with no government, would go badly","The king's power comes from God","People have no natural rights","The ruler should have absolute power"],
+     e:"Both thought people need government to get out of the state of nature. They disagreed about how much power that government should have."},
+    {t:["hobbes","adamsmith","diderot","rousseau"],d:"C",q:"Which book is matched with the right author?",
+     a:["The Wealth of Nations: Adam Smith","Leviathan: John Locke","The Social Contract: Denis Diderot","Encyclopédie: Thomas Hobbes"],
+     e:"Smith wrote The Wealth of Nations. Leviathan is Hobbes, The Social Contract is Rousseau, and the Encyclopédie is Diderot."},
+    {t:["voltaire","diderot","montesquieu","rousseau"],d:"C",q:"Which of these Enlightenment thinkers was NOT French?",
+     a:["Mary Wollstonecraft","Voltaire","Denis Diderot","Baron de Montesquieu"],
+     e:"Wollstonecraft was an English author. Voltaire, Diderot, and Montesquieu were all French."},
+    {t:["enlightenment"],d:"C",q:"According to the Enlightenment slide, what did enlightened thinkers try to do?",
+     a:["Apply reason and the scientific method to all aspects of society","Bring back the Divine Right of Kings","Stop people from reading books","Make the Church the head of every government"],
+     e:"The slide says they attempt to apply the principles of reason and the scientific method to all aspects of society: government, rights, money, and education."}
   ],
 
   orders: [

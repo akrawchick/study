@@ -10,14 +10,16 @@ put(1,"noblesversailles gettingup citylights louiswars ivan peter");
 put(2,"baroque baroqueartists bach bacon");
 put(2,"elizabeth philip2 armada gravelines stuart james1 gunpowder parliament lords commons charles1 succession dissolve petition longparl civilwar roundheads cavaliers");
 put(3,"cromwell newmodel puritan commonwealth restoration charles2 james2 william williammary glorious billofrights limitedmon constmonarchy enlightenment agereason deism philosophes naturalrights socialcontract hobbes locke rousseau montesquieu");
-const GROUP=id=>(DAY[id]===1||["baroque","baroqueartists","bach"].includes(id))?"M":(id==="bacon"?"L":["enlightenment","agereason","deism","philosophes","naturalrights","socialcontract","hobbes","locke","rousseau","montesquieu"].includes(id)?"L":"G");
+/* Nov 17 sync: Montjoy's "Enlightened Thinkers 11/17" page (slides 75-85, Hobbes versus Locke handout) added 6 cards to the Unit 4 vocabulary guide. They open on Day 3 with the other thinkers. */
+put(3,"voltaire wollstonecraft diderot adamsmith stateofnature consent");
+const GROUP=id=>(DAY[id]===1||["baroque","baroqueartists","bach"].includes(id))?"M":(id==="bacon"?"L":["enlightenment","agereason","deism","philosophes","naturalrights","socialcontract","hobbes","locke","rousseau","montesquieu","voltaire","wollstonecraft","diderot","adamsmith","stateofnature","consent"].includes(id)?"L":"G");
 const terms=[], src={};
 [["unit4",V],["absolute-monarchs",M],["glorious-revolution",R]].forEach(([g,G])=>G.terms.forEach(t=>{
   if(!DAY[t.id]) throw new Error("no day for "+t.id);
   const o=Object.assign({},t,{day:DAY[t.id],group:GROUP(t.id)});
   ["def","short","hook","ask"].forEach(k=>{ if(o[k]) o[k]=o[k].replace(/ The Enlightenment card is in your Unit 4 vocabulary guide\./,"").replace(/ \(in your Unit 4 vocabulary guide\)/g,"").replace(/ in your Unit 4 vocabulary guide/g," in this guide too"); });
   terms.push(o); src[t.id]=g; }));
-if(terms.length!==72||Object.keys(DAY).length!==72) throw new Error("count "+terms.length);
+if(terms.length!==78||Object.keys(DAY).length!==78) throw new Error("count "+terms.length);
 const questions=[];
 [V,M,R].forEach(G=>(G.questions||[]).forEach(q=>{
   const d = q.d==="C" ? "C" : (q.t.length ? Math.max(...q.t.map(i=>{ if(!DAY[i]) throw new Error("q term "+i); return DAY[i]; })) : 3);
@@ -26,7 +28,8 @@ const questions=[];
 const orders=[].concat(V.orders||[],M.orders||[],R.orders||[]);
 const line=o=>"    "+JSON.stringify(o);
 const out=`/* Noah · Unit 4 test: Absolutism and Enlightenment · test Fri Nov 20, 2026
-   Combines his three Unit 4 guides, unchanged in wording: the Unit 4 vocabulary (22 terms, Mr. Montjoy's vocabulary slides),
+   Combines his three Unit 4 guides, unchanged in wording: the Unit 4 vocabulary (28 terms: Mr. Montjoy's vocabulary slides, and from Nov 17 the
+   Enlightened Thinkers slides 75-85 and the Hobbes versus Locke handout: Voltaire, Wollstonecraft, Diderot, Adam Smith, state of nature, consent of the governed),
    Absolute Monarchs (35 terms: the 10 Characteristics, Elizabeth I, the Spanish Armada, James I, the monarch mini-bios, and from
    Nov 16 the Sun King's France, Russia's tsars, Baroque art and Francis Bacon, slides 35-74) and
    From Charles I to the Glorious Revolution (15 terms). Generated from those guides' content.js files on Nov 16; their questions,
