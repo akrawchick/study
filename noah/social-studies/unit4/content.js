@@ -11,6 +11,8 @@
    Diderot, Adam Smith, State of nature, Consent of the governed, plus slide-wording questions on Hobbes, Locke, Montesquieu and
    Rousseau (22 questions). The vocabulary quiz was Nov 10, so this guide's plan is not changed; the new cards show up in its deck
    and in the Unit 4 test guide (tools/build-unit4-test.js), which counts down to the Fri Nov 20 test.
+   Nov 18: Montjoy's page "Enlightenment Thinkers- Jigsaw activity 11/18" (the "Enlightenment Thinkers" doc: the Leviathan title page and
+   excerpts from Locke's Two Treatises, Rousseau's Social Contract and Montesquieu's Spirit of Laws) added 13 questions, no new cards.
    This guide is a checker, not a textbook: it quizzes the vocabulary slides and walks through the answer when a question is missed. */
 window.GUIDE = {
   id: "noah-unit4",
@@ -328,7 +330,48 @@ window.GUIDE = {
      a:["Divine right","Natural rights","The Encyclopédie","Separation of powers"],
      e:"Popular will means what the people want. Rousseau put it up against divine right, the idea that the king's power came from God. The slide says this helped set up the French Revolution."},
 
+    /* Day 4, added Nov 18: "Enlightenment Thinkers- Jigsaw activity 11/18" (the Enlightenment Thinkers doc: one primary source per thinker) */
+    {t:["hobbes"],d:4,q:"On the title page of Hobbes's Leviathan, what is the giant ruler in the middle made of?",
+     a:["Lots of small people","Gold coins","Soldiers' swords","Pages of laws"],
+     e:"Look closely at the picture in your Enlightenment Thinkers doc: the big guy is made up of people. For Hobbes, everyone hands their power to one ruler, so the ruler is all of them put together."},
+    {t:["hobbes","absolutism"],d:4,q:"On the Leviathan title page the giant wears a crown and holds a sword. What do those stand for?",
+     a:["The monarch and his power","Parliament and its laws","The Church and its priests","Explorers and their ships"],
+     e:"A crown is the sign of a king, and a sword is the sign of power. That fits Hobbes: he wanted one ruler with absolute power."},
+    {t:["locke","naturalrights"],d:4,q:"In the excerpt from Locke's Two Treatises on Government, why are governments established?",
+     a:["To protect natural rights","To make the king richer","To spread one religion","To win wars with other countries"],
+     e:"The excerpt says it straight out: “To protect natural rights governments are established.” It's the Locke box in your Enlightenment Thinkers doc."},
+    {t:["locke","consent"],d:4,q:"Locke wrote that men are “by nature all free, equal, and independent.” So no one can be put under another's political power without…",
+     a:["His own consent","The king's permission","Paying a tax","Owning land"],
+     e:"Consent means agreeing to it. This is the same idea as your consent of the governed card: government only has power because people agree."},
+    {t:["locke","consent"],d:4,q:"According to the Locke excerpt, when can the people refuse to obey the laws?",
+     a:["When legislators try to take away their property or reduce them to slavery","Whenever taxes go up","When a new king is crowned","Never; they must always obey"],
+     e:"Locke says lawmakers who do that “put themselves into a state of war with the people.” The government broke the deal, so the people can revolt. “Never” would be Hobbes's answer."},
+    {t:["rousseau"],d:4,q:"In the excerpt from The Social Contract, what does Rousseau say about the words “slavery” and “right”?",
+     a:["They are contradictory and cancel each other out","They mean the same thing","Both come from the king","Both are natural rights"],
+     e:"Rousseau says an agreement where one side gets everything and the other side pays for everything is absurd. So there can't be a “right” to make someone a slave."},
+    {t:["rousseau","socialcontract"],d:4,q:"Rousseau uses the word “covenant.” What does the footnote in your doc say it means?",
+     a:["An agreement","A kingdom","A punishment","A church"],
+     e:"A covenant is an agreement, like a contract. That's why it shows up in a book called The Social Contract."},
+    {t:["montesquieu"],d:4,q:"Which book is the Montesquieu excerpt in your Enlightenment Thinkers doc from?",
+     a:["The Spirit of Laws","Leviathan","Two Treatises on Government","The Social Contract"],
+     e:"Montesquieu wrote The Spirit of Laws (1748). Leviathan is Hobbes, Two Treatises is Locke, and The Social Contract is Rousseau."},
+    {t:["montesquieu"],d:4,q:"According to the Montesquieu excerpt, when can there be no liberty?",
+     a:["When the executive, legislative, and judicial powers are united in one person or group","When Parliament meets too often","When people own property","When there are three branches of government"],
+     e:"He says putting all three powers in one person or body is “bound to result in arbitrary despotism.” Three separate branches is his fix, not the problem."},
+    {t:["montesquieu"],d:4,q:"The Montesquieu box in your doc explains the word “despotism.” What does it mean?",
+     a:["Using absolute power, especially in a cruel and oppressive way","Splitting power into three branches","Rule by the will of the people","A government with no ruler at all"],
+     e:"A despot is a ruler with total power who uses it cruelly. Montesquieu's warning: give one person all the power and you risk getting a despot."},
+    {t:["montesquieu"],d:4,q:"The same box explains “arbitrary.” An arbitrary decision is based on…",
+     a:["Random choice or personal whim, not reason or a system","A vote of the people","Written laws","What Parliament decides"],
+     e:"Arbitrary means “because I feel like it.” A ruler with no one to check him can make arbitrary choices, and that is how he turns into a despot."},
+
     /* Connect day */
+    {t:["montesquieu","absolutism"],d:"C",q:"Montesquieu warned that all the powers of government in one person leads to despotism. Which Unit 4 idea is he warning against?",
+     a:["Absolutism","Separation of powers","Natural rights","Consent of the governed"],
+     e:"Absolutism is one monarch holding complete power. Montesquieu's answer was to separate the powers; the other two choices are Locke's ideas about limiting government too."},
+    {t:["hobbes","locke","rousseau","montesquieu"],d:"C",q:"Match the book to its author. Which pair is correct?",
+     a:["The Spirit of Laws: Montesquieu","Two Treatises on Government: Hobbes","Leviathan: Rousseau","The Social Contract: Locke"],
+     e:"The four primary sources in your Enlightenment Thinkers doc: Leviathan (Hobbes), Two Treatises on Government (Locke), The Social Contract (Rousseau), The Spirit of Laws (Montesquieu)."},
     {t:["hobbes","locke","rousseau","montesquieu"],d:"C",q:"Which Enlightenment thinker does NOT belong with the others because he supported absolute power?",
      a:["Thomas Hobbes","John Locke","Jean-Jacques Rousseau","Baron de Montesquieu"],
      e:"Locke, Rousseau, and Montesquieu all wanted to limit or share power. Hobbes argued for a ruler with absolute power."},
