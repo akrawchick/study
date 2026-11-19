@@ -13,6 +13,8 @@
    and in the Unit 4 test guide (tools/build-unit4-test.js), which counts down to the Fri Nov 20 test.
    Nov 18: Montjoy's page "Enlightenment Thinkers- Jigsaw activity 11/18" (the "Enlightenment Thinkers" doc: the Leviathan title page and
    excerpts from Locke's Two Treatises, Rousseau's Social Contract and Montesquieu's Spirit of Laws) added 13 questions, no new cards.
+   Nov 19: Montjoy's page "Women's Rights - Enlighteners advocate for women 11/19" (Lesson 4 slides 24-30 and the reading "The Rules of
+   the House: Who Gets the Key?") added 12 questions on the Mary Wollstonecraft card, no new cards (the test is tomorrow).
    This guide is a checker, not a textbook: it quizzes the vocabulary slides and walks through the answer when a question is missed. */
 window.GUIDE = {
   id: "noah-unit4",
@@ -365,6 +367,38 @@ window.GUIDE = {
      a:["Random choice or personal whim, not reason or a system","A vote of the people","Written laws","What Parliament decides"],
      e:"Arbitrary means “because I feel like it.” A ruler with no one to check him can make arbitrary choices, and that is how he turns into a despot."},
 
+    /* Day 4, added Nov 19: "Women's Rights - Enlighteners advocate for women 11/19" (Lesson 4 slides 24–30 and the reading "The Rules of the House: Who Gets the Key?") */
+    {t:["wollstonecraft"],d:4,q:"In “The Rules of the House,” each room stands for something. Which list is matched correctly?",
+     a:["Library: education. Courtroom: legal rights. Voting Booth: power","Library: power. Courtroom: education. Voting Booth: legal rights","Library: legal rights. Courtroom: power. Voting Booth: education","Library: religion. Courtroom: trade. Voting Booth: war"],
+     e:"Room 1 is the Library (education), Room 2 is the Courtroom (legal rights), Room 3 is the Voting Booth (power). The headings on your Rules of the House sheet say it."},
+    {t:["wollstonecraft"],d:4,q:"In “The Rules of the House,” what is the “Key” to the Library?",
+     a:["Books and teachers","Owning land","Serving in the army","A husband's permission"],
+     e:"The Key is an education: books and teachers. Wollstonecraft said if you don't give someone the Key, you can't blame them for not knowing how to use the Library."},
+    {t:["wollstonecraft"],d:4,q:"Under the Traditional Rule, what was a woman's education limited to?",
+     a:["Sewing, singing, and manners","Logic, science, and politics","Law and voting","Military training"],
+     e:"The reading says logic, science, and politics were for men in the Library. Women were told their “Natural Duty” was to be a wife and mother, so they got sewing, singing, and manners."},
+    {t:["wollstonecraft"],d:4,q:"Mary Wollstonecraft wrote, “The mind has no sex.” What did she mean?",
+     a:["A woman's mind is exactly the same as a man's","Women should not go to school","Only men can learn logic and science","Minds can't be changed by education"],
+     e:"The Traditional Rule said men and women had different “natures.” Wollstonecraft answered that the mind is the same, so the education should be too. It's Quote B on the Lesson 4 slides."},
+    {t:["wollstonecraft"],d:4,q:"Under the Traditional Rule, who held a woman's “power” in the Courtroom?",
+     a:["Her husband or father","A judge she chose","Parliament","She spoke for herself"],
+     e:"In many places a woman couldn't own property or speak for herself in court. Her husband or father held her power. That is Room 2 in The Rules of the House."},
+    {t:["wollstonecraft","locke","naturalrights"],d:4,q:"What “logic error” did Wollstonecraft point out in the Enlightenment thinkers?",
+     a:["Locke said all humans have natural rights, and women are humans, so the law must protect them equally","Locke said nobody has natural rights","The thinkers wanted kings to have absolute power","The thinkers said women should own all the land"],
+     e:"She asked one question: “Are women humans?” If yes, then Locke's natural rights belong to women too. Look at Room 2 on your Rules of the House sheet."},
+    {t:["wollstonecraft"],d:4,q:"In the reading, what does “Blind Obedience” mean?",
+     a:["Following rules without the ability to question them","Obeying only the rules you agree with","Voting for the leader you like","Reading the laws before you follow them"],
+     e:"Blind means you can't see why. Wollstonecraft said blind obedience was similar to being enslaved, not being a citizen."},
+    {t:["wollstonecraft"],d:4,q:"Under the Traditional Rule, power (voting) was reserved for people who “contributed to society” through…",
+     a:["Military service or land ownership","Going to church","Paying for a school","Writing books"],
+     e:"Women were blocked from owning land or leading armies, so they were blocked from the Voting Booth too. That is Room 3."},
+    {t:["wollstonecraft"],d:4,q:"Why did Wollstonecraft say educating women would help the whole country?",
+     a:["Educated women become better citizens; keeping half the population “chained” to the home holds back progress","It would make the king more powerful","It would stop men from going to school","It would end the need for laws"],
+     e:"Her Room 3 argument: a country can't make full progress when half its people are kept from contributing."},
+    {t:["rousseau","wollstonecraft"],d:4,q:"Quote A on the Lesson 4 slides says the education of women “should be relative to men.” Who said it?",
+     a:["Jean-Jacques Rousseau","Mary Wollstonecraft","John Locke","Voltaire"],
+     e:"Quote A is Rousseau. Quote B is Wollstonecraft answering back: “Strengthen the female mind by enlarging it, and there will be an end to blind obedience.” Even a thinker who wanted freedom left women out."},
+
     /* Connect day */
     {t:["montesquieu","absolutism"],d:"C",q:"Montesquieu warned that all the powers of government in one person leads to despotism. Which Unit 4 idea is he warning against?",
      a:["Absolutism","Separation of powers","Natural rights","Consent of the governed"],
@@ -414,7 +448,14 @@ window.GUIDE = {
      e:"Wollstonecraft was an English author. Voltaire, Diderot, and Montesquieu were all French."},
     {t:["enlightenment"],d:"C",q:"According to the Enlightenment slide, what did enlightened thinkers try to do?",
      a:["Apply reason and the scientific method to all aspects of society","Bring back the Divine Right of Kings","Stop people from reading books","Make the Church the head of every government"],
-     e:"The slide says they attempt to apply the principles of reason and the scientific method to all aspects of society: government, rights, money, and education."}
+     e:"The slide says they attempt to apply the principles of reason and the scientific method to all aspects of society: government, rights, money, and education."},
+    /* Connect, added Nov 19 */
+    {t:["wollstonecraft","naturalrights"],d:"C",q:"What did Mary Wollstonecraft challenge the Enlightenment thinkers to do?",
+     a:["Include women in the push for natural rights and education","Give kings back their absolute power","Stop writing about natural rights","Keep the Traditional Rules of the house"],
+     e:"That is today's learning target on the Lesson 4 slides: she took the thinkers' own idea, natural rights, and said it has to cover women too."},
+    {t:["wollstonecraft"],d:"C",q:"In The Rules of the House, why does being locked out of Room 1 (the Library) matter so much?",
+     a:["Without an education, it is very hard to defend your rights in court or to vote","The Library is the only room with a door","The Voting Booth is inside the Library","Room 1 is where the king lives"],
+     e:"The rooms build on each other: no Library means people say you aren't “smart enough” for the Courtroom, and then you are blocked from the Voting Booth. Education is the first key. It's the Questions to Consider on your sheet."}
   ],
 
   orders: [
