@@ -15,6 +15,10 @@
    (Unit 4 vocabulary guide); hooks point to them.
    Plan Mon Nov 23 – vocabulary test Thu Dec 3, 2026. Thanksgiving break falls in the middle (no school Wed Nov 25 – Fri Nov 27);
    those days are small on purpose, and the app folds any skipped cards into the next mission.
+   Added Tue Nov 24 from the Canvas page "Revolution skeleton study notes slides 11/24" -> "Unit 4 Notes" slideshow, slides 1-6 ONLY
+   (the page says "slides 1-6": Seven Years War, Post War Debt, Stamp Act, "Taxation without Representation", Sons of Liberty).
+   Two cards that are NOT on the vocabulary paper (stampact, taxation; their hooks say so) and Day 2 questions on the notes.
+   Slides 7 onward (Boston Tea Party ... the Directory) have not been taught yet: add them only as their Canvas pages are posted.
    This guide is a checker, not a textbook: it quizzes the vocabulary slides and walks through the answer when a question is missed. */
 window.GUIDE = {
   id: "noah-revolutions",
@@ -75,6 +79,15 @@ window.GUIDE = {
      def:"The assembly of American delegates that met in Philadelphia to start the rebellion against Britain.",
      short:"American delegates who met in Philadelphia",
      hook:"Delegates = people sent to speak for their colony. Continental = from across the continent. Picture a team meeting in Philadelphia where the colonies decide to rebel together."},
+    /* Day 2, from the Unit 4 Notes slides 1-6 (not on the vocabulary paper) */
+    {id:"stampact",day:2,group:"A",kind:"idea",article:"the",term:"Stamp Act",
+     def:"A tax England passed in 1765 on all printed paper items. Americans were outraged: they had never paid taxes directly to the British government.",
+     short:"1765 British tax on all printed paper",
+     hook:"This one is from your Unit 4 Notes slides, not the vocabulary paper. Picture a stamp pressed onto paper: if it was printed, it was taxed. It comes right after the war because England needed money to pay off its war debt."},
+    {id:"taxation",day:2,group:"A",kind:"idea",term:"“Taxation without representation”",
+     def:"The colonists' argument that their natural rights were violated when Parliament, with no representatives from the colonies, taxed them.",
+     short:"Taxed by a Parliament with no colonists in it",
+     hook:"Also from your Unit 4 Notes slides, not the vocabulary paper. Representation = having someone in the room who speaks for you. The colonists had nobody in Parliament, so they said Parliament had no right to tax them. Natural rights is John Locke's idea (Unit 4 guide)."},
 
     /* Day 3: America declares independence */
     {id:"declaration",day:3,group:"A",kind:"idea",article:"the",term:"Declaration of Independence",
@@ -195,6 +208,40 @@ window.GUIDE = {
     {t:["congress"],d:2,q:"In which city did the Continental Congress meet?",
      a:["Philadelphia","Paris","London","Boston"],
      e:"The slide says the delegates met in Philadelphia. Paris and London are across the ocean, in France and Britain."},
+    /* Day 2, Unit 4 Notes slides 1-6 (Canvas page "Revolution skeleton study notes slides 11/24") */
+    {t:["sevenyears"],d:2,q:"According to your Unit 4 Notes, what did the war between England and France from 1754 to 1763 decide?",
+     a:["Who would rule North America","Who would be the next king of France","Whether the colonies could write a constitution","Which estate would lead France"],
+     e:"The Seven Years War slide says England and France fought a war that decided who would rule North America. Look back at slide 2 of the Unit 4 Notes."},
+    {t:["sevenyears"],d:2,q:"Who won the Seven Years' War (French and Indian War)?",
+     a:["England and her colonists","France","The Sons of Liberty","Nobody; both sides gave up"],
+     e:"The notes say that after years of fierce fighting, England and her colonists were victorious. At this point the colonists and England were still on the same side."},
+    {t:["sevenyears"],d:2,q:"Winning the Seven Years' War left England with what problem?",
+     a:["England was in debt","England lost its colonies","England had no king","England ran out of tea"],
+     e:"Wars cost money. The Post War Debt slide says winning the Seven Years War put England in debt. That debt is why the taxes start."},
+    {t:["sevenyears","stampact"],d:2,q:"Why did the British expect the American colonists to help pay for the war?",
+     a:["Because the colonists benefited from England's victory","Because the colonists started the war","Because the colonists were richer than the British","Because France told them to"],
+     e:"The British thinking went: the colonists were safer because England won, so they should help pay. See the Post War Debt slide."},
+    {t:["stampact"],d:2,q:"What was the Stamp Act?",
+     a:["A tax on all printed paper items","A tax on tea only","A law closing Boston's harbor","A law giving colonists seats in Parliament"],
+     e:"The Stamp Act slide says it was a tax on all printed paper items. Think paper, not tea."},
+    {t:["stampact"],d:2,q:"In what year did England pass the Stamp Act?",
+     a:["1765","1776","1789","1754"],
+     e:"1765, two years after the war ended in 1763. 1776 is the Declaration of Independence and 1789 is the French Revolution."},
+    {t:["stampact"],d:2,q:"Why were Americans outraged by the Stamp Act?",
+     a:["They had never paid taxes directly to the British government","They had never used paper before","They wanted the tax to be higher","The tax money went to France"],
+     e:"The key word on the slide is DIRECTLY. This was the first time the British government taxed the colonists directly, and it felt like a big change."},
+    {t:["taxation"],d:2,q:"What did the colonists mean by “taxation without representation”?",
+     a:["Parliament taxed them even though the colonies had no representatives in Parliament","The colonists paid no taxes at all","Parliament let the colonists vote on every tax","Only the Third Estate had to pay taxes"],
+     e:"Representation means having someone who speaks for you. No colonists sat in Parliament, yet Parliament taxed the colonies. That was the complaint."},
+    {t:["taxation"],d:2,q:"The colonists argued that being taxed by Parliament violated what?",
+     a:["Their natural rights","The Tennis Court Oath","The rules of the First Estate","The Declaration of the Rights of Man"],
+     e:"The slide says the colonists argued their natural rights were violated. Natural rights is John Locke's idea from the Unit 4 guide; the other three choices are all from France."},
+    {t:["sonsliberty"],d:2,q:"According to your Unit 4 Notes, what did the Sons of Liberty organize?",
+     a:["Boycotts of English imports that were taxed","A new tax on printed paper","A meeting of the three estates","A peace treaty with France"],
+     e:"The Sons of Liberty slide says they organized boycotts of English imports of products that were taxed. Your vocabulary slide adds the tea: they tried to stop the East India Company's deliveries."},
+    {t:["sonsliberty"],d:2,q:"The Sons of Liberty organized boycotts. What does it mean to boycott something?",
+     a:["Refuse to buy it, as a protest","Buy as much of it as you can","Put a tax on it","Send it back to England for free"],
+     e:"To boycott is to refuse to buy something to make a point. If nobody buys the taxed goods, England collects no tax on them."},
 
     /* Day 3 */
     {t:["declaration"],d:3,q:"What did the Declaration of Independence declare?",
@@ -327,7 +374,13 @@ window.GUIDE = {
      e:"Democracy puts power with the people. The Third Estate was over 97% of France but had the least power, so that's what they wanted to change."},
     {t:["louis16","marie","terror"],d:"C",q:"Which statement about France's royal family is correct?",
      a:["Louis XVI and Marie Antoinette were both beheaded during the French Revolution","Louis XVI was beheaded, but Marie Antoinette became queen of Britain","Marie Antoinette led the Reign of Terror","Louis XVI wrote the Declaration of the Rights of Man"],
-     e:"Both slides end the same way: beheaded during the French Revolution."}
+     e:"Both slides end the same way: beheaded during the French Revolution."},
+    {t:["sevenyears","stampact","taxation","sonsliberty"],d:"C",q:"Which chain puts the first part of your Unit 4 Notes in the right order?",
+     a:["England wins the war → England is in debt → the Stamp Act → “taxation without representation” → boycotts","The Stamp Act → England wins the war → boycotts → England is in debt → “taxation without representation”","Boycotts → the Stamp Act → England is in debt → England wins the war → “taxation without representation”","England is in debt → boycotts → England wins the war → “taxation without representation” → the Stamp Act"],
+     e:"Each step causes the next: the war costs money, the debt leads to a tax, the tax leads to the complaint, and the complaint leads to boycotts. It is the same order as slides 2 to 6."},
+    {t:["stampact","taxation"],d:"C",q:"The colonists were angry about the Stamp Act. Which statement best explains why?",
+     a:["Parliament taxed them directly, and no one from the colonies sat in Parliament","They did not want England to win the Seven Years' War","They wanted King Louis XVI to be their king","They thought printed paper should be against the law"],
+     e:"Two ideas from the notes fit together: it was a direct tax (Stamp Act slide), and the colonies had no representatives in Parliament (“Taxation without Representation” slide)."}
   ],
 
   orders: [
